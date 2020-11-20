@@ -17,55 +17,73 @@ function App() {
 	return (
 		<div className='App'>
 			{/* <Router> */}
-				<Switch>
-					<Route
-						exact
-						path='/'
-						render={(routerProps) => (
-							<>
-								<Nav />
-								<SignForm {...routerProps} label1='Log In' label2='Sign Up' />
-							</>
-						)}
-					/>
-					<Route
-						exact
-						path='/info'
-						render={(routerProps) => (
-							<>
-								<Nav />
-								<Information {...routerProps} />
-							</>
-						)}
-					/>
-					<Route
-						exact
-						path='/about'
-						render={(routerProps) => (
-							<>
-								<Nav />
-								<About {...routerProps} />
-							</>
-						)}
-					/>
-					<Route
-						exact
-						path='/characterList'
-						render={(routerProps) => (
-							<>
-								<CharacterList {...routerProps} />
-							</>
-						)}
-					/>
-					<Route
-						path='/game'
-						render={(routerProps) => (
-							<>
-								<Game {...routerProps} />
-							</>
-						)}
-					/>
-				</Switch>
+			<Switch>
+				<Route
+					exact
+					path='/'
+					render={(routerProps) => (
+						<>
+							<Nav />
+							<SignForm
+								{...routerProps}
+								label1='Log In'
+								label2="Don't have an Account? Sign Up"
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path='/signup'
+					render={(routerProps) => (
+						<>
+							<Nav />
+							<SignForm
+								{...routerProps}
+								label1='Sign Up'
+								label2='Already have an Account? Log In'
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path='/info'
+					render={(routerProps) => (
+						<>
+							<Nav />
+							<Information {...routerProps} />
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path='/about'
+					render={(routerProps) => (
+						<>
+							<Nav />
+							<About {...routerProps} />
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path='/characterList'
+					render={(routerProps) => (
+						<>
+							<CharacterList {...routerProps} />
+						</>
+					)}
+				/>
+				<Route
+					path='/game'
+					render={(routerProps) => (
+						<>
+							<Game {...routerProps} />
+						</>
+					)}
+				/>
+			</Switch>
 			{/* </Router> */}
 		</div>
 	);

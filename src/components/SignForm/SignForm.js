@@ -11,37 +11,47 @@ function SignForm(props) {
 	// Allows the data in the form to be changed
 	const handleChange = (event) => {
 		setFormData({ ...formData, [event.target.name]: event.target.value });
-    };
-    
-    // Handles the log in/sign up
-    const handleSubmit = (event) => {
-        // Prevent Form from Refreshing    
-        event.preventDefault(); 
-        //Push back to display page    
-        props.history.push(`/characterList/`); 
-		};
+	};
+
+	// Handles the log in/sign up
+	const handleSubmit = (event) => {
+		// Prevent Form from Refreshing
+		event.preventDefault();
+		//Push back to display page
+		props.history.push(`/characterList/`);
+	};
+
+	// Handles switching between forms
+	const handleClick = (event) => {
+		event.preventDefault();
+		if (props.label2 === "Don't have an Account? Sign Up") {
+			props.history.push(`/signup/`);
+		} else {
+			props.history.push(`/`);
+		}
+	};
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
-				<div>Username:</div>
+				<div>Email:</div>
 				<input
 					type='text'
-					name='name'
+					name='email'
 					value={formData.name}
 					onChange={handleChange}
-					placeholder='Username'
+					placeholder='email@email.com'
 				/>
 				<div>Password:</div>
 				<input
-					type='text'
-					name='name'
+					type='password'
+					name='password'
 					value={formData.password}
 					onChange={handleChange}
 					placeholder='Password'
 				/>
 				<input className='LogInBut' type='submit' value={props.label1} />
-				<input className='ChangeLogBut' type='submit' value={props.label2} />
 			</form>
+			<button onClick={handleClick} >{props.label2}</button>
 		</>
 	);
 }
