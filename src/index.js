@@ -1,14 +1,21 @@
+// Import React
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import css
 import './index.css';
-import App from './App';
+// import app
+import App from './components/App/App';
+// not sure what this but it came with the react install
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<Router>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</Router>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
