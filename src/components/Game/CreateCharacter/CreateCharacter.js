@@ -1,75 +1,83 @@
 // import react
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
-// import font awesome
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBolt } from '@fortawesome/free-solid-svg-icons';
-import { faFire } from '@fortawesome/free-solid-svg-icons';
-import { faFistRaised } from '@fortawesome/free-solid-svg-icons';
 // import React Icons
+import { GiFist } from 'react-icons/gi';
+import { BsLightning } from 'react-icons/bs';
+import { GiSmallFire } from 'react-icons/gi';
 import { GiClawHammer } from 'react-icons/gi';
 import { GiWinchesterRifle } from 'react-icons/gi';
 import { GiPocketBow } from 'react-icons/gi';
+import { GiWantedReward } from 'react-icons/gi';
+import { GiSteampunkGoggles } from 'react-icons/gi';
+import { GiFarmer } from 'react-icons/gi';
 
 function CreateCharacter(props) {
 	// for pathing
 	const { url, path } = useRouteMatch();
-    // functions for set up
-	const setCore = (target) => {
-		if (target.core.value === 'physical') {
-            props.setStat({ ...props.stat, str: props.stat.str + 1 });
-			props.setChar({
-				...props.char,
-				name: target.name.value,
-				core: 1,
-			});
-		} else if (target.core.value === 'electric') {
-			props.setStat({ ...props.stat, cun: props.stat.cun + 1 });
-			props.setChar({
-				...props.char,
-				name: target.name.value,
-				core: 2,
-			});
-		} else if (target.core.value === 'fire') {
-			props.setStat({ ...props.stat, wil: props.stat.wil + 1 });
-			props.setChar({
-				...props.char,
-				name: target.name.value,
-				core: 3,
-			});
-        }
-	};
-	const setWeapon = (target) => {
-		if (target.weapon.value === 'Hammer') {
-			props.setStat({
-				...props.stat,
-				str: props.stat.str + 1,
-				end: props.stat.end + 1,
-				wil: props.stat.wil + 1,
-			});
-		} else if (target.weapon.value === 'Rifle') {
-			props.setStat({
-				...props.stat,
-				int: props.stat.int + 1,
-				cun: props.stat.cun + 1,
-				per: props.stat.per + 1,
-			});
-		} else if (target.weapon.value === 'Bow') {
-			props.setStat({
-				...props.stat,
-				str: props.stat.str + 1,
-				agi: props.stat.agi + 1,
-				wil: props.stat.wil + 1,
-			});
-        }
-	};
 
 	const handleSubmit = (event) => {
 		// Prevent Form from Refreshing
 		event.preventDefault();
-        // set values
-		setCore(event.target);
-        setWeapon(event.target);
+		// set values
+		let form = props.stat;
+		let form2 = props.char;
+		if (event.target.core.value === 'physical') {
+			form = { ...form, str: form.str + 1 };
+			form2 = {
+				...form2,
+				name: event.target.name.value,
+				core: 1,
+			};
+		} else if (event.target.core.value === 'electric') {
+			form = { ...form, cun: form.cun + 1 };
+			form2 = {
+				...form2,
+				name: event.target.name.value,
+				core: 2,
+			};
+		} else if (event.target.core.value === 'fire') {
+			form = { ...form, wil: form.wil + 1 };
+			form2 = {
+				...form2,
+				name: event.target.name.value,
+				core: 3,
+			};
+		}
+		if (event.target.weapon.value === 'Hammer') {
+			form = {
+				...form,
+				str: form.str + 1,
+				end: form.end + 1,
+				wil: form.wil + 1,
+			};
+		} else if (event.target.weapon.value === 'Rifle') {
+			form = {
+				...form,
+				int: form.int + 1,
+				cun: form.cun + 1,
+				per: form.per + 1,
+			};
+		} else if (event.target.weapon.value === 'Bow') {
+			form = {
+				...form,
+				str: form.str + 1,
+				agi: form.agi + 1,
+				wil: form.wil + 1,
+			};
+		}
+		if (event.target.background.value === 'Bounty') {
+			form2 = { ...props.char, prof: 'bounty' };
+			form = { ...form, per: form.per + 1 };
+		} else if (event.target.background.value === 'Scavenger') {
+			form2 = { ...props.char, prof: 'scavenger' };
+			form = { ...form, int: form.int + 1 };
+		} else if (event.target.background.value === 'Farmer') {
+			form2 = { ...props.char, prof: 'farmer' };
+			form = { ...form, end: form.end + 1 };
+		}
+		props.setStat(form);
+		props.setChar(form2);
 		//Push back to display page
 		props.history.push(`${path}/intro`);
 	};
@@ -81,7 +89,7 @@ function CreateCharacter(props) {
 				<h3>Select your Core</h3>
 				<div>
 					<input type='radio' id='core1' value='physical' name='core' checked />
-					<FontAwesomeIcon icon={faFistRaised} size='3x' />
+					<GiFist size='50px' />
 					<p>Physical Core:</p>
 					<p>
 						This core type focuses on defeating opponents through bashing them
@@ -91,7 +99,7 @@ function CreateCharacter(props) {
 				</div>
 				<div>
 					<input type='radio' id='core2' value='electric' name='core' />
-					<FontAwesomeIcon icon={faBolt} size='3x' />
+					<BsLightning size='50px' />
 					<p>Electric Core:</p>
 					<p>
 						This core type focuses on defeating opponents through disabling them
@@ -101,7 +109,7 @@ function CreateCharacter(props) {
 				</div>
 				<div>
 					<input type='radio' id='core3' value='fire' name='core' />
-					<FontAwesomeIcon icon={faFire} size='3x' />
+					<GiSmallFire size='50px' />
 					<p>Fire Core:</p>
 					<p>
 						This core type focuses on defeating opponents through burning them
@@ -127,7 +135,7 @@ function CreateCharacter(props) {
 					<p>accuracy stat: Willpower</p>
 				</div>
 				<div>
-					<input type='radio' id='weapon2' value='Rifle' name='weapon' />{' '}
+					<input type='radio' id='weapon2' value='Rifle' name='weapon' />
 					<GiWinchesterRifle size='50px' />
 					<p>name: Rifle</p>
 					<p>type: Range</p>
@@ -136,13 +144,42 @@ function CreateCharacter(props) {
 					<p>accuracy stat: Perception</p>
 				</div>
 				<div>
-					<input type='radio' id='weapon3' value='Bow' name='weapon' />{' '}
+					<input type='radio' id='weapon3' value='Bow' name='weapon' />
 					<GiPocketBow size='50px' />
 					<p>name: War Bow</p>
 					<p>type: Range</p>
 					<p>primary stat: Strength</p>
 					<p>secondary stat: Willpower</p>
 					<p>Agility</p>
+				</div>
+				<h3>Background</h3>
+				<p>Affects some in game dialog</p>
+				<div>
+					<input
+						type='radio'
+						id='back1'
+						value='Bounty'
+						name='background'
+						checked
+					/>
+					<GiWantedReward size='50px' />
+					<p>Profession: Bounty Hunter</p>
+					<p>You roam the region collecting bounties on individuals</p>
+					<p>Bonus Stat: Perception</p>
+				</div>
+				<div>
+					<input type='radio' id='back2' value='Scavenger' name='background' />
+					<GiSteampunkGoggles size='50px' />
+					<p>Profession: Scavenger</p>
+					<p>You are always looking for opportunities to gather useful parts</p>
+					<p>Bonus Stat: Intellect</p>
+				</div>
+				<div>
+					<input type='radio' id='back3' value='Farmer' name='background' />
+					<GiFarmer size='50px' />
+					<p>Profession: Farmer</p>
+					<p>You are just trying to get by in this crazy world</p>
+					<p>Bonus Stat: Endurance</p>
 				</div>
 				<input className='LogInBut' type='submit' value='Create Character' />
 			</form>

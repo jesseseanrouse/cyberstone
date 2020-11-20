@@ -7,6 +7,7 @@ function Intro(props) {
 			<p>test</p>
 			<p>{props.char.name}</p>
 			<p>{props.char.core}</p>
+            <p>{props.char.prof}</p>
 			<p>str: {props.stat.str}</p>
 			<p>end: {props.stat.end}</p>
 			<p>wil: {props.stat.wil}</p>
