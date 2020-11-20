@@ -58,7 +58,6 @@ function App() {
 						)}
 					/>
 					<Route
-						exact
 						path='/game'
 						render={(routerProps) => (
 							<>
