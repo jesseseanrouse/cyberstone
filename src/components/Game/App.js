@@ -1,5 +1,5 @@
 // Import React
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
@@ -7,16 +7,28 @@ import Intro from './Intro/Intro'
 
 function App() {
     const { url, path} = useRouteMatch()
+    // default variables
+    // strength, Endurance, Willpower, Intellect, Cunning, Perception, Agility
+    let baseStats = {
+			str: 4,
+			end: 4,
+			wil: 4,
+			int: 4,
+			cun: 4,
+			per: 4,
+			agi: 4,
+    };
+    // State lives here
+    const [stat, setStat] = useState(baseStats)
 	return (
 		<>
-			<p>Testing</p>
 			<Switch>
 				<Route
 					exact
 					path={`${path}`}
 					render={(routerProps) => (
 						<>
-							<CreateCharacter {...routerProps} />
+							<CreateCharacter {...routerProps} stat={stat} setStat={setStat} />
 						</>
 					)}
 				/>
@@ -25,7 +37,7 @@ function App() {
 					path={`${path}/intro`}
 					render={(routerProps) => (
 						<>
-							<Intro {...routerProps} />
+							<Intro {...routerProps} stat={stat} setStat={setStat}/>
 						</>
 					)}
 				/>

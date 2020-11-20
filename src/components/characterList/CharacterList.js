@@ -6,7 +6,7 @@ function CharacterList(props) {
 			// Prevent Form from Refreshing
 			event.preventDefault();
 			//Push back to display page
-			props.history.push(`/game/`);
+			props.history.push(`/game`);
 		}
 	return (
 		<>
