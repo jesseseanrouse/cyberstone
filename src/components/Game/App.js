@@ -8,6 +8,11 @@ import Intro from './Intro/Intro'
 function App() {
     const { url, path} = useRouteMatch()
     // default variables
+    // character info: core: 1: physical, 2: electric, 3: fire
+    let baseChar = {
+        name: '',
+        core: 0,
+    }
     // strength, Endurance, Willpower, Intellect, Cunning, Perception, Agility
     let baseStats = {
 			str: 4,
@@ -20,6 +25,7 @@ function App() {
     };
     // State lives here
     const [stat, setStat] = useState(baseStats)
+    const [char, setChar] = useState(baseChar)
 	return (
 		<>
 			<Switch>
@@ -28,7 +34,13 @@ function App() {
 					path={`${path}`}
 					render={(routerProps) => (
 						<>
-							<CreateCharacter {...routerProps} stat={stat} setStat={setStat} />
+							<CreateCharacter
+								{...routerProps}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+								setChar={setChar}
+							/>
 						</>
 					)}
 				/>
@@ -37,7 +49,12 @@ function App() {
 					path={`${path}/intro`}
 					render={(routerProps) => (
 						<>
-							<Intro {...routerProps} stat={stat} setStat={setStat}/>
+							<Intro
+								{...routerProps}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+							/>
 						</>
 					)}
 				/>
