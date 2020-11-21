@@ -2,19 +2,48 @@
 import React from 'react';
 
 function Intro(props) {
+	function bounty() {
+		return (
+			<p>
+				You review the bounty sheet that you took. The locals are being attacked
+				by robots that are being produced at this location. The bounty is for
+				some egg head scientist that the locals don't even have a name for. But
+				all they really want is for the attacks to stop and the money is good,
+				so you are here.
+			</p>
+		);
+	}
+	function scavenger() {
+		return (
+			<p>
+				You double check your map. This is the scrapyard from before the
+				Cataclysm with all the high quality robots from some company called
+				Telsa. This does not look like what you thought it did with more junk
+				than quality. However you did hear on your way here that someone is
+				building robots here and terrorizing the locals. There may be more to
+				this place than meets the eye.
+			</p>
+		);
+	}
+	function farmer() {
+		return (
+			<p>
+				So this is the place you think. This is where the robots that have been
+				attacking your farm, your friends, and killing people without cause. You
+				have had enough of these attacks and have tracked the robots here to put
+				an end to this once and for all.
+			</p>
+		);
+	}
 	return (
 		<>
-			<p>test</p>
-			<p>{props.char.name}</p>
-			<p>{props.char.core}</p>
-            <p>{props.char.prof}</p>
-			<p>str: {props.stat.str}</p>
-			<p>end: {props.stat.end}</p>
-			<p>wil: {props.stat.wil}</p>
-			<p>int: {props.stat.int}</p>
-			<p>cun: {props.stat.cun}</p>
-			<p>per: {props.stat.per}</p>
-			<p>agi: {props.stat.agi}</p>
+			{props.char.prof === 'bounty' ? bounty() : null}
+			{props.char.prof === 'scavenger' ? scavenger() : null}
+			{props.char.prof === 'farmer' ? farmer() : null}
+            <p>You take a look at the gate. Its not much to look at and it is locked. Too smooth and tall to climb over. How do you want to proceed?</p>
+            <div>Bash your way through the gate (+1 Strength)</div>
+            <div>Pick the lock (+1 Cunning)</div>
+            <div>Look for another way in (+1 Perception)</div>
 		</>
 	);
 }
