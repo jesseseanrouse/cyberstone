@@ -4,6 +4,9 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/Intro';
+import Intro1 from './Intro/Intro1';
+import Intro2 from './Intro/Intro2';
+import Intro3 from './Intro/Intro3';
 
 function App() {
 	const { url, path } = useRouteMatch();
@@ -32,7 +35,7 @@ function App() {
 			<Switch>
 				<Route
 					exact
-					path={`${path}`}
+					path={`${path}/create`}
 					render={(routerProps) => (
 						<>
 							<CreateCharacter
@@ -51,6 +54,48 @@ function App() {
 					render={(routerProps) => (
 						<>
 							<Intro
+								{...routerProps}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/intro/1`}
+					render={(routerProps) => (
+						<>
+							<Intro1
+								{...routerProps}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/intro/2`}
+					render={(routerProps) => (
+						<>
+							<Intro2
+								{...routerProps}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/intro/3`}
+					render={(routerProps) => (
+						<>
+							<Intro3
 								{...routerProps}
 								stat={stat}
 								setStat={setStat}

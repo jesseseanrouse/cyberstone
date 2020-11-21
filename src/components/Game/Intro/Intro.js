@@ -1,5 +1,6 @@
 // import React
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Intro(props) {
 	function bounty() {
@@ -41,9 +42,9 @@ function Intro(props) {
 			{props.char.prof === 'scavenger' ? scavenger() : null}
 			{props.char.prof === 'farmer' ? farmer() : null}
             <p>You take a look at the gate. Its not much to look at and it is locked. Too smooth and tall to climb over. How do you want to proceed?</p>
-            <div>Bash your way through the gate (+1 Strength)</div>
-            <div>Pick the lock (+1 Cunning)</div>
-            <div>Look for another way in (+1 Perception)</div>
+            <Link to='/game/intro/1'>Bash your way through the gate (+1 Strength)</Link>
+            <Link to='/game/intro/2'>Pick the lock (+1 Cunning)</Link>
+            <Link to='/game/intro/3'>Look for another way in (+1 Perception)</Link>
 		</>
 	);
 }

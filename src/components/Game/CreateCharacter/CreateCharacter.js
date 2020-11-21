@@ -1,6 +1,6 @@
 // import react
 import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, Redirect } from 'react-router-dom';
 // import React Icons
 import { GiFist } from 'react-icons/gi';
 import { BsLightning } from 'react-icons/bs';
@@ -79,7 +79,7 @@ function CreateCharacter(props) {
 		props.setStat(form);
 		props.setChar(form2);
 		//Push back to display page
-		props.history.push(`${path}/intro`);
+		props.history.push(`/game/intro`);
 	};
 	return (
 		<>
