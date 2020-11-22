@@ -1,8 +1,9 @@
 // Had some help from a guide https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial
-import app from 'firebase/app';
-import 'firebase/auth';
+// moved away from previous guide to this https://www.youtube.com/watch?v=pI4438IHBYY
+// basically copying what he did... Not good to copy but I want this to work and I am giving him credit here. Hopefully I won't forget to give him credit in my about page.
+import firebase from 'firebase';
 
-const config = {
+var firebaseConfig = {
 	apiKey: 'AIzaSyBWpFhCL9y-2OV-aoOYj7JjtwKQepUz9Fg',
 	authDomain: 'cyberstone-896cf.firebaseapp.com',
 	databaseURL: 'https://cyberstone-896cf.firebaseio.com',
@@ -10,24 +11,13 @@ const config = {
 	storageBucket: 'cyberstone-896cf.appspot.com',
 	messagingSenderId: '759191450596',
 	appId: '1:759191450596:web:07f852a2ade916c5848df1',
-	measurementId: 'G-HRCC5CGPDV',
+	// measurementId: 'G-HRCC5CGPDV',
 };
 
-class Firebase {
-	constructor() {
-		app.initializeApp(config);
-	}
-	// Firebase API for auth with email/password
-	doCreateUserWithEmailAndPassword = (email, password) =>
-		this.auth.createUserWithEmailAndPassword(email, password);
+var fireDb = firebase.initializeApp(firebaseConfig);
 
-	doSignInWithEmailAndPassword = (email, password) =>
-		this.auth.signInWithEmailAndPassword(email, password);
-	doSignOut = () => this.auth.signOut();
-	doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email);
+export default fireDb.database().ref();
 
-	doPasswordUpdate = (password) =>
-		this.auth.currentUser.updatePassword(password);
-}
-
-export default Firebase;
+// <script src="/__/firebase/8.1.0/firebase-app.js"></script>
+// <script src="/__/firebase/8.1.0/firebase-analytics.js"></script>
+// <script src="/__/firebase/init.js"></script>

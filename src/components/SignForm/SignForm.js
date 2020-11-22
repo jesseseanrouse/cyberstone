@@ -3,10 +3,7 @@ import React from 'react';
 
 function SignForm(props) {
 	// set the form data to blank
-	const [formData, setFormData] = React.useState([
-		{ name: '' },
-		{ password: '' },
-	]);
+	const [formData, setFormData] = React.useState({});
 
 	// Allows the data in the form to be changed
 	const handleChange = (event) => {
@@ -17,6 +14,7 @@ function SignForm(props) {
 	const handleSubmit = (event) => {
 		// Prevent Form from Refreshing
 		event.preventDefault();
+		props.userIn(formData)
 		//Push back to display page
 		props.history.push(`/characterList/`);
 	};
@@ -33,13 +31,13 @@ function SignForm(props) {
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
-				<div>Email:</div>
+				<div>User:</div>
 				<input
 					type='text'
-					name='email'
+					name='user'
 					value={formData.name}
 					onChange={handleChange}
-					placeholder='email@email.com'
+					placeholder='user'
 				/>
 				<div>Password:</div>
 				<input

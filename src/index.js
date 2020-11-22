@@ -7,16 +7,12 @@ import './index.css';
 // import app
 import App from './components/App/App';
 // not sure what this but it came with the react install
-import reportWebVitals from './reportWebVitals'; 
-// Import firebase
-import Firebase, { FirebaseContext } from './components/Firebase';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
 	<Router>
 		<React.StrictMode>
-      <FirebaseContext.Provider value={new Firebase()}>
-        <App />
-      </FirebaseContext.Provider>
+			<App />
 		</React.StrictMode>
 	</Router>,
 	document.getElementById('root')
