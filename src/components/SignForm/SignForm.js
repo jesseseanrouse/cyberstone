@@ -2,6 +2,8 @@
 import React from 'react';
 
 function SignForm(props) {
+	// set check to prevent auto move
+	const [pagePush, setPagePush] = React.useState(false)
 	// set the form data to blank
 	const [formData, setFormData] = React.useState({});
 
@@ -15,9 +17,17 @@ function SignForm(props) {
 		// Prevent Form from Refreshing
 		event.preventDefault();
 		props.userIn(formData)
-		//Push back to display page
-		// props.history.push(`/characterList/`);
 	};
+
+	// if log-in/sign-in is successful
+	React.useEffect(() => {
+		if (pagePush === false) {
+			setPagePush(true)
+		} else {
+			props.history.push(`/characterList/`);
+		props.setErrCheck(false)
+		}
+	}, [props.errCheck])
 
 	// Handles switching between forms
 	const handleClick = (event) => {

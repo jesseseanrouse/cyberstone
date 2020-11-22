@@ -1,5 +1,5 @@
 // Import React
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 // Import components
 import About from '../About/About';
@@ -10,23 +10,50 @@ import CharacterList from '../characterList/CharacterList';
 import Game from '../Game/App';
 // Import Firebase
 import firebase from 'firebase';
-import firebaseDb from '../Firebase/firebase'
+import firebaseDb from '../Firebase/firebase';
 
 function App() {
-	// state for user (user, user_id)
-	const [user, setUser] = useState(['', '']);
-	const [err, setErr] = useState('')
+	// state lives here
+	const [user, setUser] = useState('');
+	const [userID, setUserID] = useState('');
+	const [err, setErr] = useState('');
+	const [errCheck, setErrCheck] = useState(false)
 	// CRUD functions for SignForm
+	// add user
 	const addUser = (data) => {
-		let testUser = data.user
-		let ref = firebaseDb
-		ref.child('users').orderByChild('user').equalTo(testUser).once('value', snapshot => {
-			if (snapshot.exists()) {
-				setErr('user already exists')
-			} else {
-				firebaseDb.child('users').push(data);
-			}
-		})
+		let testUser = data.user;
+		let ref = firebaseDb;
+		ref
+			.child('users')
+			.orderByChild('user')
+			.equalTo(testUser)
+			.once('value', (snapshot) => {
+				if (snapshot.exists()) {
+					setErr('user already exists');
+				} else {
+					firebaseDb.child('users').push(data);
+					setErrCheck(true);
+				}
+			});
+	};
+	// log in user
+	const logUser = (data) => {
+		let testUser = data.user;
+		let testPass = data.password;
+		let ref = firebaseDb;
+		ref
+			.child('users')
+			.orderByChild('user')
+			.equalTo(testUser)
+			.once('value', (snapshot) => {
+				console.log(snapshot.val())
+				if (snapshot.exists()) {
+					setErr('works')
+					setErrCheck(true);
+				} else {
+					setErr('user and password do not match');
+				}
+			});
 	};
 	return (
 		<div className='App'>
@@ -42,7 +69,10 @@ function App() {
 								{...routerProps}
 								label1='Log In'
 								label2="Don't have an Account? Sign Up"
+								userIn={logUser}
 								err={err}
+								errCheck={errCheck}
+								setErrCheck={setErrCheck}
 							/>
 						</>
 					)}
@@ -59,6 +89,8 @@ function App() {
 								label2='Already have an Account? Log In'
 								userIn={addUser}
 								err={err}
+								errCheck={errCheck}
+								setErrCheck={setErrCheck}
 							/>
 						</>
 					)}
@@ -88,7 +120,7 @@ function App() {
 					path='/characterList'
 					render={(routerProps) => (
 						<>
-							<CharacterList {...routerProps} />
+							<CharacterList {...routerProps} user={user} userID={userID} />
 						</>
 					)}
 				/>

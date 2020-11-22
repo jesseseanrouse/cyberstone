@@ -15,6 +15,8 @@ function CharacterList(props) {
 		}
 	return (
 		<>
+			<p>user: {props.user}</p>
+			<p>userID: {props.userID}</p>
 			<button onClick={handleClick}>Create New Character</button>
 		</>
 	);
