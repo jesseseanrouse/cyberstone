@@ -17,7 +17,7 @@ function App() {
 	const [user, setUser] = useState('');
 	const [userID, setUserID] = useState('');
 	const [err, setErr] = useState('');
-	const [errCheck, setErrCheck] = useState(false)
+	const [errCheck, setErrCheck] = useState(false);
 	// CRUD functions for SignForm
 	// add user
 	const addUser = (data) => {
@@ -33,6 +33,17 @@ function App() {
 				} else {
 					firebaseDb.child('users').push(data);
 					setErrCheck(true);
+					setUser(testUser);
+					ref
+						.child('users')
+						.orderByChild('user')
+						.equalTo(testUser)
+						.once('value', (snapshot) => {
+							snapshot.forEach(function (childSnapshot) {
+								let key = childSnapshot.key;
+								setUserID(key);
+							});
+						});
 				}
 			});
 	};
@@ -46,12 +57,22 @@ function App() {
 			.orderByChild('user')
 			.equalTo(testUser)
 			.once('value', (snapshot) => {
-				console.log(snapshot.val())
 				if (snapshot.exists()) {
-					setErr('works')
-					setErrCheck(true);
+					snapshot.forEach(function (childSnapshot) {
+						let key = childSnapshot.key;
+						setUserID(key);
+						let ref2 = firebaseDb.once('value').then(function (snapshot) {
+							let value = snapshot.child(`users/${key}`).val();
+							if (value.password === testPass) {
+								setUser(testUser);
+								setErrCheck(true);
+							} else {
+								setErr('user and password do not match');
+							}
+						});
+					});
 				} else {
-					setErr('user and password do not match');
+					setErr('user does not exist');
 				}
 			});
 	};
