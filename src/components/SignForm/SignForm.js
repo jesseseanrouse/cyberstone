@@ -16,7 +16,7 @@ function SignForm(props) {
 		event.preventDefault();
 		props.userIn(formData)
 		//Push back to display page
-		props.history.push(`/characterList/`);
+		// props.history.push(`/characterList/`);
 	};
 
 	// Handles switching between forms
@@ -50,6 +50,7 @@ function SignForm(props) {
 				<input className='LogInBut' type='submit' value={props.label1} />
 			</form>
 			<button onClick={handleClick} >{props.label2}</button>
+			<p>{props.err}</p>
 		</>
 	);
 }

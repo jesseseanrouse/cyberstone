@@ -9,15 +9,24 @@ import SignForm from '../SignForm/SignForm';
 import CharacterList from '../characterList/CharacterList';
 import Game from '../Game/App';
 // Import Firebase
+import firebase from 'firebase';
 import firebaseDb from '../Firebase/firebase'
 
 function App() {
 	// state for user (user, user_id)
 	const [user, setUser] = useState(['', '']);
-	const [err, setError] = useState('')
+	const [err, setErr] = useState('')
 	// CRUD functions for SignForm
 	const addUser = (data) => {
-		firebaseDb.child('users').push(data);
+		let testUser = data.user
+		let ref = firebaseDb
+		ref.child('users').orderByChild('user').equalTo(testUser).once('value', snapshot => {
+			if (snapshot.exists()) {
+				setErr('user already exists')
+			} else {
+				firebaseDb.child('users').push(data);
+			}
+		})
 	};
 	return (
 		<div className='App'>
