@@ -27,6 +27,7 @@ function App(props) {
 	// State lives here
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
+	const [err, setErr] = useState('')
 	return (
 		<>
 			<Switch>
@@ -42,6 +43,10 @@ function App(props) {
 								char={char}
 								setChar={setChar}
 								setCharID={props.setCharID}
+								userID={props.userID}
+								list={props.list}
+								err={err}
+								setErr={setErr}
 							/>
 						</>
 					)}

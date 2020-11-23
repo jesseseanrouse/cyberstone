@@ -9,7 +9,6 @@ import SignForm from '../SignForm/SignForm';
 import CharacterList from '../characterList/CharacterList';
 import Game from '../Game/App';
 // Import Firebase
-import firebase from 'firebase';
 import firebaseDb from '../Firebase/firebase';
 
 function App() {
@@ -19,6 +18,7 @@ function App() {
 	const [charID, setCharID] = useState('');
 	const [err, setErr] = useState('');
 	const [errCheck, setErrCheck] = useState(false);
+	const [list, setList] = useState([])
 	// CRUD functions for SignForm
 	// add user
 	const addUser = (data) => {
@@ -147,6 +147,8 @@ function App() {
 								user={user}
 								userID={userID}
 								charID={charID}
+								list={list}
+								setList={setList}
 							/>
 						</>
 					)}
@@ -155,7 +157,13 @@ function App() {
 					path='/game'
 					render={(routerProps) => (
 						<>
-							<Game {...routerProps} userID={userID} charID={charID} setCharID={setCharID} />
+							<Game
+								{...routerProps}
+								userID={userID}
+								charID={charID}
+								setCharID={setCharID}
+								list={list}
+							/>
 						</>
 					)}
 				/>

@@ -18,74 +18,86 @@ function CreateCharacter(props) {
 
 	// Allows the data in the form to be changed
 	const handleChange = (event) => {
-		let data = props.char
+		let data = props.char;
 		props.setChar({ ...data, [event.target.name]: event.target.value });
 	};
 
 	const handleSubmit = (event) => {
 		// Prevent Form from Refreshing
 		event.preventDefault();
-		// set values
-		let form = props.stat;
-		let form2 = props.char;
-		if (event.target.core.value === 'physical') {
-			form = { ...form, str: form.str + 1 };
-			form2 = {
-				...form2,
-				name: event.target.name.value,
-				core: 1,
-			};
-		} else if (event.target.core.value === 'electric') {
-			form = { ...form, cun: form.cun + 1 };
-			form2 = {
-				...form2,
-				name: event.target.name.value,
-				core: 2,
-			};
-		} else if (event.target.core.value === 'fire') {
-			form = { ...form, wil: form.wil + 1 };
-			form2 = {
-				...form2,
-				name: event.target.name.value,
-				core: 3,
-			};
+		// Check for unique name
+		let testList = [];
+		const testNames = props.list.map((ele, index) => {
+			{
+				testList.push(ele.char.name);
+			}
+		});
+		let testName = props.char.name;
+		if (testList.includes(testName)) {
+			props.setErr('character name already exists');
+		} else {
+			// set values
+			let form = props.stat;
+			let form2 = props.char;
+			if (event.target.core.value === 'physical') {
+				form = { ...form, str: form.str + 1 };
+				form2 = {
+					...form2,
+					name: event.target.name.value,
+					core: 1,
+				};
+			} else if (event.target.core.value === 'electric') {
+				form = { ...form, cun: form.cun + 1 };
+				form2 = {
+					...form2,
+					name: event.target.name.value,
+					core: 2,
+				};
+			} else if (event.target.core.value === 'fire') {
+				form = { ...form, wil: form.wil + 1 };
+				form2 = {
+					...form2,
+					name: event.target.name.value,
+					core: 3,
+				};
+			}
+			if (event.target.weapon.value === 'Hammer') {
+				form = {
+					...form,
+					str: form.str + 1,
+					end: form.end + 1,
+					wil: form.wil + 1,
+				};
+			} else if (event.target.weapon.value === 'Rifle') {
+				form = {
+					...form,
+					int: form.int + 1,
+					cun: form.cun + 1,
+					per: form.per + 1,
+				};
+			} else if (event.target.weapon.value === 'Bow') {
+				form = {
+					...form,
+					str: form.str + 1,
+					agi: form.agi + 1,
+					wil: form.wil + 1,
+				};
+			}
+			if (event.target.background.value === 'Bounty') {
+				form2 = { ...props.char, prof: 'bounty' };
+				form = { ...form, per: form.per + 1 };
+			} else if (event.target.background.value === 'Scavenger') {
+				form2 = { ...props.char, prof: 'scavenger' };
+				form = { ...form, int: form.int + 1 };
+			} else if (event.target.background.value === 'Farmer') {
+				form2 = { ...props.char, prof: 'farmer' };
+				form = { ...form, end: form.end + 1 };
+			}
+			props.setStat(form);
+			props.setChar(form2);
+			//Push back to display page
+			props.history.push(`/game/intro`);
 		}
-		if (event.target.weapon.value === 'Hammer') {
-			form = {
-				...form,
-				str: form.str + 1,
-				end: form.end + 1,
-				wil: form.wil + 1,
-			};
-		} else if (event.target.weapon.value === 'Rifle') {
-			form = {
-				...form,
-				int: form.int + 1,
-				cun: form.cun + 1,
-				per: form.per + 1,
-			};
-		} else if (event.target.weapon.value === 'Bow') {
-			form = {
-				...form,
-				str: form.str + 1,
-				agi: form.agi + 1,
-				wil: form.wil + 1,
-			};
-		}
-		if (event.target.background.value === 'Bounty') {
-			form2 = { ...props.char, prof: 'bounty' };
-			form = { ...form, per: form.per + 1 };
-		} else if (event.target.background.value === 'Scavenger') {
-			form2 = { ...props.char, prof: 'scavenger' };
-			form = { ...form, int: form.int + 1 };
-		} else if (event.target.background.value === 'Farmer') {
-			form2 = { ...props.char, prof: 'farmer' };
-			form = { ...form, end: form.end + 1 };
-		}
-		props.setStat(form);
-		props.setChar(form2);
-		//Push back to display page
-		props.history.push(`/game/intro`);
 	};
 	return (
 		<>
@@ -193,6 +205,7 @@ function CreateCharacter(props) {
 					<p>Bonus Stat: Endurance</p>
 				</div>
 				<input className='LogInBut' type='submit' value='Create Character' />
+				<p>{props.err}</p>
 			</form>
 		</>
 	);

@@ -1,22 +1,40 @@
 // import react
 import React from 'react';
-import { Link } from 'react-router-dom';
+// Import Firebase
+import firebaseDb from '../Firebase/firebase';
+// import component
+import RenderList from './RenderList';
 
 function CharacterList(props) {
-	// let ref = firebaseDb.once('value').then(function (snapshot) {
-	// 	let value = snapshot.child('users/-MMhsKoJHPqHh-S8d1Uz').val();
-	// 	console.log(value);
-	// });
-    const handleClick = (event) => {
-			// Prevent Form from Refreshing
-			event.preventDefault();
-			//Push back to display page
-			props.history.push(`/game/create`);
-		}
+	let charList = [];
+	// Get list and display
+	React.useEffect(() => {
+		let ref = firebaseDb.once('value').then(function (snapshot) {
+			let ref2 = snapshot
+				.child(`users/${props.userID}/characters`)
+				.forEach(function (snapshot) {
+					let val = snapshot.val();
+					charList.push(val);
+				});
+				props.setList(charList)
+		});
+	}, []);
+
+	// map charlist and render
+	const listRender = props.list.map((ele, index) => {
+		return <RenderList name={ele.char.name} />;
+	});
+
+	// Create new character
+	const handleClick = (event) => {
+		// Prevent Form from Refreshing
+		event.preventDefault();
+		//Push back to display page
+		props.history.push(`/game/create`);
+	};
 	return (
 		<>
-			<p>user: {props.user}</p>
-			<p>userID: {props.userID}</p>
+			{props.list === [] ? <p>Loading...</p> : <p>{listRender}</p>}
 			<button onClick={handleClick}>Create New Character</button>
 		</>
 	);
