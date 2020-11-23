@@ -19,6 +19,7 @@ function App(props) {
 						<>
 							<Intro
 								{...routerProps}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
 								char={props.char}
@@ -35,6 +36,7 @@ function App(props) {
 						<>
 							<Intro1
 								{...routerProps}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
 								char={props.char}
@@ -53,6 +55,7 @@ function App(props) {
 						<>
 							<Intro2
 								{...routerProps}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
 								char={props.char}
@@ -71,6 +74,7 @@ function App(props) {
 						<>
 							<Intro3
 								{...routerProps}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
 								char={props.char}

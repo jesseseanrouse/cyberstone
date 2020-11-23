@@ -18,8 +18,8 @@ function CreateCharacter(props) {
 
 	// Allows the data in the form to be changed
 	const handleChange = (event) => {
-		let data = props.char;
-		props.setChar({ ...data, [event.target.name]: event.target.value });
+		let data = props.name;
+		props.setName({ ...data, [event.target.name]: event.target.value });
 	};
 
 	const handleSubmit = (event) => {
@@ -32,7 +32,7 @@ function CreateCharacter(props) {
 				testList.push(ele.char.name);
 			}
 		});
-		let testName = props.char.name;
+		let testName = props.name;
 		if (testList.includes(testName)) {
 			props.setErr('character name already exists');
 		} else {

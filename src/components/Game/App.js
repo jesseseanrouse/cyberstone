@@ -4,13 +4,13 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/App';
+import Scrapyard from './Scrapyard/App'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
 	// default variables
 	// character info: core: 1: physical, 2: electric, 3: fire
 	let baseChar = {
-		name: '',
 		core: 0,
 		prof: '',
 	};
@@ -25,6 +25,7 @@ function App(props) {
 		agi: 4,
 	};
 	// State lives here
+	const [name, setName] = useState({name: ''})
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
 	const [err, setErr] = useState('')
@@ -47,6 +48,8 @@ function App(props) {
 								list={props.list}
 								err={err}
 								setErr={setErr}
+								name={name}
+								setName={setName}
 							/>
 						</>
 					)}
@@ -57,6 +60,24 @@ function App(props) {
 						<>
 							<Intro
 								{...routerProps}
+								name={name}
+								stat={stat}
+								setStat={setStat}
+								char={char}
+								userID={props.userID}
+								charID={props.charID}
+								setCharID={props.setCharID}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					path={`${path}/scrapyard`}
+					render={(routerProps) => (
+						<>
+							<Scrapyard
+								{...routerProps}
+								name={name}
 								stat={stat}
 								setStat={setStat}
 								char={char}

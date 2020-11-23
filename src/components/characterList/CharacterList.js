@@ -22,7 +22,7 @@ function CharacterList(props) {
 
 	// map charlist and render
 	const listRender = props.list.map((ele, index) => {
-		return <RenderList name={ele.char.name} />;
+		return <RenderList name={ele.name} />;
 	});
 
 	// Create new character
