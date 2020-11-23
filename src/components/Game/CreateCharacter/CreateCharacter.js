@@ -16,6 +16,12 @@ function CreateCharacter(props) {
 	// for pathing
 	const { url, path } = useRouteMatch();
 
+	// Allows the data in the form to be changed
+	const handleChange = (event) => {
+		let data = props.char
+		props.setChar({ ...data, [event.target.name]: event.target.value });
+	};
+
 	const handleSubmit = (event) => {
 		// Prevent Form from Refreshing
 		event.preventDefault();
@@ -85,7 +91,12 @@ function CreateCharacter(props) {
 		<>
 			<form onSubmit={handleSubmit}>
 				<h3>Name your Character</h3>
-				<input type='text' name='name' placeholder='name' />
+				<input
+					type='text'
+					name='name'
+					placeholder='name'
+					onChange={handleChange}
+				/>
 				<h3>Select your Core</h3>
 				<div>
 					<input type='radio' id='core1' value='physical' name='core' checked />

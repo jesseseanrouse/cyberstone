@@ -3,12 +3,9 @@ import React, { useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
-import Intro from './Intro/Intro';
-import Intro1 from './Intro/Intro1';
-import Intro2 from './Intro/Intro2';
-import Intro3 from './Intro/Intro3';
+import Intro from './Intro/App';
 
-function App() {
+function App(props) {
 	const { url, path } = useRouteMatch();
 	// default variables
 	// character info: core: 1: physical, 2: electric, 3: fire
@@ -44,12 +41,12 @@ function App() {
 								setStat={setStat}
 								char={char}
 								setChar={setChar}
+								setCharID={props.setCharID}
 							/>
 						</>
 					)}
 				/>
 				<Route
-					exact
 					path={`${path}/intro`}
 					render={(routerProps) => (
 						<>
@@ -58,48 +55,9 @@ function App() {
 								stat={stat}
 								setStat={setStat}
 								char={char}
-							/>
-						</>
-					)}
-				/>
-				<Route
-					exact
-					path={`${path}/intro/1`}
-					render={(routerProps) => (
-						<>
-							<Intro1
-								{...routerProps}
-								stat={stat}
-								setStat={setStat}
-								char={char}
-							/>
-						</>
-					)}
-				/>
-				<Route
-					exact
-					path={`${path}/intro/2`}
-					render={(routerProps) => (
-						<>
-							<Intro2
-								{...routerProps}
-								stat={stat}
-								setStat={setStat}
-								char={char}
-							/>
-						</>
-					)}
-				/>
-				<Route
-					exact
-					path={`${path}/intro/3`}
-					render={(routerProps) => (
-						<>
-							<Intro3
-								{...routerProps}
-								stat={stat}
-								setStat={setStat}
-								char={char}
+								userID={props.userID}
+								charID={props.charID}
+								setCharID={props.setCharID}
 							/>
 						</>
 					)}

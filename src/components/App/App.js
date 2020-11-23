@@ -16,6 +16,7 @@ function App() {
 	// state lives here
 	const [user, setUser] = useState('');
 	const [userID, setUserID] = useState('');
+	const [charID, setCharID] = useState('');
 	const [err, setErr] = useState('');
 	const [errCheck, setErrCheck] = useState(false);
 	// CRUD functions for SignForm
@@ -141,7 +142,12 @@ function App() {
 					path='/characterList'
 					render={(routerProps) => (
 						<>
-							<CharacterList {...routerProps} user={user} userID={userID} />
+							<CharacterList
+								{...routerProps}
+								user={user}
+								userID={userID}
+								charID={charID}
+							/>
 						</>
 					)}
 				/>
@@ -149,7 +155,7 @@ function App() {
 					path='/game'
 					render={(routerProps) => (
 						<>
-							<Game {...routerProps} />
+							<Game {...routerProps} userID={userID} charID={charID} setCharID={setCharID} />
 						</>
 					)}
 				/>
