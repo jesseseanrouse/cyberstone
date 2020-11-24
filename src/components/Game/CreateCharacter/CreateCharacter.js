@@ -1,6 +1,6 @@
 // import react
 import React from 'react';
-import { useRouteMatch, Redirect } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 // import React Icons
 import { GiFist } from 'react-icons/gi';
 import { BsLightning } from 'react-icons/bs';
@@ -33,8 +33,6 @@ function CreateCharacter(props) {
 			}
 		});
 		let testName = props.name.name;
-		console.log(testName)
-		console.log(testList)
 		if (testList.includes(testName)) {
 			props.setErr('character name already exists');
 		} else {
