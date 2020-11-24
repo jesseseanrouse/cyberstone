@@ -4,6 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // import components
 import Explore from './ExploreScrapyard';
 import Result1 from './Result1';
+import Generate from './Generate'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -47,6 +48,21 @@ function App(props) {
 								newScrap={newScrap}
 								newECom={newECom}
 								check={check}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/generate`}
+					render={(routerProps) => (
+						<>
+							<Generate
+								{...routerProps}
+								eName={props.eName}
+								setEName={props.setEName}
+								setEStat={props.setEStat}
+								setEAttSet={props.setEAttSet}
 							/>
 						</>
 					)}

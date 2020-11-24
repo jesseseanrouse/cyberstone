@@ -11,7 +11,7 @@ function ExploreScrapyard(props) {
 	// } else if (random < 8) {
 	//     props.history.push(`/game/scrapyard/explore/result/1`);
 	// } else if (random < 10) {
-	if (random < 100) {
+	if (random < 10) {
 		let check = props.check;
 		let newScrap = props.newScrap;
 		let newECom = props.newECom;
@@ -49,6 +49,12 @@ function ExploreScrapyard(props) {
 		props.setInven(inven);
 		props.history.push(`/game/scrapyard/explore/result/1`);
 	} else if (random === 10) {
+		let check = props.check;
+		let newScrap = props.newScrap;
+		let newECom = props.newECom;
+        newScrap = Math.floor(5 * Math.random() + 5);
+		newECom = Math.floor(5 * Math.random() + 2);
+		check = true;
 		props.history.push(`/game/scrapyard/explore/result/1`);
 	}
 	return null;

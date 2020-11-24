@@ -36,6 +36,10 @@ function App(props) {
 	const [char, setChar] = useState(baseChar);
 	const [inven, setInven] = useState(invenBase)
 	const [err, setErr] = useState('')
+	// for enemies
+	const [eName, setEName] = useState('')
+	const [eStat, setEStat] = useState(baseStats)
+	const [eAttSet, setEAttSet] = useState(0)
 	return (
 		<>
 			<Switch>
@@ -98,6 +102,10 @@ function App(props) {
 								setInven={setInven}
 								data={props.data}
 								setData={props.setData}
+								eName={eName}
+								setEName={setEName}
+								setEStat={setEStat}
+								setEAttSet={setEAttSet}
 							/>
 						</>
 					)}

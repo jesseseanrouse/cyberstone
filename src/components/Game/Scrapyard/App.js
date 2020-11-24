@@ -48,7 +48,11 @@ function App(props) {
 									charID={props.charID}
 									setCharID={props.setCharID}
 									inven={props.inven}
-                                    setInven={props.setInven}
+									setInven={props.setInven}
+									eName={props.eName}
+									setEName={props.setEName}
+									setEStat={props.setEStat}
+									setEAttSet={props.setEAttSet}
 								/>
 							</>
 						)}
