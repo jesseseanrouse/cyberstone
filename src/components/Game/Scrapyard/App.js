@@ -18,14 +18,18 @@ function App(props) {
 								<Scrapyard
 									{...routerProps}
 									name={props.name}
+									setName={props.setName}
 									stat={props.stat}
 									setStat={props.setStat}
 									char={props.char}
+									setChar={props.setChar}
 									userID={props.userID}
 									charID={props.charID}
 									setCharID={props.setCharID}
 									inven={props.inven}
 									setInven={props.setInven}
+									data={props.data}
+									setData={props.setData}
 								/>
 							</>
 						)}

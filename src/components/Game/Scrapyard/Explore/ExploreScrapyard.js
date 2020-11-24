@@ -11,7 +11,7 @@ function ExploreScrapyard(props) {
 	// } else if (random < 8) {
 	//     props.history.push(`/game/scrapyard/explore/result/1`);
 	// } else if (random < 10) {
-	if (random) {
+	if (random < 100) {
 		let check = props.check;
 		let newScrap = props.newScrap;
 		let newECom = props.newECom;
@@ -42,16 +42,16 @@ function ExploreScrapyard(props) {
 			...inven,
 			scrp: props.inven.scrp + newScrap,
 			ecom: props.inven.ecom + newECom,
-        };
-        props.setCheck(check);
+		};
+		props.setCheck(check);
 		props.setNewScrap(newScrap);
 		props.setNewECom(newECom);
 		props.setInven(inven);
 		props.history.push(`/game/scrapyard/explore/result/1`);
 	} else if (random === 10) {
 		props.history.push(`/game/scrapyard/explore/result/1`);
-    }
-    return null
+	}
+	return null;
 }
 
 export default ExploreScrapyard;

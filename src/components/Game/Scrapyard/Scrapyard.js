@@ -3,6 +3,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Scrapyard(props) {
+	React.useEffect(() => {
+		if (props.data != false) {
+			props.setName({name: props.data.name})
+			props.setStat(props.data.stat)
+			props.setInven(props.data.inven)
+			props.setChar(props.data.char)
+			props.setData(false);
+		}
+	}, [])
 	return (
 		<>
 			<p>Scrapyard</p>

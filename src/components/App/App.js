@@ -19,6 +19,7 @@ function App() {
 	const [err, setErr] = useState('');
 	const [errCheck, setErrCheck] = useState(false);
 	const [list, setList] = useState([])
+	const [data, setData] = useState(false);
 	// CRUD functions for SignForm
 	// add user
 	const addUser = (data) => {
@@ -149,6 +150,8 @@ function App() {
 								charID={charID}
 								list={list}
 								setList={setList}
+								setCharID={setCharID}
+								setData={setData}
 							/>
 						</>
 					)}
@@ -163,6 +166,8 @@ function App() {
 								charID={charID}
 								setCharID={setCharID}
 								list={list}
+								data={data}
+								setData={setData}
 							/>
 						</>
 					)}
