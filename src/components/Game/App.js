@@ -6,6 +6,7 @@ import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/App';
 import Scrapyard from './Scrapyard/App'
 import RenderStats from './RenderStats/RenderStats';
+import Battle from './Battle/App'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -104,8 +105,26 @@ function App(props) {
 								setData={props.setData}
 								eName={eName}
 								setEName={setEName}
+								eStat={eStat}
 								setEStat={setEStat}
 								setEAttSet={setEAttSet}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					path={`${path}/battle`}
+					render={(routerProps) => (
+						<>
+							<Battle
+								{...routerProps}
+								stat={stat}
+								char={char}
+								inven={inven}
+								setInven={setInven}
+								eName={eName}
+								eStat={eStat}
+								eAttSet={eAttSet}
 							/>
 						</>
 					)}

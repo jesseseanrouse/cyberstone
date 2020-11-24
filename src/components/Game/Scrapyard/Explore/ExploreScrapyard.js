@@ -9,9 +9,9 @@ function ExploreScrapyard(props) {
 	// if (random < 3) {
 	//     props.history.push(`/game/scrapyard/explore/result/1`);
 	// } else if (random < 8) {
-	//     props.history.push(`/game/scrapyard/explore/result/1`);
-	// } else if (random < 10) {
-	if (random < 10) {
+    if (random < 8) {
+	    props.history.push(`/game/scrapyard/explore/generate`);
+	} else if (random < 10) {
 		let check = props.check;
 		let newScrap = props.newScrap;
 		let newECom = props.newECom;
