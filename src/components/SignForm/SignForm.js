@@ -25,7 +25,7 @@ function SignForm(props) {
 			setPagePush(true)
 		} else {
 			props.history.push(`/characterList/`);
-		props.setErrCheck(false)
+			props.setErrCheck(false)
 		}
 	}, [props.errCheck])
 

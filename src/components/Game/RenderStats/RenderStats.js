@@ -1,9 +1,11 @@
 // import React
 import React from 'react';
+// import css
+import './RenderStats.css'
 
 function RenderStats(props) {
 	return (
-		<>
+		<div className='CharStatsMenu'>
 			<p>{props.name.name}</p>
 			<p>Stats</p>
 			<p>Strength: {props.stat.str}</p>
@@ -13,7 +15,7 @@ function RenderStats(props) {
 			<p>Agility: {props.stat.agi}</p>
 			<p>Perception: {props.stat.per}</p>
 			<p>Willpower: {props.stat.wil}</p>
-		</>
+		</div>
 	);
 }
 

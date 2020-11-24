@@ -5,6 +5,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/App';
 import Scrapyard from './Scrapyard/App'
+import RenderStats from './RenderStats/RenderStats';
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -24,10 +25,16 @@ function App(props) {
 		per: 4,
 		agi: 4,
 	};
+	// scrap metal, electrical component
+	let invenBase = {
+		scrp: 0,
+		ecom: 0,
+	}
 	// State lives here
 	const [name, setName] = useState({name: ''})
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
+	const [inven, setInven] = useState(invenBase)
 	const [err, setErr] = useState('')
 	return (
 		<>
@@ -67,6 +74,7 @@ function App(props) {
 								userID={props.userID}
 								charID={props.charID}
 								setCharID={props.setCharID}
+								inven={inven}
 							/>
 						</>
 					)}
@@ -84,11 +92,14 @@ function App(props) {
 								userID={props.userID}
 								charID={props.charID}
 								setCharID={props.setCharID}
+								inven={inven}
+								setInven={setInven}
 							/>
 						</>
 					)}
 				/>
 			</Switch>
+			<RenderStats name={name} stat={stat} char={char} inven={inven} />
 		</>
 	);
 }

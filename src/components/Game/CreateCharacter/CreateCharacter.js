@@ -29,10 +29,12 @@ function CreateCharacter(props) {
 		let testList = [];
 		const testNames = props.list.map((ele, index) => {
 			{
-				testList.push(ele.char.name);
+				testList.push(ele.name);
 			}
 		});
-		let testName = props.name;
+		let testName = props.name.name;
+		console.log(testName)
+		console.log(testList)
 		if (testList.includes(testName)) {
 			props.setErr('character name already exists');
 		} else {

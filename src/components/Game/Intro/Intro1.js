@@ -9,10 +9,11 @@ function Intro1(props) {
 	React.useEffect(() => {
 		let { name } = props.name;
 		let char = props.char;
-		let stat = props.stat;
+        let stat = props.stat;
+        let inven = props.inven
 		stat = { ...stat, str: stat.str + 1 };
 		props.setStat(stat);
-		let data = { name, char, stat };
+		let data = { name, char, stat, inven };
 		firebaseDb
 			.child(`users/${props.userID}/characters`)
 			.push(data)

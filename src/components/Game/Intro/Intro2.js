@@ -10,9 +10,10 @@ function Intro2(props) {
 		let { name } = props.name;
 		let char = props.char;
 		let stat = props.stat;
+		let inven = props.inven;
 		stat = { ...stat, cun: stat.cun + 1 };
 		props.setStat(stat);
-		let data = { name, char, stat };
+		let data = { name, char, stat, inven };
 		firebaseDb
 			.child(`users/${props.userID}/characters`)
 			.push(data)
