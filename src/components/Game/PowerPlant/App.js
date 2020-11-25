@@ -5,6 +5,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Lobby from './Lobby'
 import Hallway from './Hallway'
 import AirVent from './AirVent'
+import Failed from './Failed'
 
 function App(props) {
     const { url, path } = useRouteMatch();
@@ -37,10 +38,12 @@ function App(props) {
 							<Hallway
 								{...routerProps}
 								stat={props.stat}
+								setStat={props.setStat}
 								message={message}
 								setMessage={setMessage}
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
+								char={props.char}
 							/>
 						</>
 					)}
@@ -58,6 +61,15 @@ function App(props) {
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
 							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/failed`}
+					render={(routerProps) => (
+						<>
+							<Failed {...routerProps} message={message} />
 						</>
 					)}
 				/>

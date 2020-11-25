@@ -77,7 +77,11 @@ function App(props) {
 						path={`${path}/wakeup`}
 						render={(routerProps) => (
 							<>
-								<Recover {...routerProps} />
+								<Recover
+									{...routerProps}
+									stat={props.stat}
+									setStat={props.setStat}
+								/>
 							</>
 						)}
 					/>
