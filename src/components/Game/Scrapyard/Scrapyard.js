@@ -21,6 +21,8 @@ function Scrapyard(props) {
 			</p>
 			<p>Actions</p>
 			<Link to='/game/scrapyard/explore'>Explore</Link>
+			<p>Travel</p>
+			<Link to='/game/powerplant/lobby'>Power Plant</Link>
 		</>
 	);
 }

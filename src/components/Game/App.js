@@ -7,6 +7,7 @@ import Intro from './Intro/App';
 import Scrapyard from './Scrapyard/App';
 import RenderStats from './RenderStats/RenderStats';
 import Battle from './Battle/App';
+import PowerPlant from './PowerPlant/App'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -131,6 +132,27 @@ function App(props) {
 								eName={eName}
 								eStat={eStat}
 								eAttSet={eAttSet}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					path={`${path}/powerplant`}
+					render={(routerProps) => (
+						<>
+							<PowerPlant
+								{...routerProps}
+								name={name}
+								stat={stat}
+								eStat={eStat}
+								setStat={setStat}
+								char={char}
+								inven={inven}
+								setInven={setInven}
+								eName={eName}
+								setEName={setEName}
+								setEStat={setEStat}
+								setEAttSet={setEAttSet}
 							/>
 						</>
 					)}

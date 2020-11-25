@@ -8,7 +8,7 @@ export default function ChargeAtt(cun, int, ep, eep, emaxEp, stat, setStat, eSta
         attack = cun + Math.floor(int * Math.random());
         setEStat({...eStat, ep: neweep});
     }
-	let newep = ep - eAttack;
+	let newep = ep - attack;
 	setStat({...stat, ep: newep})
 	return;
 }
