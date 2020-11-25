@@ -12,7 +12,7 @@ function Result2(props) {
 			<>
 				<p>You are attacked by a {props.eName}</p>
 				<p>Actions</p>
-				<Link to='/game/battle'>Fight</Link>
+				<Link to='/game/battle/fight'>Fight</Link>
 			</>
 		);
 	} else {
@@ -20,7 +20,7 @@ function Result2(props) {
 			<>
 				<p>You notice a {props.eName}</p>
 				<p>Actions</p>
-				<Link to='/game/battle'>Attack it</Link>
+				<Link to='/game/battle/fight'>Attack it</Link>
 				<Link to='/game/scrapyard'>Ignore it</Link>
 			</>
 		);

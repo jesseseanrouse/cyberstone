@@ -9,10 +9,9 @@ function App(props) {
 	return (
 		<>
 			<Switch>
-                <p>fight</p>
 				<Route
 					exact
-					path={`${path}/`}
+					path={`${path}/fight`}
 					render={(routerProps) => (
 						<>
 							<Fight
