@@ -45,6 +45,7 @@ function App(props) {
 								charID={props.charID}
 								setCharID={props.setCharID}
 								inven={props.inven}
+								powerPro={props.powerPro}
 							/>
 						</>
 					)}
@@ -65,6 +66,7 @@ function App(props) {
 								charID={props.charID}
 								setCharID={props.setCharID}
 								inven={props.inven}
+								powerPro={props.powerPro}
 							/>
 						</>
 					)}
@@ -85,6 +87,7 @@ function App(props) {
 								charID={props.charID}
 								setCharID={props.setCharID}
 								inven={props.inven}
+								powerPro={props.powerPro}
 							/>
 						</>
 					)}

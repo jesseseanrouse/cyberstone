@@ -12,8 +12,9 @@ function Lobby(props) {
 		if (props.stat.cun < 5) {
 			props.setMessage('You are unable to pick the lock');
 		} else {
-			props.setMessage('You successfully open the lock');
-			props.setDoor(true);
+            props.setMessage('You successfully open the lock');
+            let powerPro = props.powerPro
+			props.setPowerPro({...powerPro, door: true});
 		}
 	}
 	function handleBash() {
@@ -21,13 +22,13 @@ function Lobby(props) {
 			props.setMessage('Your are not strong enough to bash down this door');
 		} else {
 			props.setMessage('You successfully bash down the door');
-			props.setDoor(true);
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, door: true });
 		}
 	}
 
 	function openDoor() {
-        console.log(props.door)
-		if (props.door === false) {
+		if (props.powerPro.door === false) {
 			return (
 				<div>
 					<div onClick={handleBash}>Bash through door</div>

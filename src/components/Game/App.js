@@ -7,7 +7,7 @@ import Intro from './Intro/App';
 import Scrapyard from './Scrapyard/App';
 import RenderStats from './RenderStats/RenderStats';
 import Battle from './Battle/App';
-import PowerPlant from './PowerPlant/App'
+import PowerPlant from './PowerPlant/App';
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -35,12 +35,25 @@ function App(props) {
 	let invenBase = {
 		scrp: 0,
 		ecom: 0,
+		battery: 0,
+	};
+	// power plant progress
+	let PowerProBase = {
+		door: false,
+		trap1: false,
+		trap2: false,
+		trap3: false,
+		trap4: false,
+		trap5: false,
+		trap6: false,
+		boss: false,
 	};
 	// State lives here
 	const [name, setName] = useState({ name: '' });
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
 	const [inven, setInven] = useState(invenBase);
+	const [powerPro, setPowerPro] = useState(PowerProBase)
 	const [err, setErr] = useState('');
 	// for enemies
 	const [eName, setEName] = useState('');
@@ -86,6 +99,7 @@ function App(props) {
 								charID={props.charID}
 								setCharID={props.setCharID}
 								inven={inven}
+								powerPro={powerPro}
 							/>
 						</>
 					)}
@@ -114,6 +128,7 @@ function App(props) {
 								setEName={setEName}
 								setEStat={setEStat}
 								setEAttSet={setEAttSet}
+								setPowerPro={setPowerPro}
 							/>
 						</>
 					)}
@@ -153,6 +168,8 @@ function App(props) {
 								setEName={setEName}
 								setEStat={setEStat}
 								setEAttSet={setEAttSet}
+								powerPro={powerPro}
+								setPowerPro={setPowerPro}
 							/>
 						</>
 					)}

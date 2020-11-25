@@ -10,6 +10,7 @@ function Scrapyard(props) {
 			props.setInven(props.data.inven)
 			props.setChar(props.data.char)
 			props.setData(false);
+			props.setPowerPro(props.data.powerPro)
 		}
 	}, [])
 	return (

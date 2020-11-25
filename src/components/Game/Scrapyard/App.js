@@ -4,6 +4,8 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // import components
 import Scrapyard from './Scrapyard'
 import Explore from './Explore/App'
+import Recover from './Recover'
+import WakeUp from './WakeUp'
 
 function App(props) {
     const { url, path } = useRouteMatch();
@@ -30,6 +32,7 @@ function App(props) {
 									setInven={props.setInven}
 									data={props.data}
 									setData={props.setData}
+									setPowerPro={props.setPowerPro}
 								/>
 							</>
 						)}
@@ -55,6 +58,26 @@ function App(props) {
 									setEStat={props.setEStat}
 									setEAttSet={props.setEAttSet}
 								/>
+							</>
+						)}
+					/>
+					<Route
+						path={`${path}/recover`}
+						render={(routerProps) => (
+							<>
+								<Recover
+									{...routerProps}
+									stat={props.stat}
+									setStat={props.setStat}
+								/>
+							</>
+						)}
+					/>
+					<Route
+						path={`${path}/wakeup`}
+						render={(routerProps) => (
+							<>
+								<Recover {...routerProps} />
 							</>
 						)}
 					/>

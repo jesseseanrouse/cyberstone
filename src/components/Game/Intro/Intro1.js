@@ -11,6 +11,7 @@ function Intro1(props) {
 		let char = props.char;
 		let stat = props.stat;
 		let inven = props.inven;
+		let powerPro = props.powerPro
 		let hpMax = 30 + 10 * props.stat.str + 10 * props.stat.end;
 		let epMax = 20 + 10 * props.stat.end + 10 * props.stat.wil;
 		stat = {
@@ -22,7 +23,7 @@ function Intro1(props) {
 			epMax: epMax,
 		};
 		props.setStat(stat);
-		let data = { name, char, stat, inven };
+		let data = { name, char, stat, inven, powerPro };
 		firebaseDb
 			.child(`users/${props.userID}/characters`)
 			.push(data)

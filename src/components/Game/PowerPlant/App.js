@@ -9,7 +9,6 @@ import AirVent from './AirVent'
 function App(props) {
     const { url, path } = useRouteMatch();
     // state lives here
-    const [door, setDoor] = useState(false)
     const [message, setMessage] = useState('')
 	return (
 		<>
@@ -22,10 +21,10 @@ function App(props) {
 							<Lobby
 								{...routerProps}
 								stat={props.stat}
-								door={door}
-								setDoor={setDoor}
 								message={message}
 								setMessage={setMessage}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 							/>
 						</>
 					)}
@@ -40,6 +39,8 @@ function App(props) {
 								stat={props.stat}
 								message={message}
 								setMessage={setMessage}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 							/>
 						</>
 					)}
@@ -54,6 +55,8 @@ function App(props) {
 								stat={props.stat}
 								message={message}
 								setMessage={setMessage}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 							/>
 						</>
 					)}
