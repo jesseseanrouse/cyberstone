@@ -30,6 +30,7 @@ function App(props) {
 								newECom={newECom}
 								setNewECom={setNewECom}
 								stat={props.stat}
+								eStat={props.eStat}
 								inven={props.inven}
 								setInven={props.setInven}
 							/>
@@ -75,6 +76,7 @@ function App(props) {
 							<Generate
 								{...routerProps}
 								eName={props.eName}
+								eStat={props.eStat}
 								setEName={props.setEName}
 								setEStat={props.setEStat}
 								setEAttSet={props.setEAttSet}

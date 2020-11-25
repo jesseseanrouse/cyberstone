@@ -1,7 +1,7 @@
 // import React
 import React from 'react';
 // import css
-import './RenderStats.css'
+import './RenderStats.css';
 
 function RenderStats(props) {
 	return (
@@ -15,6 +15,12 @@ function RenderStats(props) {
 			<p>Agility: {props.stat.agi}</p>
 			<p>Perception: {props.stat.per}</p>
 			<p>Willpower: {props.stat.wil}</p>
+			<p>
+				Health: {props.stat.hp}/{props.stat.hpMax}
+			</p>
+			<p>
+				Energy: {props.stat.ep}/{props.stat.epMax}
+			</p>
 		</div>
 	);
 }

@@ -50,6 +50,7 @@ function App(props) {
 									inven={props.inven}
 									setInven={props.setInven}
 									eName={props.eName}
+									eStat={props.eStat}
 									setEName={props.setEName}
 									setEStat={props.setEStat}
 									setEAttSet={props.setEAttSet}

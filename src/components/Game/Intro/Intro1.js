@@ -9,9 +9,18 @@ function Intro1(props) {
 	React.useEffect(() => {
 		let { name } = props.name;
 		let char = props.char;
-        let stat = props.stat;
-        let inven = props.inven
-		stat = { ...stat, str: stat.str + 1 };
+		let stat = props.stat;
+		let inven = props.inven;
+		let hpMax = 30 + 10 * props.stat.str + 10 * props.stat.end;
+		let epMax = 20 + 10 * props.stat.end + 10 * props.stat.wil;
+		stat = {
+			...stat,
+			str: stat.str + 1,
+			hp: hpMax,
+			hpMax: hpMax,
+			ep: epMax,
+			epMax: epMax,
+		};
 		props.setStat(stat);
 		let data = { name, char, stat, inven };
 		firebaseDb

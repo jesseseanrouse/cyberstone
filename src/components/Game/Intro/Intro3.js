@@ -11,7 +11,16 @@ function Intro3(props) {
 		let char = props.char;
 		let stat = props.stat;
 		let inven = props.inven;
-		stat = { ...stat, per: stat.per + 1 };
+		let hpMax = 20 + 10 * props.stat.str + 10 * props.stat.end;
+		let epMax = 20 + 10 * props.stat.end + 10 * props.wil;
+		stat = {
+			...stat,
+			per: stat.per + 1,
+			hp: hpMax,
+			hpMax: hpMax,
+			ep: epMax,
+			epMax: epMax,
+		};
 		props.setStat(stat);
 		let data = { name, char, stat, inven };
 		firebaseDb

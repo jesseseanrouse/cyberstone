@@ -4,9 +4,9 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/App';
-import Scrapyard from './Scrapyard/App'
+import Scrapyard from './Scrapyard/App';
 import RenderStats from './RenderStats/RenderStats';
-import Battle from './Battle/App'
+import Battle from './Battle/App';
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -25,22 +25,27 @@ function App(props) {
 		cun: 4,
 		per: 4,
 		agi: 4,
+		hp: 0,
+		hpMax: 0,
+		ep: 0,
+		epMax: 0,
 	};
 	// scrap metal, electrical component
 	let invenBase = {
 		scrp: 0,
 		ecom: 0,
-	}
+	};
 	// State lives here
-	const [name, setName] = useState({name: ''})
+	const [name, setName] = useState({ name: '' });
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
-	const [inven, setInven] = useState(invenBase)
-	const [err, setErr] = useState('')
+	const [inven, setInven] = useState(invenBase);
+	const [err, setErr] = useState('');
 	// for enemies
-	const [eName, setEName] = useState('')
-	const [eStat, setEStat] = useState(baseStats)
-	const [eAttSet, setEAttSet] = useState(0)
+	const [eName, setEName] = useState('');
+	const [eStat, setEStat] = useState(baseStats);
+	const [eAttSet, setEAttSet] = useState(0);
+
 	return (
 		<>
 			<Switch>
@@ -93,6 +98,7 @@ function App(props) {
 								name={name}
 								setName={setName}
 								stat={stat}
+								eStat={eStat}
 								setStat={setStat}
 								char={char}
 								setChar={setChar}
@@ -105,7 +111,6 @@ function App(props) {
 								setData={props.setData}
 								eName={eName}
 								setEName={setEName}
-								eStat={eStat}
 								setEStat={setEStat}
 								setEAttSet={setEAttSet}
 							/>
@@ -118,6 +123,7 @@ function App(props) {
 						<>
 							<Battle
 								{...routerProps}
+								name={name}
 								stat={stat}
 								char={char}
 								inven={inven}
