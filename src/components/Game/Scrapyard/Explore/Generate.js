@@ -26,17 +26,17 @@ function Generate(props) {
 			props.setEStat(newStat);
 		} else if (random === 1) {
 			let newStat = {
-				str: 1,
+				str: 2,
 				end: 1,
-				wil: 1,
-				int: 1,
+				wil: 3,
+				int: 4,
 				cun: 1,
 				per: 6,
 				agi: 1,
-				hp: 40,
-				hpMax: 40,
-				ep: 40,
-				epMax: 40,
+				hp: 50,
+				hpMax: 50,
+				ep: 60,
+				epMax: 60,
 			};
 			props.setEAttSet(1);
 			props.setEName('Hell Hound');

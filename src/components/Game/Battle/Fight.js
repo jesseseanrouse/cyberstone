@@ -5,11 +5,14 @@ import React from 'react';
 import ShockAtt from './Functions/ShockAtt';
 import ChargeAtt from './Functions/ChargeAtt';
 import Thunderbolt from './Functions/Thunderbolt';
-import ShieldBash from './Functions/ShieldBash'
-import ShieldSlam from './Functions/ShieldSlam'
-import HammerStrike from './Functions/HammerStrike'
 // for set 1
+import Bite from './Functions/Bite';
+import FlameClaw from './Functions/FlameClaw';
+import FireBreath from './Functions/FireBreath';
 // for set 2
+import ShieldBash from './Functions/ShieldBash';
+import ShieldSlam from './Functions/ShieldSlam';
+import HammerStrike from './Functions/HammerStrike';
 
 function Fight(props) {
 	function EAttack() {
@@ -48,8 +51,29 @@ function Fight(props) {
 			}
 		} else if (props.eAttSet === 1) {
 			if (random < 3) {
+				Bite(
+					props.eStat.str,
+					props.eStat.wil,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			} else if (random < 5) {
+				FlameClaw(
+					props.eStat.str,
+					props.eStat.wil,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			} else {
+				FireBreath(
+					props.eStat.int,
+					props.eStat.wil,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			}
 		} else if (props.eAttSet > 1) {
 			if (random < 3) {
