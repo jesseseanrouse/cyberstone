@@ -5,7 +5,14 @@ import { Link } from 'react-router-dom';
 function Hallway(props) {
 	const [shieldHP, setShieldHP] = React.useState(30);
 	React.useEffect(() => {
-		props.setMessage('');
+		let message = '';
+		if (props.powerPro.trap4 === true && props.powerPro.trap1 === false) {
+			message =
+				'You enter the hallway and notice a electrified floor. You find the switch to turn it off.';
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, trap1: true });
+		}
+		props.setMessage(message);
 	}, []);
 	// Basic Display for top of screen
 	function Display() {
@@ -173,7 +180,9 @@ function Hallway(props) {
 			{Display2()}
 			<p>Travel</p>
 			<Link to='/game/powerplant/lobby'>Return to Lobby</Link>
-			{props.powerPro.trap1 ? <Link to='./game/powerplant/storageroom'>Storage Room</Link> : null}
+			{props.powerPro.trap1 ? (
+				<Link to='/game/powerplant/storageroom'>Storage Room</Link>
+			) : null}
 		</>
 	);
 }

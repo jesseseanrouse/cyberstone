@@ -56,14 +56,15 @@ function App(props) {
 						<>
 							<AirVent
 								{...routerProps}
-                                stat={props.stat}
-                                setStat={props.setStat}
+								char={props.char}
+								stat={props.stat}
+								setStat={props.setStat}
 								message={message}
 								setMessage={setMessage}
 								powerPro={props.powerPro}
-                                setPowerPro={props.setPowerPro}
-                                inven={props.inven}
-                                setInven={props.setInven}
+								setPowerPro={props.setPowerPro}
+								inven={props.inven}
+								setInven={props.setInven}
 							/>
 						</>
 					)}
@@ -82,7 +83,16 @@ function App(props) {
 					path={`${path}/storageroom`}
 					render={(routerProps) => (
 						<>
-							<StorageRoom {...routerProps} message={message} />
+							<StorageRoom
+								{...routerProps}
+								message={message}
+								message={message}
+								setMessage={setMessage}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
+								inven={props.inven}
+								setInven={props.setInven}
+							/>
 						</>
 					)}
 				/>

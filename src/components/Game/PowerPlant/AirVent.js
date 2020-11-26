@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 
 function AirVent(props) {
 	React.useEffect(() => {
-		props.setMessage('');
+		let message = '';
+		if (props.powerPro.trap1 === true && props.powerPro.trap4 === false) {
+			message =
+				'You enter the air vent and notice the spinning blade. You give it a kick and it stops spinning.';
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, trap4: true });
+		}
+		props.setMessage(message);
 	}, []);
 	// Basic Display for top of screen
 	function Display() {
@@ -20,13 +27,16 @@ function AirVent(props) {
 		} else if (props.powerPro.trap5 === false) {
 			return (
 				<>
-					<p>You are in the vent.</p>
+					<p>
+						You are in the air vent. The vent continues up an incline. It seems
+						to be greased up.
+					</p>
 				</>
 			);
 		} else {
 			return (
 				<>
-					<p>You are in the vent.</p>
+					<p>You are in the air vent.</p>
 				</>
 			);
 		}
@@ -75,6 +85,62 @@ function AirVent(props) {
 		let powerPro = props.powerPro;
 		props.setPowerPro({ ...powerPro, trap4: true });
 	}
+	// handles second trap
+	function handleTrap2A() {
+		if (props.stat.agi < 6) {
+			props.setMessage('You are not agile enough to climb through the grease');
+		} else {
+			props.setMessage(
+				'You manage to climb up the vent using your reflexes to catch yourself when you slip.'
+			);
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, trap5: true });
+		}
+	}
+	function handleTrap2B() {
+		if (props.char.core === 3) {
+			props.setMessage(
+				'You use your core to ignite the grease so that you can climb up with ease.'
+			);
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, trap5: true });
+		} else {
+			if (props.inven.scrp < 2) {
+				props.setMessage(
+					'You need at least two pieces of scrap metal to try this'
+				);
+			} else {
+				if (props.stat.cun < 6) {
+					props.setMessage('You are not cunning enough to do this');
+				} else {
+					props.setMessage(
+						'You create a spark using the two pieces of scrap metal and ignite the grease. You are then able to climb up with ease.'
+					);
+					let powerPro = props.powerPro;
+					props.setPowerPro({ ...powerPro, trap5: true });
+				}
+			}
+		}
+	}
+	function handleTrap2C() {
+		if (props.inven.scrp < 2) {
+			props.setMessage(
+				'You need at least two pieces of scrap metal to try this'
+			);
+		} else {
+			if (props.stat.str < 6) {
+				props.setMessage('You are not strong enough to do this');
+			} else {
+				props.setMessage(
+					'You are able to climb up the vent with a scrap metal in each hand can crawled up. You discard the metal when you are done.'
+				);
+				let scrp = props.inven.scrp - 2;
+				props.setInven({ ...props.inven, scrp: scrp });
+				let powerPro = props.powerPro;
+				props.setPowerPro({ ...powerPro, trap5: true });
+			}
+		}
+	}
 	// First Trap
 	function Trap1() {
 		return (
@@ -85,10 +151,22 @@ function AirVent(props) {
 			</>
 		);
 	}
+	// Second Trap
+	function Trap2() {
+		return (
+			<>
+				<div onClick={handleTrap2A}>Try to climb up</div>
+				<div onClick={handleTrap2B}>Try to light it on fire</div>
+				<div onClick={handleTrap2C}>Try to climb using scrap metal</div>
+			</>
+		);
+	}
 	// actions for traps
 	function Display2() {
 		if (props.powerPro.trap4 === false) {
 			return <>{Trap1()}</>;
+		} else if (props.powerPro.trap5 === false) {
+			return <>{Trap2()}</>;
 		}
 	}
 	return (
@@ -100,7 +178,7 @@ function AirVent(props) {
 			<p>Travel</p>
 			<Link to='/game/powerplant/lobby'>Return to Lobby</Link>
 			{props.powerPro.trap4 ? (
-				<Link to='./game/powerplant/storageroom'>Storage Room</Link>
+				<Link to='/game/powerplant/storageroom'>Storage Room</Link>
 			) : null}
 		</>
 	);
