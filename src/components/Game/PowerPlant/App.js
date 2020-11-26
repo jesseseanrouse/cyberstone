@@ -6,6 +6,7 @@ import Lobby from './Lobby'
 import Hallway from './Hallway'
 import AirVent from './AirVent'
 import Failed from './Failed'
+import StorageRoom from './StorageRoom';
 
 function App(props) {
     const { url, path } = useRouteMatch();
@@ -55,11 +56,14 @@ function App(props) {
 						<>
 							<AirVent
 								{...routerProps}
-								stat={props.stat}
+                                stat={props.stat}
+                                setStat={props.setStat}
 								message={message}
 								setMessage={setMessage}
 								powerPro={props.powerPro}
-								setPowerPro={props.setPowerPro}
+                                setPowerPro={props.setPowerPro}
+                                inven={props.inven}
+                                setInven={props.setInven}
 							/>
 						</>
 					)}
@@ -70,6 +74,15 @@ function App(props) {
 					render={(routerProps) => (
 						<>
 							<Failed {...routerProps} message={message} />
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/storageroom`}
+					render={(routerProps) => (
+						<>
+							<StorageRoom {...routerProps} message={message} />
 						</>
 					)}
 				/>

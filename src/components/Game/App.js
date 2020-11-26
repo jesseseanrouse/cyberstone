@@ -46,6 +46,7 @@ function App(props) {
 		trap4: false,
 		trap5: false,
 		trap6: false,
+		storage: false,
 		boss: false,
 	};
 	// State lives here

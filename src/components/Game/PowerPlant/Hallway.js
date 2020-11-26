@@ -173,6 +173,7 @@ function Hallway(props) {
 			{Display2()}
 			<p>Travel</p>
 			<Link to='/game/powerplant/lobby'>Return to Lobby</Link>
+			{props.powerPro.trap1 ? <Link to='./game/powerplant/storageroom'>Storage Room</Link> : null}
 		</>
 	);
 }

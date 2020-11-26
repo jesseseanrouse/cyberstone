@@ -38,28 +38,17 @@ function CreateCharacter(props) {
 		} else {
 			// set values
 			let form = props.stat;
+			let core = 0
 			let form2 = props.char;
 			if (event.target.core.value === 'physical') {
 				form = { ...form, str: form.str + 1 };
-				form2 = {
-					...form2,
-					name: event.target.name.value,
-					core: 1,
-				};
+				core = 1
 			} else if (event.target.core.value === 'electric') {
 				form = { ...form, cun: form.cun + 1 };
-				form2 = {
-					...form2,
-					name: event.target.name.value,
-					core: 2,
-				};
+				core =2
 			} else if (event.target.core.value === 'fire') {
 				form = { ...form, wil: form.wil + 1 };
-				form2 = {
-					...form2,
-					name: event.target.name.value,
-					core: 3,
-				};
+				core = 3
 			}
 			if (event.target.weapon.value === 'Hammer') {
 				form = {
@@ -84,13 +73,13 @@ function CreateCharacter(props) {
 				};
 			}
 			if (event.target.background.value === 'Bounty') {
-				form2 = { ...props.char, prof: 'bounty' };
+				form2 = { ...props.char, prof: 'bounty', core: core };
 				form = { ...form, per: form.per + 1 };
 			} else if (event.target.background.value === 'Scavenger') {
-				form2 = { ...props.char, prof: 'scavenger' };
+				form2 = { ...props.char, prof: 'scavenger', core: core };
 				form = { ...form, int: form.int + 1 };
 			} else if (event.target.background.value === 'Farmer') {
-				form2 = { ...props.char, prof: 'farmer' };
+				form2 = { ...props.char, prof: 'farmer', core: core };
 				form = { ...form, end: form.end + 1 };
 			}
 			props.setStat(form);
