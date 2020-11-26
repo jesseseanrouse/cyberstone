@@ -5,7 +5,9 @@ import React from 'react';
 import ShockAtt from './Functions/ShockAtt';
 import ChargeAtt from './Functions/ChargeAtt';
 import Thunderbolt from './Functions/Thunderbolt';
-import { GiShieldBash } from 'react-icons/gi';
+import ShieldBash from './Functions/ShieldBash'
+import ShieldSlam from './Functions/ShieldSlam'
+import HammerStrike from './Functions/HammerStrike'
 // for set 1
 // for set 2
 

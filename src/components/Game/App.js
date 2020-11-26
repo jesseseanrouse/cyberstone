@@ -54,7 +54,7 @@ function App(props) {
 	const [stat, setStat] = useState(baseStats);
 	const [char, setChar] = useState(baseChar);
 	const [inven, setInven] = useState(invenBase);
-	const [powerPro, setPowerPro] = useState(PowerProBase)
+	const [powerPro, setPowerPro] = useState(PowerProBase);
 	const [err, setErr] = useState('');
 	// for enemies
 	const [eName, setEName] = useState('');
@@ -176,7 +176,15 @@ function App(props) {
 					)}
 				/>
 			</Switch>
-			<RenderStats name={name} stat={stat} char={char} inven={inven} />
+			<RenderStats
+				name={name}
+				stat={stat}
+				char={char}
+				inven={inven}
+				userID={props.userID}
+				charID={props.charID}
+				powerPro={powerPro}
+			/>
 		</>
 	);
 }

@@ -2,8 +2,19 @@
 import React from 'react';
 // import css
 import './RenderStats.css';
+// Import Firebase
+import firebaseDb from '../../Firebase/firebase';
 
 function RenderStats(props) {
+	function handelSave() {
+		let { name } = props.name;
+		let char = props.char;
+		let stat = props.stat;
+		let inven = props.inven;
+		let powerPro = props.powerPro;
+		let data = { name, char, stat, inven, powerPro };
+		firebaseDb.child(`users/${props.userID}/characters/${props.charID}`).update(data);
+	}
 	return (
 		<div className='CharStatsMenu'>
 			<p>{props.name.name}</p>
@@ -21,6 +32,7 @@ function RenderStats(props) {
 			<p>
 				Energy: {props.stat.ep}/{props.stat.epMax}
 			</p>
+			<button onClick={handelSave}>Save</button>
 		</div>
 	);
 }

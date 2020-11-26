@@ -8,9 +8,9 @@ function StorageRoom(props) {
 	}, []);
 	function handleStorage() {
 		let inven = props.inven;
-		let scrp = props.scrp + 4;
-		let ecom = props.ecom + 4;
-		let battery = props.battery + 4;
+		let scrp = props.inven.scrp + 4;
+		let ecom = props.inven.ecom + 4;
+		let battery = props.inven.battery + 4;
 		props.setInven({ ...inven, scrp: scrp, ecom: ecom, battery: battery });
 		props.setMessage(
 			'You found some scrap metal, electrical components, and some batteries.'
