@@ -5,6 +5,7 @@ import React from 'react';
 import ShockAtt from './Functions/ShockAtt';
 import ChargeAtt from './Functions/ChargeAtt';
 import Thunderbolt from './Functions/Thunderbolt';
+import { GiShieldBash } from 'react-icons/gi';
 // for set 1
 // for set 2
 
@@ -50,8 +51,29 @@ function Fight(props) {
 			}
 		} else if (props.eAttSet > 1) {
 			if (random < 3) {
+				ShieldBash(
+					props.eStat.str,
+					props.eStat.end,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			} else if (random < 5) {
+				HammerStrike(
+					props.eStat.str,
+					props.eStat.end,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			} else {
+				ShieldSlam(
+					props.eStat.str,
+					props.eStat.end,
+					props.stat.hp,
+					props.stat,
+					props.setStat
+				);
 			}
 		}
 	}

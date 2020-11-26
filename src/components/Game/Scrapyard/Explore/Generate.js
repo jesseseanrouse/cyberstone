@@ -43,17 +43,17 @@ function Generate(props) {
 			props.setEStat(newStat);
 		} else {
 			let newStat = {
-				str: 1,
-				end: 1,
+				str: 2,
+				end: 4,
 				wil: 1,
 				int: 1,
 				cun: 1,
 				per: 2,
 				agi: 1,
-				hp: 40,
-				hpMax: 40,
-				ep: 40,
-				epMax: 40,
+				hp: 80,
+				hpMax: 80,
+				ep: 70,
+				epMax: 70,
 			};
 			props.setEAttSet(2);
 			props.setEName('Armored Squire');
