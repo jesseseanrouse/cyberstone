@@ -3,6 +3,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 import JumpHammer from './UserFunctions/JumpHammer';
+// import Boss attacks
 import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
 
@@ -36,12 +37,12 @@ function CatWalk(props) {
 			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
 				props.setMessage(
-					'Dr. Crackle manages to shoot you with his pistol shorting you out.'
+					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once! Good Night!"'
 				);
 				props.history.push(`/game/powerplant/fight/defeat`);
 			} else {
 				props.setMessage(
-					'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
+					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once!"'
 				);
 				props.history.push(`/game/powerplant/fight/3`);
 			}
@@ -53,7 +54,7 @@ function CatWalk(props) {
 			let random = Math.floor(props.stat.agi * Math.random());
 			if (random < 3) {
 				let ep = props.stat.ep;
-				Counter(
+				PopShot(
 					props.eStat.cun,
 					props.eStat.int,
 					ep,
@@ -62,12 +63,12 @@ function CatWalk(props) {
 				);
 				if (ep < 1) {
 					props.setMessage(
-						'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once! Good Night!"'
+						'Dr. Crackle manages to shoot you with his pistol shorting you out.'
 					);
 					props.history.push(`/game/powerplant/fight/defeat`);
 				} else {
 					props.setMessage(
-						'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once!"'
+						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
 					props.history.push(`/game/powerplant/fight/3`);
 				}
@@ -88,7 +89,8 @@ function CatWalk(props) {
 			setMessage(
 				'You successfully reach the landing. The catwalk suddenly sparks up. Dr. Crackle calls out, "You just had to move!"'
 			);
-			props.setLocation(1);
+            props.setLocation(1);
+            props.setCrackleState(0)
 			props.history.push(`/game/powerplant/fight/1`);
 		}
 	}
