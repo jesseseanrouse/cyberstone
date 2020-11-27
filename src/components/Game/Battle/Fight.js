@@ -13,8 +13,14 @@ import FireBreath from './Functions/FireBreath';
 import ShieldBash from './Functions/ShieldBash';
 import ShieldSlam from './Functions/ShieldSlam';
 import HammerStrike from './Functions/HammerStrike';
+// for user
+import WeaponStrike from './Functions/WeaponStrike';
 
 function Fight(props) {
+	// Messages
+	React.useEffect(() => {
+		props.setMessage('');
+	}, []);
 	function EAttack() {
 		let random = Math.floor(6 * Math.random());
 		if (props.eAttSet === 0) {
@@ -103,9 +109,65 @@ function Fight(props) {
 			}
 		}
 	}
-
+	function WStrike() {
+		if (props.inven.weapon === 'Hammer') {
+			WeaponStrike(
+				props.stat.str,
+				props.stat.end,
+				props.eStat.hp,
+				props.eStat,
+				props.setEStat
+			);
+		} else if (props.inven.weapon === 'Rifle') {
+			WeaponStrike(
+				props.stat.int,
+				props.stat.cun,
+				props.eStat.hp,
+				props.eStat,
+				props.setEStat
+			);
+		} else if (props.inven.weapon === 'Bow') {
+			WeaponStrike(
+				props.stat.str,
+				props.stat.wil,
+				props.eStat.hp,
+				props.eStat,
+				props.setEStat
+			);
+		}
+	}
+	// handles a round of combat
+	function handleCombat() {
+		let message = '';
+		WStrike();
+		if (props.eStat.hp < 1 || props.eStat.ep < 1) {
+			message = 'You have defeated the ' + props.eName;
+			let random = Math.floor(props.stat.int * Math.random());
+			let random2 = Math.floor((props.stat.int / 2) * Math.random());
+            let random3 = Math.floor(2 * Math.random());
+            let scrp = props.inven.scrp + random
+            let ecom = props.inven.ecom + random2
+            let battery = props.inven.battery + random3
+            let inven = props.inven
+            props.setInven({...inven, scrp: scrp, ecom: ecom, battery: battery})
+            props.setMessage(message)
+            props.history.push(`/game/battle/victory`);
+		} else {
+			message = 'You strike the ' + props.eName + ' with your weapon.';
+			EAttack();
+			if (props.stat.hp < 1 || props.stat.ep < 1) {
+				message =
+					'The ' + props.eName + ' has defeated you in combat. You pass out.';
+				props.setMessage(message);
+				props.history.push(`/game/battle/defeat`);
+			} else {
+				message = message + ' The ' + props.eName + ' attacked you.';
+			}
+		}
+	}
 	return (
 		<>
+			{props.message}
 			<p>Enemy Status</p>
 			<p>
 				Health: {props.eStat.hp}/{props.eStat.hpMax}
@@ -122,6 +184,8 @@ function Fight(props) {
 					Energy: {props.stat.ep}/{props.stat.epMax}
 				</p>
 			</div>
+			<p>Actions</p>
+			<div onClick={handleCombat}>Weapon Strike</div>
 		</>
 	);
 }

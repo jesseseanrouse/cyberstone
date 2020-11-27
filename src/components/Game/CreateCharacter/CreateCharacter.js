@@ -50,6 +50,7 @@ function CreateCharacter(props) {
 				form = { ...form, wil: form.wil + 1 };
 				core = 3
 			}
+			let inven = props.inven
 			if (event.target.weapon.value === 'Hammer') {
 				form = {
 					...form,
@@ -57,6 +58,7 @@ function CreateCharacter(props) {
 					end: form.end + 1,
 					wil: form.wil + 1,
 				};
+				props.setInven({...inven, weapon: 'Hammer'})
 			} else if (event.target.weapon.value === 'Rifle') {
 				form = {
 					...form,
@@ -64,6 +66,7 @@ function CreateCharacter(props) {
 					cun: form.cun + 1,
 					per: form.per + 1,
 				};
+				props.setInven({ ...inven, weapon: 'Rifle' });
 			} else if (event.target.weapon.value === 'Bow') {
 				form = {
 					...form,
@@ -71,6 +74,7 @@ function CreateCharacter(props) {
 					agi: form.agi + 1,
 					wil: form.wil + 1,
 				};
+				props.setInven({ ...inven, weapon: 'Bow' });
 			}
 			if (event.target.background.value === 'Bounty') {
 				form2 = { ...props.char, prof: 'bounty', core: core };

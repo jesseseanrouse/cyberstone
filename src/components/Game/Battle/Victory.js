@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Failed(props) {
+function Victory(props) {
 	return (
 		<>
 			{props.message}
-			<Link to='/game/scrapyard/recover'>Continue</Link>
+			<Link to='/game/scrapyard/'>Continue</Link>
 		</>
 	);
 }
 
-export default Failed;
+export default Victory;

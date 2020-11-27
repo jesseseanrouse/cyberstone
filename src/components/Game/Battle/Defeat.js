@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Failed(props) {
+function Defeat(props) {
 	return (
 		<>
 			{props.message}
@@ -11,4 +11,4 @@ function Failed(props) {
 	);
 }
 
-export default Failed;
+export default Defeat;

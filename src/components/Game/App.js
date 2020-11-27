@@ -36,6 +36,7 @@ function App(props) {
 		scrp: 0,
 		ecom: 0,
 		battery: 0,
+		weapon: '',
 	};
 	// power plant progress
 	let PowerProBase = {
@@ -82,6 +83,8 @@ function App(props) {
 								setErr={setErr}
 								name={name}
 								setName={setName}
+								inven={inven}
+								setInven={setInven}
 							/>
 						</>
 					)}
@@ -142,11 +145,13 @@ function App(props) {
 								{...routerProps}
 								name={name}
 								stat={stat}
+								setStat={setStat}
 								char={char}
 								inven={inven}
 								setInven={setInven}
 								eName={eName}
 								eStat={eStat}
+								setEStat={setEStat}
 								eAttSet={eAttSet}
 							/>
 						</>
