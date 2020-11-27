@@ -168,7 +168,7 @@ function Fight(props) {
 	return (
 		<>
 			{props.message}
-			<p>Enemy Status</p>
+			<p>{props.eName} Status</p>
 			<p>
 				Health: {props.eStat.hp}/{props.eStat.hpMax}
 			</p>

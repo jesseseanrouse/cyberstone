@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // import components
-import Lobby from './Lobby'
-import Hallway from './Hallway'
-import AirVent from './AirVent'
-import Failed from './Failed'
+import Lobby from './Lobby';
+import Hallway from './Hallway';
+import AirVent from './AirVent';
+import Failed from './Failed';
 import StorageRoom from './StorageRoom';
 
 function App(props) {
-    const { url, path } = useRouteMatch();
-    // state lives here
-    const [message, setMessage] = useState('')
+	const { url, path } = useRouteMatch();
+	// state lives here
+	const [message, setMessage] = useState('');
 	return (
 		<>
 			<Switch>
@@ -86,12 +86,33 @@ function App(props) {
 							<StorageRoom
 								{...routerProps}
 								message={message}
-								message={message}
 								setMessage={setMessage}
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
 								inven={props.inven}
 								setInven={props.setInven}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/boss`}
+					render={(routerProps) => (
+						<>
+							<BossFight
+								{...routerProps}
+								stat={props.stat}
+								setStat={props.setStat}
+								eName={props.eName}
+								setEName={props.setEName}
+								eStat={props.eStat}
+								setEStat={props.setEStat}
+								char={props.char}
+								inven={props.inven}
+								setInven={props.setInven}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 							/>
 						</>
 					)}

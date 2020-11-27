@@ -48,7 +48,7 @@ function App(props) {
 		trap5: false,
 		trap6: false,
 		storage: false,
-		boss: false,
+		boss: 0,
 	};
 	// State lives here
 	const [name, setName] = useState({ name: '' });
@@ -173,7 +173,6 @@ function App(props) {
 								eName={eName}
 								setEName={setEName}
 								setEStat={setEStat}
-								setEAttSet={setEAttSet}
 								powerPro={powerPro}
 								setPowerPro={setPowerPro}
 							/>
