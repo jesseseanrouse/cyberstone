@@ -1,5 +1,7 @@
 // Import React
 import React from 'react';
+// import css
+import './SignForm.css'
 
 function SignForm(props) {
 	// set check to prevent auto move
@@ -41,7 +43,7 @@ function SignForm(props) {
 	return (
 		<>
 			<form onSubmit={handleSubmit}>
-				<div>User:</div>
+				<div className='signTitle'>User:</div>
 				<input
 					type='text'
 					name='user'
@@ -49,7 +51,7 @@ function SignForm(props) {
 					onChange={handleChange}
 					placeholder='user'
 				/>
-				<div>Password:</div>
+				<div className='signTitle'>Password:</div>
 				<input
 					type='password'
 					name='password'
@@ -59,7 +61,7 @@ function SignForm(props) {
 				/>
 				<input className='LogInBut' type='submit' value={props.label1} />
 			</form>
-			<button onClick={handleClick} >{props.label2}</button>
+			<button onClick={handleClick}>{props.label2}</button>
 			<p>{props.err}</p>
 		</>
 	);

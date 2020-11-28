@@ -1,6 +1,8 @@
 // Import React
 import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+// import css
+import './App.css'
 // Import components
 import About from '../About/About';
 import Information from '../Information/Information';

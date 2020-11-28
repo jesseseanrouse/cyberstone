@@ -1,0 +1,19 @@
+form {
+	padding: 15% 15% 0 15%;
+}
+.signTitle {
+	color: white;
+	padding: 2px;
+    font-size: 24px;
+}
+input {
+    font-size: 20px;
+}
+.LogInBut {
+    font-size: 20px;
+    margin: 0px 2px 0px;
+}
+button {
+    font-size: 19px;
+    margin: 8px 15% 0 15%;
+}
