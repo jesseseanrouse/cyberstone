@@ -33,6 +33,8 @@ function App(props) {
 									data={props.data}
 									setData={props.setData}
 									setPowerPro={props.setPowerPro}
+									message={props.message}
+									setMessage={props.setMessage}
 								/>
 							</>
 						)}

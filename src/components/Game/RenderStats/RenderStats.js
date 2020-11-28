@@ -32,6 +32,10 @@ function RenderStats(props) {
 			<p>
 				Energy: {props.stat.ep}/{props.stat.epMax}
 			</p>
+			<p>Inventory</p>
+			<p>Scrap Metal: {props.inven.scrp}</p>
+			<p>Electrical Components: {props.inven.ecom}</p>
+			<p>Battery: {props.inven.battery}</p>
 			<button onClick={handelSave}>Save</button>
 		</div>
 	);
