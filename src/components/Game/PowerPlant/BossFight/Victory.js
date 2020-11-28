@@ -3,6 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Victory(props) {
+	React.useEffect(() => {
+		powerPro = props.powerPro;
+		props.setPowerPro({ ...powerPro, boss: 2 });
+	}, []);
 	return (
 		<>
 			{props.message}

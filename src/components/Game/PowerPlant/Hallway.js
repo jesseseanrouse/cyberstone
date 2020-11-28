@@ -172,6 +172,14 @@ function Hallway(props) {
 			return <>{Trap2()}</>;
 		}
 	}
+	// access to generator
+	function Generator() {
+		if (props.powerPro.boss < 2) {
+			<Link to='/game/powerplant/boss/intro'>Generator Room</Link>
+		} else {
+			<Link to='/game/powerplant/generator'>Generator Room</Link>
+		}
+	}
 	return (
 		<>
 			{Display()}
@@ -183,6 +191,7 @@ function Hallway(props) {
 			{props.powerPro.trap1 ? (
 				<Link to='/game/powerplant/storageroom'>Storage Room</Link>
 			) : null}
+			{props.powerPro.trap2 ? {Generator} : null}
 		</>
 	);
 }
