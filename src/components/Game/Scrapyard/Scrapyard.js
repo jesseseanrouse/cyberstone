@@ -15,7 +15,7 @@ function Scrapyard(props) {
 		props.setMessage('')
 	}, [])
 	function handleRepair() {
-		if (props.stat.hp === props.stat.hpMax) {
+		if (props.stat.hp >= props.stat.hpMax) {
 			props.setMessage('You are already at full health')
 		} else {
 			let inven = props.inven

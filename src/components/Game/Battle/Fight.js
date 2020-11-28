@@ -171,6 +171,25 @@ function Fight(props) {
 			}
 		}
 	}
+	function handleRecharge() {
+		if (props.stat.ep >= props.stat.epMax) {
+			props.setMessage('You are already at full energy');
+		} else {
+			let inven = props.inven;
+			let battery = props.inven.battery - 1;
+			props.setInven({ ...inven, battery: battery });
+			let ep = props.stat.ep + 50;
+			if (ep > props.stat.maxEp) {
+				ep = props.stat.maxEp;
+			}
+			let stat = props.stat;
+			props.setStat({ ...stat, ep: ep });
+			props.setMessage('You used a battery metal to recharge yourself');
+		}
+	}
+	function handleLack() {
+		props.setMessage('You do not have any batteries');
+	}
 	return (
 		<>
 			{props.message}
@@ -192,6 +211,11 @@ function Fight(props) {
 			</div>
 			<p>Actions</p>
 			<div onClick={handleCombat}>Weapon Strike</div>
+			{props.inven.battery > 0 ? (
+				<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
+			) : (
+				<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
+			)}
 		</>
 	);
 }

@@ -254,7 +254,26 @@ function Console(props) {
 				</>
 			);
 		}
-	}
+    }
+    function handleRecharge() {
+			if (props.stat.ep >= props.stat.epMax) {
+				props.setMessage('You are already at full energy');
+			} else {
+				let inven = props.inven;
+				let battery = props.inven.battery - 1;
+				props.setInven({ ...inven, battery: battery });
+				let ep = props.stat.ep + 50;
+				if (ep > props.stat.maxEp) {
+					ep = props.stat.maxEp;
+				}
+				let stat = props.stat;
+				props.setStat({ ...stat, ep: ep });
+				props.setMessage('You used a battery metal to recharge yourself');
+			}
+		}
+		function handleLack() {
+			props.setMessage('You do not have any batteries');
+		}
 	return (
 		<>
 			You are in the center of the room with Dr. Crackle
@@ -277,6 +296,11 @@ function Console(props) {
 			</div>
 			<p>Actions</p>
 			{WeaponType()}
+			{props.inven.battery > 0 ? (
+				<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
+			) : (
+				<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
+			)}
 			<p>Move to</p>
 			<div onClick={handleMove}>Landing</div>
 		</>
