@@ -36,12 +36,12 @@ function Landing(props) {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol shorting you out.'
 					);
-					props.history.push(`/game/powerplant/fight/defeat`);
+					props.history.push(`/game/powerplant/boss/fight/defeat`);
 				} else {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.history.push(`/game/powerplant/fight/${value}`);
+					props.history.push(`/game/powerplant/boss/fight/${value}`);
 				}
 			} else {
 				props.setMessage(
@@ -50,7 +50,7 @@ function Landing(props) {
 						'. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(value);
-				props.history.push(`/game/powerplant/fight/${value}`);
+				props.history.push(`/game/powerplant/boss/fight/${value}`);
 			}
 		} else if (props.crackleState === 1) {
 			props.setMessage(
@@ -59,7 +59,7 @@ function Landing(props) {
 					". Dr. Crackle doesn't seem to care that you moved."
 			);
 			props.setLocation(value);
-			props.history.push(`/game/powerplant/fight/${value}`);
+			props.history.push(`/game/powerplant/boss/fight/${value}`);
 		}
 	}
 	// handles Boss
@@ -122,10 +122,10 @@ function Landing(props) {
 			props.setMessage(
 				message + 'You have taken too much damage and pass out.'
 			);
-			props.history.push(`/game/powerplant/fight/defeat`);
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
 		} else {
 			props.setMessage(message + 'Ha Ha HA HA');
-			props.history.push(`/game/powerplant/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
 	// Sets the attack options for user

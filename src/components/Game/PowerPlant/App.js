@@ -8,6 +8,7 @@ import AirVent from './AirVent';
 import Failed from './Failed';
 import StorageRoom from './StorageRoom';
 import BossFight from './BossFight/App'
+import Generator from './Generator'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -114,6 +115,23 @@ function App(props) {
 								setInven={props.setInven}
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/generator`}
+					render={(routerProps) => (
+						<>
+							<Generator
+								{...routerProps}
+								message={message}
+								setMessage={setMessage}
+								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
+								inven={props.inven}
+								setInven={props.setInven}
 							/>
 						</>
 					)}

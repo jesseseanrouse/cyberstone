@@ -31,26 +31,26 @@ function Console(props) {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol shorting you out.'
 					);
-					props.history.push(`/game/powerplant/fight/defeat`);
+					props.history.push(`/game/powerplant/boss/fight/defeat`);
 				} else {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.history.push(`/game/powerplant/fight/1`);
+					props.history.push(`/game/powerplant/boss/fight/1`);
 				}
 			} else {
 				props.setMessage(
 					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the landing. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(1);
-				props.history.push(`/game/powerplant/fight/1`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else if (props.crackleState === 1) {
 			props.setMessage(
 				"You successfully reach the landing. Dr. Crackle doesn't seem to care that you moved."
 			);
 			props.setLocation(1);
-			props.history.push(`/game/powerplant/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
 	// handles Boss
@@ -113,10 +113,10 @@ function Console(props) {
 			props.setMessage(
 				message + 'You have taken too much damage and pass out.'
 			);
-			props.history.push(`/game/powerplant/fight/defeat`);
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
 		} else {
 			props.setMessage(message + 'Ha Ha HA HA');
-			props.history.push(`/game/powerplant/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
 	// Hammer Attacks
@@ -130,12 +130,12 @@ function Console(props) {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "Good Night!"'
 				);
-				props.history.push(`/game/powerplant/fight/defeat`);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
 			} else {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -148,10 +148,10 @@ function Console(props) {
 			);
 			if (ehp < 1) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');
-				props.history.push(`/game/powerplant/fight/victory`);
+				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
 				message = 'You strike Dr. Crackle with your hammer. ';
-                props.history.push(`/game/powerplant/fight/3`);
+                props.history.push(`/game/powerplant/boss/fight/3`);
                 BossAction(message);
 			}
         }
@@ -166,12 +166,12 @@ function Console(props) {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "Good Night!"'
 				);
-				props.history.push(`/game/powerplant/fight/defeat`);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
 			} else {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -192,9 +192,9 @@ function Console(props) {
 			);
 			if (ehp < 1 || eep < 1) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');
-				props.history.push(`/game/powerplant/fight/victory`);
+				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
-                props.history.push(`/game/powerplant/fight/3`);
+                props.history.push(`/game/powerplant/boss/fight/3`);
                 BossAction(message);
 			}
 		}
@@ -210,22 +210,22 @@ function Console(props) {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to hit him with your weapon. He strikes you with his shocker hand. He taunts you, "Good Night!"'
 				);
-				props.history.push(`/game/powerplant/fight/defeat`);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
 			} else {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to hit him with your weapon. He strikes you with his shocker hand. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
 			Bash(props.stat.str, props.stat.end, ehp, props.eStat, props.setEStat);
 			if (ehp < 1) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');
-				props.history.push(`/game/powerplant/fight/victory`);
+				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
 				message = 'You strike Dr. Crackle with your weapon. ';
-                props.history.push(`/game/powerplant/fight/3`);
+                props.history.push(`/game/powerplant/boss/fight/3`);
                 BossAction(message);
 			}
 		}

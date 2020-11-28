@@ -6,6 +6,8 @@ import Intro from './Intro'
 import Landing from './Landing'
 import Catwalk from './CatWalk'
 import Console from './Console'
+import Defeat from './Defeat'
+import Victory from './Victory'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
@@ -50,6 +52,8 @@ function App(props) {
 								message={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
+								setCrackleState={setCrackleState}
+								location={location}
 								setLocation={setLocation}
 							/>
 						</>
@@ -74,6 +78,8 @@ function App(props) {
 								jump={jump}
 								setJump={setJump}
 								crackleState={crackleState}
+								setCrackleState={setCrackleState}
+								location={location}
 								setLocation={setLocation}
 							/>
 						</>
@@ -96,6 +102,56 @@ function App(props) {
 								message={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
+								setCrackleState={setCrackleState}
+								location={location}
+								setLocation={setLocation}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/fight/victory`}
+					render={(routerProps) => (
+						<>
+							<Victory
+								{...routerProps}
+								stat={props.stat}
+								setStat={props.setStat}
+								eStat={props.eStat}
+								setEStat={props.setEStat}
+								powerPro={props.powerPro}
+								name={props.name}
+								message={message}
+								message={setMessage}
+								onFire={onFire}
+								crackleState={crackleState}
+								setCrackleState={setCrackleState}
+								location={location}
+								setLocation={setLocation}
+							/>
+						</>
+					)}
+				/>
+				<Route
+					exact
+					path={`${path}/fight/defeat`}
+					render={(routerProps) => (
+						<>
+							<Defeat
+								{...routerProps}
+								stat={props.stat}
+								setStat={props.setStat}
+								eStat={props.eStat}
+								setEStat={props.setEStat}
+								powerPro={props.powerPro}
+								name={props.name}
+								message={message}
+								message={setMessage}
+								onFire={onFire}
+								crackleState={crackleState}
+								setCrackleState={setCrackleState}
+								location={location}
 								setLocation={setLocation}
 							/>
 						</>

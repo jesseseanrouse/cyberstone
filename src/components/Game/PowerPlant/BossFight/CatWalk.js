@@ -29,12 +29,12 @@ function CatWalk(props) {
 				props.setMessage(
 					'You take Dr. Crackle by surprise and smash him to the ground dealing the final blow.'
 				);
-				props.history.push(`/game/powerplant/fight/victory`);
+				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
 				props.setMessage(
 					'You take Dr. Crackle by surprise and smash him to the ground dealing massive damage. Dr. Crackle quickly recovers laughing, "well played intruder. Lets see you do that again!"'
 				);
-				props.history.push(`/game/powerplant/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
 			let ep = props.stat.ep;
@@ -43,12 +43,12 @@ function CatWalk(props) {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once! Good Night!"'
 				);
-				props.history.push(`/game/powerplant/fight/defeat`);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
 			} else {
 				props.setMessage(
 					'Dr. Crackle steps out of the way at the last second as you smash into the ground. He strikes you in the back with his shocker hand. He taunts you, "that will only work once!"'
 				);
-				props.history.push(`/game/powerplant/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		}
 	}
@@ -69,19 +69,19 @@ function CatWalk(props) {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol shorting you out.'
 					);
-					props.history.push(`/game/powerplant/fight/defeat`);
+					props.history.push(`/game/powerplant/boss/fight/defeat`);
 				} else {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.history.push(`/game/powerplant/fight/3`);
+					props.history.push(`/game/powerplant/boss/fight/3`);
 				}
 			} else {
 				props.setMessage(
 					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the landing. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(1);
-				props.history.push(`/game/powerplant/fight/1`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else if (props.crackleState === 1) {
 			props.setMessage(
@@ -95,7 +95,7 @@ function CatWalk(props) {
 			);
 			props.setLocation(1);
 			props.setCrackleState(0);
-			props.history.push(`/game/powerplant/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
 	// handles Boss
@@ -158,10 +158,10 @@ function CatWalk(props) {
 			props.setMessage(
 				message + 'You have taken too much damage and pass out.'
 			);
-			props.history.push(`/game/powerplant/fight/defeat`);
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
 		} else {
 			props.setMessage(message + 'Ha Ha HA HA');
-			props.history.push(`/game/powerplant/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
 	// Sets the attack options for user
