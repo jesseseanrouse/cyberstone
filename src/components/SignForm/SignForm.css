@@ -1,4 +1,4 @@
-form {
+.signForm {
 	padding: 15% 15% 0 15%;
 }
 .signTitle {
@@ -13,7 +13,7 @@ input {
     font-size: 20px;
     margin: 0px 2px 0px;
 }
-button {
+.signBut {
     font-size: 19px;
     margin: 8px 15% 0 15%;
 }

@@ -1,0 +1,14 @@
+.charList {
+    display: grid;
+    grid-template-columns: 2fr .5fr;
+    padding: 10%;
+    grid-gap: 10px;
+}
+.charName {
+    font-size: 20px;
+    color: white;
+}
+.charBut {
+    font-size: 19px;
+    margin: 10px 25% 0 25%;
+}

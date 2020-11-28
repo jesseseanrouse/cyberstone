@@ -1,6 +1,8 @@
 // import react
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
+// import css
+import './CreateChar.css';
 // import React Icons
 import { GiFist } from 'react-icons/gi';
 import { BsLightning } from 'react-icons/bs';
@@ -38,19 +40,19 @@ function CreateCharacter(props) {
 		} else {
 			// set values
 			let form = props.stat;
-			let core = 0
+			let core = 0;
 			let form2 = props.char;
 			if (event.target.core.value === 'physical') {
 				form = { ...form, str: form.str + 1 };
-				core = 1
+				core = 1;
 			} else if (event.target.core.value === 'electric') {
 				form = { ...form, cun: form.cun + 1 };
-				core =2
+				core = 2;
 			} else if (event.target.core.value === 'fire') {
 				form = { ...form, wil: form.wil + 1 };
-				core = 3
+				core = 3;
 			}
-			let inven = props.inven
+			let inven = props.inven;
 			if (event.target.weapon.value === 'Hammer') {
 				form = {
 					...form,
@@ -58,7 +60,7 @@ function CreateCharacter(props) {
 					end: form.end + 1,
 					wil: form.wil + 1,
 				};
-				props.setInven({...inven, weapon: 'Hammer'})
+				props.setInven({ ...inven, weapon: 'Hammer' });
 			} else if (event.target.weapon.value === 'Rifle') {
 				form = {
 					...form,
@@ -94,108 +96,180 @@ function CreateCharacter(props) {
 	};
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form className='createForm' onSubmit={handleSubmit}>
 				<h3>Name your Character</h3>
 				<input
 					type='text'
 					name='name'
 					placeholder='name'
+					className='inputName'
 					onChange={handleChange}
 				/>
 				<h3>Select your Core</h3>
-				<div>
-					<input type='radio' id='core1' value='physical' name='core' checked />
-					<GiFist size='50px' />
-					<p>Physical Core:</p>
-					<p>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='core1'
+							value='physical'
+							name='core'
+							className='radioCreate'
+							checked
+						/>
+						<GiFist size='90px' />
+					</div>
+					<div className='createText'>Physical Core:</div>
+					<div className='createText'>
 						This core type focuses on defeating opponents through bashing them
 						to pieces.
-					</p>
-					<p>Stat Bonus: +1 Strength</p>
+					</div>
+					<div className='createText'>Stat Bonus: +1 Strength</div>
 				</div>
-				<div>
-					<input type='radio' id='core2' value='electric' name='core' />
-					<BsLightning size='50px' />
-					<p>Electric Core:</p>
-					<p>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='core2'
+							value='electric'
+							name='core'
+							className='radioCreate'
+						/>
+						<BsLightning size='90px' />
+					</div>
+					<div className='createText'>Electric Core:</div>
+					<div className='createText'>
 						This core type focuses on defeating opponents through disabling them
 						rather than damaging them.
-					</p>
-					<p>Stat Bonus: +1 Cunning</p>
+					</div>
+					<div className='createText'>Stat Bonus: +1 Cunning</div>
 				</div>
-				<div>
-					<input type='radio' id='core3' value='fire' name='core' />
-					<GiSmallFire size='50px' />
-					<p>Fire Core:</p>
-					<p>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='core3'
+							value='fire'
+							name='core'
+							className='radioCreate'
+						/>
+						<GiSmallFire size='90px' />
+					</div>
+					<div className='createText'>Fire Core:</div>
+					<div className='createText'>
 						This core type focuses on defeating opponents through burning them
 						over time.
-					</p>
-					<p>Stat Bonus: +1 Willpower</p>
+					</div>
+					<div className='createText'>Stat Bonus: +1 Willpower</div>
 				</div>
 				<h3>Select Starting Weapon</h3>
-				<p>You are given bonus stats for your weapon of choice</p>
-				<div>
-					<input
-						type='radio'
-						id='weapon1'
-						value='Hammer'
-						name='weapon'
-						checked
-					/>
-					<GiClawHammer size='50px' />
-					<p>name: War Hammer</p>
-					<p>type: Melee</p>
-					<p>primary stat: Strength</p>
-					<p>secondary stat: Endurance</p>
-					<p>accuracy stat: Willpower</p>
+				<div className='createText'>
+					You are given bonus stats for your weapon of choice
 				</div>
-				<div>
-					<input type='radio' id='weapon2' value='Rifle' name='weapon' />
-					<GiWinchesterRifle size='50px' />
-					<p>name: Rifle</p>
-					<p>type: Range</p>
-					<p>primary stat: Intellect</p>
-					<p>secondary stat: Cunning</p>
-					<p>accuracy stat: Perception</p>
+				<div className='createWeapon'>
+					<div className='createIconW'>
+						<input
+							type='radio'
+							id='weapon1'
+							value='Hammer'
+							name='weapon'
+							className='radioCreate'
+							checked
+						/>
+						<GiClawHammer size='100px' />
+					</div>
+					<div className='createText'>name: War Hammer</div>
+					<div className='createText'>type: Melee</div>
+					<div className='createText'>primary stat: Strength</div>
+					<div className='createText'>secondary stat: Endurance</div>
+					<div className='createText'>accuracy stat: Willpower</div>
 				</div>
-				<div>
-					<input type='radio' id='weapon3' value='Bow' name='weapon' />
-					<GiPocketBow size='50px' />
-					<p>name: War Bow</p>
-					<p>type: Range</p>
-					<p>primary stat: Strength</p>
-					<p>secondary stat: Willpower</p>
-					<p>accuracy stat: Agility</p>
+				<div className='createWeapon'>
+					<div className='createIconW'>
+						<input
+							type='radio'
+							id='weapon2'
+							value='Rifle'
+							name='weapon'
+							className='radioCreate'
+						/>
+						<GiWinchesterRifle size='100px' />
+					</div>
+					<div className='createText'>name: Rifle</div>
+					<div className='createText'>type: Range</div>
+					<div className='createText'>primary stat: Intellect</div>
+					<div className='createText'>secondary stat: Cunning</div>
+					<div className='createText'>accuracy stat: Perception</div>
+				</div>
+				<div className='createWeapon'>
+					<div className='createIconW'>
+						<input
+							type='radio'
+							id='weapon3'
+							value='Bow'
+							name='weapon'
+							className='radioCreate'
+						/>
+						<GiPocketBow size='100px' />
+					</div>
+					<div className='createText'>name: War Bow</div>
+					<div className='createText'>type: Range</div>
+					<div className='createText'>primary stat: Strength</div>
+					<div className='createText'>secondary stat: Willpower</div>
+					<div className='createText'>accuracy stat: Agility</div>
 				</div>
 				<h3>Background</h3>
-				<p>Affects some in game dialog</p>
-				<div>
-					<input
-						type='radio'
-						id='back1'
-						value='Bounty'
-						name='background'
-						checked
-					/>
-					<GiWantedReward size='50px' />
-					<p>Profession: Bounty Hunter</p>
-					<p>You roam the region collecting bounties on individuals</p>
-					<p>Bonus Stat: Perception</p>
+				<div className='createText'>Affects some in game dialog</div>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='back1'
+							value='Bounty'
+							name='background'
+							className='radioCreate'
+							checked
+						/>
+						<GiWantedReward size='100px' />
+					</div>
+					<div className='createText'>Profession: Bounty Hunter</div>
+					<div className='createText'>
+						You roam the region collecting bounties on individuals
+					</div>
+					<div className='createText'>Bonus Stat: Perception</div>
 				</div>
-				<div>
-					<input type='radio' id='back2' value='Scavenger' name='background' />
-					<GiSteampunkGoggles size='50px' />
-					<p>Profession: Scavenger</p>
-					<p>You are always looking for opportunities to gather useful parts</p>
-					<p>Bonus Stat: Intellect</p>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='back2'
+							value='Scavenger'
+							name='background'
+							className='radioCreate'
+						/>
+						<GiSteampunkGoggles size='100px' />
+					</div>
+					<div className='createText'>Profession: Scavenger</div>
+					<div className='createText'>
+						You are always looking for opportunities to gather useful parts
+					</div>
+					<div className='createText'>Bonus Stat: Intellect</div>
 				</div>
-				<div>
-					<input type='radio' id='back3' value='Farmer' name='background' />
-					<GiFarmer size='50px' />
-					<p>Profession: Farmer</p>
-					<p>You are just trying to get by in this crazy world</p>
-					<p>Bonus Stat: Endurance</p>
+				<div className='createCore'>
+					<div className='createIcon'>
+						<input
+							type='radio'
+							id='back3'
+							value='Farmer'
+							name='background'
+							className='radioCreate'
+						/>
+						<GiFarmer size='100px' />
+					</div>
+					<div className='createText'>Profession: Farmer</div>
+					<div className='createText'>
+						You are just trying to get by in this crazy world
+					</div>
+					<div className='createText'>Bonus Stat: Endurance</div>
 				</div>
 				<input className='LogInBut' type='submit' value='Create Character' />
 				<p>{props.err}</p>

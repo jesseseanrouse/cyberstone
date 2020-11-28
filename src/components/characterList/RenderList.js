@@ -3,7 +3,7 @@ import React from 'react'
 const RenderList = (props) => {
     return (
         <>
-            <p>{props.name}</p>
+            <div className='charName'>{props.name}</div>
             <button value={props.name} onClick={props.handleLoad} >Load</button>
         </>
     )

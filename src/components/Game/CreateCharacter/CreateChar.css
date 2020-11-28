@@ -1,0 +1,42 @@
+h3 {
+    color: white;
+    font-size: 30px;
+    padding: 10px 0px;
+    margin: 0px
+}
+.createForm {
+    padding: 10px;
+}
+.inputName {
+    font-size: 20px;
+}
+.createCore {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    grid-template-rows: 1fr 2fr 1fr;
+    align-items: center;
+    margin: 10px 0px;
+}
+.createWeapon {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    margin: 10px 0px;
+}
+.createIcon {
+    grid-row: 1 / 4;
+    grid-column: 1 / 2;
+    display: flex;
+}
+.createIconW {
+    grid-row: 1 / 6;
+    grid-column: 1 / 2;
+    display: flex;
+}
+.radioCreate {
+    align-self: center;
+}
+.createText {
+    color: white;
+}

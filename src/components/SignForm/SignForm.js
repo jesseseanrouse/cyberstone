@@ -42,7 +42,7 @@ function SignForm(props) {
 	};
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
+			<form className='signForm' onSubmit={handleSubmit}>
 				<div className='signTitle'>User:</div>
 				<input
 					type='text'
@@ -61,7 +61,7 @@ function SignForm(props) {
 				/>
 				<input className='LogInBut' type='submit' value={props.label1} />
 			</form>
-			<button onClick={handleClick}>{props.label2}</button>
+			<button className="signBut" onClick={handleClick}>{props.label2}</button>
 			<p>{props.err}</p>
 		</>
 	);

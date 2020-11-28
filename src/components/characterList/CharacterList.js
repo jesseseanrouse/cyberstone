@@ -1,6 +1,8 @@
 // import react
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
+// import css
+import './CharacterList.css'
 // Import Firebase
 import firebaseDb from '../Firebase/firebase';
 // import component
@@ -58,8 +60,8 @@ function CharacterList(props) {
 
 	return (
 		<>
-			{props.list === [] ? <p>Loading...</p> : <p>{listRender}</p>}
-			<button onClick={handleClick}>Create New Character</button>
+			{props.list === [] ? <p>Loading...</p> : <div className='charList'>{listRender}</div>}
+			<button className='charBut' onClick={handleClick}>Create New Character</button>
 		</>
 	);
 }
