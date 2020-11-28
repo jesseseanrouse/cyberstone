@@ -4,9 +4,11 @@ import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 import HammerStrike from './UserFunctions/HammerStrike';
 import HammerCore from './UserFunctions/HammerCore';
+import Bash from './UserFunctions/Bash';
 // import Boss attacks
 import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
+import Thunderbolt from '../../Battle/Functions/Thunderbolt';
 
 function CatWalk(props) {
 	const { url, path } = useRouteMatch();
@@ -49,6 +51,72 @@ function CatWalk(props) {
 			props.history.push(`/game/powerplant/fight/1`);
 		}
 	}
+	// handles Boss
+	function BossAction(message) {
+		let hp = props.stat.hp;
+		let ep = props.stat.ep;
+		let random = Math.floor(6 * Math.random());
+		let check = false;
+		let dodge = Math.floor(props.stat.agi * Math.random());
+		if (random < 3) {
+			let attack = Math.floor(props.eStat.cun * random());
+			if (attack > dodge) {
+				ShockStrike(
+					props.eStat.cun,
+					props.eStat.int,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message = message + 'Dr. Crackle strikes you with his shock hand. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle tries to strike you with his shock hand but misses. ';
+			}
+		} else if (random < 5) {
+			Charge(
+				props.eStat.cun,
+				props.eStat.int,
+				ep,
+				props.stat,
+				props.setStat,
+				props.crackleState,
+				props.setCrackleState,
+				props.location,
+				props.message,
+				check
+			);
+		} else {
+			let attack = Math.floor(props.eStat.int * random());
+			if (attack > dodge) {
+				Thunderbolt(
+					props.eStat.cun,
+					props.eStat.int,
+					hp,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you and strikes you with it. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you but misses. ';
+			}
+		}
+		if (ep < 1 || hp < 1) {
+			props.setMessage(
+				message + 'You have taken too much damage and pass out.'
+			);
+			props.history.push(`/game/powerplant/fight/defeat`);
+		} else {
+			props.setMessage(message + 'Ha Ha HA HA');
+			props.history.push(`/game/powerplant/fight/1`);
+		}
+	}
 	// Hammer Attacks
 	function handleHammerStrike() {
 		let random = Math.floor(props.stat.wil * Math.random());
@@ -68,7 +136,7 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/fight/3`);
 			}
 		} else {
-            let ehp = props.eStat.hp
+			let ehp = props.eStat.hp;
 			HammerStrike(
 				props.stat.str,
 				props.stat.end,
@@ -80,10 +148,11 @@ function CatWalk(props) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/fight/victory`);
 			} else {
-				message = 'You strike Dr. Crackle with your hammer. '
-				props.history.push(`/game/powerplant/fight/3`);
+				message = 'You strike Dr. Crackle with your hammer. ';
+                props.history.push(`/game/powerplant/fight/3`);
+                BossAction(message);
 			}
-		}
+        }
 	}
 	function handleHammerCore() {
 		let random = Math.floor(props.stat.wil * Math.random());
@@ -103,26 +172,59 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/fight/3`);
 			}
 		} else {
-            let ehp = props.eStat.hp
-            let eep = props.eStat.ep
+			let ehp = props.eStat.hp;
+			let eep = props.eStat.ep;
 			HammerCore(
 				props.stat.str,
 				props.stat.end,
-                props.stat.cun,
-                props.stat.wil,
+				props.stat.cun,
+				props.stat.wil,
 				ehp,
 				eep,
 				props.eStat,
 				props.setEStat,
 				props.char.core,
 				props.onFire,
-				props.setOnFire, message
+				props.setOnFire,
+				message
 			);
 			if (ehp < 1 || eep < 1) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/fight/victory`);
 			} else {
+                props.history.push(`/game/powerplant/fight/3`);
+                BossAction(message);
+			}
+		}
+	}
+	// handles bash
+	function handleBash() {
+		let random = Math.floor(props.stat.wil * Math.random());
+		let message = '';
+		if (random < 4) {
+			let ep = props.stat.ep;
+			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to hit him with your weapon. He strikes you with his shocker hand. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to hit him with your weapon. He strikes you with his shocker hand. He taunts you, "Ha! Missed!"'
+				);
 				props.history.push(`/game/powerplant/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			Bash(props.stat.str, props.stat.end, ehp, props.eStat, props.setEStat);
+			if (ehp < 1) {
+				props.setMessage('You strike Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/fight/victory`);
+			} else {
+				message = 'You strike Dr. Crackle with your weapon. ';
+                props.history.push(`/game/powerplant/fight/3`);
+                BossAction(message);
 			}
 		}
 	}
@@ -136,9 +238,19 @@ function CatWalk(props) {
 				</>
 			);
 		} else if (props.inven.weapon === 'Rifle') {
-			return null;
+			return (
+				<>
+					<div onclick={handleBash}>Bash him with the butt of your Rifle</div>
+					<p>You are too close to shoot him</p>
+				</>
+			);
 		} else if (props.inven.weapon === 'Bow') {
-			return null;
+			return (
+				<>
+					<div onclick={handleBash}>Bash him with your bow</div>
+					<p>You are too close to shoot him</p>
+				</>
+			);
 		}
 	}
 	return (
