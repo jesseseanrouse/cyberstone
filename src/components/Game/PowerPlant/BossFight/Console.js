@@ -8,9 +8,11 @@ import Bash from './UserFunctions/Bash';
 // import Boss attacks
 import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
-import Thunderbolt from '../../Battle/Functions/Thunderbolt';
+import ShockStrike from './BossFunctions/ShockStrike'
+import Charge from './BossFunctions/Charge'
+import Thunderbolt from './BossFunctions/Thunderbolt';
 
-function CatWalk(props) {
+function Console(props) {
 	const { url, path } = useRouteMatch();
 	// handles moving to landing
 	function handleMove() {
@@ -281,4 +283,4 @@ function CatWalk(props) {
 	);
 }
 
-export default CatWalk;
+export default Console;

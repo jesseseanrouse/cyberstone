@@ -6,6 +6,9 @@ import JumpHammer from './UserFunctions/JumpHammer';
 // import Boss attacks
 import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
+import ShockShot from './BossFunctions/ShockShot';
+import Charge from './BossFunctions/Charge';
+import Thunderbolt from './BossFunctions/Thunderbolt';
 
 function CatWalk(props) {
 	const { url, path } = useRouteMatch();
@@ -19,8 +22,8 @@ function CatWalk(props) {
 				ehp,
 				props.eStat.eStat,
 				props.eStat.setEStat
-            );
-            props.setJump(true)
+			);
+			props.setJump(true);
 			props.setLocation(3);
 			if (ehp < 1) {
 				props.setMessage(
@@ -90,8 +93,74 @@ function CatWalk(props) {
 			props.setMessage(
 				'You successfully reach the landing. The catwalk suddenly sparks up. Dr. Crackle calls out, "You just had to move!"'
 			);
-            props.setLocation(1);
-            props.setCrackleState(0)
+			props.setLocation(1);
+			props.setCrackleState(0);
+			props.history.push(`/game/powerplant/fight/1`);
+		}
+	}
+	// handles Boss
+	function BossAction(message) {
+		let hp = props.stat.hp;
+		let ep = props.stat.ep;
+		let random = Math.floor(6 * Math.random());
+		let check = false;
+		let dodge = Math.floor(props.stat.agi * Math.random());
+		if (random < 3) {
+			let attack = Math.floor(props.eStat.cun * random());
+			if (attack > dodge) {
+				ShockShot(
+					props.eStat.cun,
+					props.eStat.int,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message = message + 'Dr. Crackle strikes you with his shock hand. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle tries to strike you with his shock hand but misses. ';
+			}
+		} else if (random < 5) {
+			Charge(
+				props.eStat.cun,
+				props.eStat.int,
+				ep,
+				props.stat,
+				props.setStat,
+				props.crackleState,
+				props.setCrackleState,
+				props.location,
+				props.message,
+				check
+			);
+		} else {
+			let attack = Math.floor(props.eStat.int * random());
+			if (attack > dodge) {
+				Thunderbolt(
+					props.eStat.cun,
+					props.eStat.int,
+					hp,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you and strikes you with it. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you but misses. ';
+			}
+		}
+		if (ep < 1 || hp < 1) {
+			props.setMessage(
+				message + 'You have taken too much damage and pass out.'
+			);
+			props.history.push(`/game/powerplant/fight/defeat`);
+		} else {
+			props.setMessage(message + 'Ha Ha HA HA');
 			props.history.push(`/game/powerplant/fight/1`);
 		}
 	}

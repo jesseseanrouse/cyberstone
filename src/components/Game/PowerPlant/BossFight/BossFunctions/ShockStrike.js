@@ -1,4 +1,4 @@
-export default function StrikeShock(cun, int, ep, stat, setStat) {
+export default function ShockStrike(cun, int, ep, stat, setStat) {
 	let attack = 2 * cun + int + Math.floor(int * Math.random());
 	ep = ep - attack;
 	setStat({ ...stat, ep: ep });

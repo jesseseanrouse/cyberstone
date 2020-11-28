@@ -4,13 +4,16 @@ import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 // import Boss attacks
 import PopShot from './BossFunctions/PopShot';
+import ShockShot from './BossFunctions/ShockShot';
+import Charge from './BossFunctions/Charge';
+import Thunderbolt from './BossFunctions/Thunderbolt';
 
 function Landing(props) {
 	const { url, path } = useRouteMatch();
 	// handles moving
 	function handleMove(event) {
-        let target = ''
-        let value = 0
+		let target = '';
+		let value = 0;
 		if (event.target.value === 'console') {
 			target = 'Dr. Crackle';
 			value = 3;
@@ -57,7 +60,73 @@ function Landing(props) {
 			);
 			props.setLocation(value);
 			props.history.push(`/game/powerplant/fight/${value}`);
-		} 
+		}
+	}
+	// handles Boss
+	function BossAction(message) {
+		let hp = props.stat.hp;
+		let ep = props.stat.ep;
+		let random = Math.floor(6 * Math.random());
+		let check = false;
+		let dodge = Math.floor(props.stat.agi * Math.random());
+		if (random < 3) {
+			let attack = Math.floor(props.eStat.cun * random());
+			if (attack > dodge) {
+				ShockShot(
+					props.eStat.cun,
+					props.eStat.int,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message = message + 'Dr. Crackle strikes you with his shock hand. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle tries to strike you with his shock hand but misses. ';
+			}
+		} else if (random < 5) {
+			Charge(
+				props.eStat.cun,
+				props.eStat.int,
+				ep,
+				props.stat,
+				props.setStat,
+				props.crackleState,
+				props.setCrackleState,
+				props.location,
+				props.message,
+				check
+			);
+		} else {
+			let attack = Math.floor(props.eStat.int * random());
+			if (attack > dodge) {
+				Thunderbolt(
+					props.eStat.cun,
+					props.eStat.int,
+					hp,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you and strikes you with it. ';
+			} else {
+				message =
+					message +
+					'Dr. Crackle unleashes a massive thunderbolt at you but misses. ';
+			}
+		}
+		if (ep < 1 || hp < 1) {
+			props.setMessage(
+				message + 'You have taken too much damage and pass out.'
+			);
+			props.history.push(`/game/powerplant/fight/defeat`);
+		} else {
+			props.setMessage(message + 'Ha Ha HA HA');
+			props.history.push(`/game/powerplant/fight/1`);
+		}
 	}
 	// Sets the attack options for user
 	function WeaponType() {
