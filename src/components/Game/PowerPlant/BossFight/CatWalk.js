@@ -19,7 +19,8 @@ function CatWalk(props) {
 				ehp,
 				props.eStat.eStat,
 				props.eStat.setEStat
-			);
+            );
+            props.setJump(true)
 			props.setLocation(3);
 			if (ehp < 1) {
 				props.setMessage(
@@ -50,7 +51,7 @@ function CatWalk(props) {
 	}
 	// handles moving to landing
 	function handleMove() {
-		if (crackleState === 0) {
+		if (props.crackleState === 0) {
 			let random = Math.floor(props.stat.agi * Math.random());
 			if (random < 3) {
 				let ep = props.stat.ep;
@@ -73,20 +74,20 @@ function CatWalk(props) {
 					props.history.push(`/game/powerplant/fight/3`);
 				}
 			} else {
-				setMessage(
+				props.setMessage(
 					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the landing. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(1);
 				props.history.push(`/game/powerplant/fight/1`);
 			}
-		} else if (crackleState === 1) {
-			setMessage(
+		} else if (props.crackleState === 1) {
+			props.setMessage(
 				"You successfully reach the landing. Dr. Crackle doesn't seem to care that you moved."
 			);
 			props.setLocation(1);
 			props.history.push(`/game/powerplant/fight/1`);
-		} else if (crackleState === 2) {
-			setMessage(
+		} else if (props.crackleState === 2) {
+			props.setMessage(
 				'You successfully reach the landing. The catwalk suddenly sparks up. Dr. Crackle calls out, "You just had to move!"'
 			);
             props.setLocation(1);

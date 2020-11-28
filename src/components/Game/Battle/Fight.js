@@ -21,15 +21,15 @@ function Fight(props) {
 	React.useEffect(() => {
 		props.setMessage('');
 	}, []);
-	function EAttack() {
+	function EAttack(hp, ep) {
 		let random = Math.floor(6 * Math.random());
 		if (props.eAttSet === 0) {
 			if (random < 3) {
 				ShockAtt(
 					props.eStat.cun,
 					props.eStat.int,
-					props.stat.hp,
-					props.stat.ep,
+					hp,
+					ep,
 					props.stat,
 					props.setStat
 				);
@@ -37,7 +37,7 @@ function Fight(props) {
 				ChargeAtt(
 					props.eStat.cun,
 					props.eStat.int,
-					props.stat.ep,
+					ep,
 					props.eStat.ep,
 					props.eStat.maxEp,
 					props.stat,
@@ -49,7 +49,7 @@ function Fight(props) {
 				Thunderbolt(
 					props.eStat.cun,
 					props.eStat.int,
-					props.stat.hp,
+					hp,
 					props.stat.ep,
 					props.stat,
 					props.setStat
@@ -60,7 +60,7 @@ function Fight(props) {
 				Bite(
 					props.eStat.str,
 					props.eStat.wil,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
@@ -68,7 +68,7 @@ function Fight(props) {
 				FlameClaw(
 					props.eStat.str,
 					props.eStat.wil,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
@@ -76,7 +76,7 @@ function Fight(props) {
 				FireBreath(
 					props.eStat.int,
 					props.eStat.wil,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
@@ -86,7 +86,7 @@ function Fight(props) {
 				ShieldBash(
 					props.eStat.str,
 					props.eStat.end,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
@@ -94,7 +94,7 @@ function Fight(props) {
 				HammerStrike(
 					props.eStat.str,
 					props.eStat.end,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
@@ -102,19 +102,20 @@ function Fight(props) {
 				ShieldSlam(
 					props.eStat.str,
 					props.eStat.end,
-					props.stat.hp,
+					hp,
 					props.stat,
 					props.setStat
 				);
 			}
 		}
+		return (hp, ep)
 	}
-	function WStrike() {
+	function WStrike(hp, ep) {
 		if (props.inven.weapon === 'Hammer') {
 			WeaponStrike(
 				props.stat.str,
 				props.stat.end,
-				props.eStat.hp,
+				hp,
 				props.eStat,
 				props.setEStat
 			);
@@ -122,7 +123,7 @@ function Fight(props) {
 			WeaponStrike(
 				props.stat.int,
 				props.stat.cun,
-				props.eStat.hp,
+				hp,
 				props.eStat,
 				props.setEStat
 			);
@@ -130,17 +131,20 @@ function Fight(props) {
 			WeaponStrike(
 				props.stat.str,
 				props.stat.wil,
-				props.eStat.hp,
+				hp,
 				props.eStat,
 				props.setEStat
 			);
 		}
+		return (hp, ep)
 	}
 	// handles a round of combat
 	function handleCombat() {
 		let message = '';
-		WStrike();
-		if (props.eStat.hp < 1 || props.eStat.ep < 1) {
+		let hp = props.eStat.hp;
+		let ep = props.eStat.ep;
+		WStrike(hp, ep);
+		if (hp < 1 || ep < 1) {
 			message = 'You have defeated the ' + props.eName;
 			let random = Math.floor(props.stat.int * Math.random());
 			let random2 = Math.floor((props.stat.int / 2) * Math.random());
@@ -154,8 +158,10 @@ function Fight(props) {
             props.history.push(`/game/battle/victory`);
 		} else {
 			message = 'You strike the ' + props.eName + ' with your weapon.';
-			EAttack();
-			if (props.stat.hp < 1 || props.stat.ep < 1) {
+			hp = props.stat.hp
+			ep = props.stat.ep
+			EAttack(hp, ep);
+			if (hp < 1 || ep < 1) {
 				message =
 					'The ' + props.eName + ' has defeated you in combat. You pass out.';
 				props.setMessage(message);

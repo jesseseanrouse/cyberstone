@@ -166,7 +166,7 @@ function CreateCharacter(props) {
 					<p>type: Range</p>
 					<p>primary stat: Strength</p>
 					<p>secondary stat: Willpower</p>
-					<p>Agility</p>
+					<p>accuracy stat: Agility</p>
 				</div>
 				<h3>Background</h3>
 				<p>Affects some in game dialog</p>

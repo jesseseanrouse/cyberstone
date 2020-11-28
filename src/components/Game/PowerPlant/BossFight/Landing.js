@@ -18,7 +18,7 @@ function Landing(props) {
 			target = 'Catwalk';
 			value = 2;
 		}
-		if (crackleState === 0) {
+		if (props.crackleState === 0) {
 			let random = Math.floor(props.stat.agi * Math.random());
 			if (random < 3) {
 				let ep = props.stat.ep;
@@ -41,15 +41,19 @@ function Landing(props) {
 					props.history.push(`/game/powerplant/fight/${value}`);
 				}
 			} else {
-				setMessage(
-					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the ' + {target} + '. Dr. Crackle commits, "Just stay still will you!"'
+				props.setMessage(
+					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the ' +
+						{ target } +
+						'. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(value);
 				props.history.push(`/game/powerplant/fight/${value}`);
 			}
-		} else if (crackleState === 1) {
-			setMessage(
-				"You successfully reach the " + {target} + ". Dr. Crackle doesn't seem to care that you moved."
+		} else if (props.crackleState === 1) {
+			props.setMessage(
+				'You successfully reach the ' +
+					{ target } +
+					". Dr. Crackle doesn't seem to care that you moved."
 			);
 			props.setLocation(value);
 			props.history.push(`/game/powerplant/fight/${value}`);

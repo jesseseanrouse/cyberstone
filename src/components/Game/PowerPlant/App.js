@@ -7,6 +7,7 @@ import Hallway from './Hallway';
 import AirVent from './AirVent';
 import Failed from './Failed';
 import StorageRoom from './StorageRoom';
+import BossFight from './BossFight/App'
 
 function App(props) {
 	const { url, path } = useRouteMatch();
