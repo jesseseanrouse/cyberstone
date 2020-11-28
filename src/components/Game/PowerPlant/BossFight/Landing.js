@@ -99,7 +99,7 @@ function Landing(props) {
 		let check = false;
 		let dodge = Math.floor(props.stat.agi * Math.random());
 		if (random < 3) {
-			let attack = Math.floor(props.eStat.cun * random());
+			let attack = Math.floor(props.eStat.cun * Math.random());
 			if (attack > dodge) {
 				ShockShot(
 					props.eStat.cun,
@@ -128,7 +128,7 @@ function Landing(props) {
 				check
 			);
 		} else {
-			let attack = Math.floor(props.eStat.int * random());
+			let attack = Math.floor(props.eStat.int * Math.random());
 			if (attack > dodge) {
 				Thunderbolt(
 					props.eStat.cun,
@@ -173,7 +173,7 @@ function Landing(props) {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -190,7 +190,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
 				message = 'You shoot Dr. Crackle with your rifle. ';
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 				BossAction(message);
 			}
 		}
@@ -211,7 +211,7 @@ function Landing(props) {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -228,7 +228,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
 				message = 'You shoot Dr. Crackle with your bow. ';
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 				BossAction(message);
 			}
 		}
@@ -249,7 +249,7 @@ function Landing(props) {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -272,7 +272,7 @@ function Landing(props) {
 				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 				BossAction(message);
 			}
 		}
@@ -293,7 +293,7 @@ function Landing(props) {
 				props.setMessage(
 					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
 				);
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
 			let ehp = props.eStat.hp;
@@ -316,7 +316,7 @@ function Landing(props) {
 				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/boss/fight/victory`);
 			} else {
-				props.history.push(`/game/powerplant/boss/fight/3`);
+				props.history.push(`/game/powerplant/boss/fight/1`);
 				BossAction(message);
 			}
 		}

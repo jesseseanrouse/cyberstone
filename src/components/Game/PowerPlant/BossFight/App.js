@@ -56,6 +56,7 @@ function App(props) {
 								message={message}
 								setMessage={setMessage}
 								onFire={onFire}
+								setOnFire={setOnFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
 								location={location}
@@ -84,6 +85,7 @@ function App(props) {
 								message={message}
 								setMessage={setMessage}
 								onFire={onFire}
+								setOnFire={setOnFire}
 								jump={jump}
 								setJump={setJump}
 								crackleState={crackleState}
@@ -114,6 +116,7 @@ function App(props) {
 								message={message}
 								setMessage={setMessage}
 								onFire={onFire}
+								setOnFire={setOnFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
 								location={location}
@@ -142,6 +145,7 @@ function App(props) {
 								message={message}
 								setMessage={setMessage}
 								onFire={onFire}
+								setOnFire={setOnFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
 								location={location}
@@ -170,6 +174,7 @@ function App(props) {
 								message={message}
 								setMessage={setMessage}
 								onFire={onFire}
+								setOnFire={setOnFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
 								location={location}

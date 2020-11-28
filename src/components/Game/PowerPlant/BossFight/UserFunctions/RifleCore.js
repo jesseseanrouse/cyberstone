@@ -18,7 +18,7 @@ export default function RifleCore(
 		setEStat({ ...eStat, hp: ehp });
 		message = 'You shoot Dr. Crackle with your rifle. ';
 	} else if (core === 2) {
-		let attack = int + Math.floor(end * Math.random());
+		let attack = int + Math.floor(cun * Math.random());
 		ehp = ehp - attack;
 		let eAttack = 2 * cun + Math.floor(int * Math.random());
 		eep = eep - eAttack;
