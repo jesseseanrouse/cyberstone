@@ -98,12 +98,12 @@ function App(props) {
 					)}
 				/>
 				<Route
-					exact
 					path={`${path}/boss`}
 					render={(routerProps) => (
 						<>
 							<BossFight
 								{...routerProps}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
 								eName={props.eName}

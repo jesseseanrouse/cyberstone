@@ -6,21 +6,12 @@ import { useRouteMatch } from 'react-router-dom';
 import PopShot from './BossFunctions/PopShot';
 import ShockShot from './BossFunctions/ShockShot';
 import Charge from './BossFunctions/Charge';
-import Thunderbolt from './BossFunctions/Thunderbolt';
+import Thunderbolt from './BossFunctions/ThunderBolt2';
 
 function Landing(props) {
 	const { url, path } = useRouteMatch();
 	// handles moving
-	function handleMove(event) {
-		let target = '';
-		let value = 0;
-		if (event.target.value === 'console') {
-			target = 'Dr. Crackle';
-			value = 3;
-		} else {
-			target = 'Catwalk';
-			value = 2;
-		}
+	function handleMove() {
 		if (props.crackleState === 0) {
 			let random = Math.floor(props.stat.agi * Math.random());
 			if (random < 3) {
@@ -41,27 +32,61 @@ function Landing(props) {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.history.push(`/game/powerplant/boss/fight/${value}`);
+					props.history.push(`/game/powerplant/boss/fight/3`);
 				}
 			} else {
 				props.setMessage(
-					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the ' +
-						{ target } +
-						'. Dr. Crackle commits, "Just stay still will you!"'
+					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the center of the room. Dr. Crackle commits, "Just stay still will you!"'
 				);
-				props.setLocation(value);
-				props.history.push(`/game/powerplant/boss/fight/${value}`);
+				props.setLocation(3);
+				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else if (props.crackleState === 1) {
 			props.setMessage(
-				'You successfully reach the ' +
-					{ target } +
-					". Dr. Crackle doesn't seem to care that you moved."
+				"You successfully reach the center of the room. Dr. Crackle doesn't seem to care that you moved."
 			);
-			props.setLocation(value);
-			props.history.push(`/game/powerplant/boss/fight/${value}`);
+			props.setLocation(3);
+			props.history.push(`/game/powerplant/boss/fight/3`);
 		}
-	}
+    }
+    function handleMove2() {
+			if (props.crackleState === 0) {
+				let random = Math.floor(props.stat.agi * Math.random());
+				if (random < 3) {
+					let ep = props.stat.ep;
+					PopShot(
+						props.eStat.cun,
+						props.eStat.int,
+						ep,
+						props.stat,
+						props.setStat
+					);
+					if (ep < 1) {
+						props.setMessage(
+							'Dr. Crackle manages to shoot you with his pistol shorting you out.'
+						);
+						props.history.push(`/game/powerplant/boss/fight/defeat`);
+					} else {
+						props.setMessage(
+							'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
+						);
+						props.history.push(`/game/powerplant/boss/fight/2`);
+					}
+				} else {
+					props.setMessage(
+						'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the catwalk. Dr. Crackle commits, "Just stay still will you!"'
+					);
+					props.setLocation(2);
+					props.history.push(`/game/powerplant/boss/fight/2`);
+				}
+			} else if (props.crackleState === 1) {
+				props.setMessage(
+					"You successfully reach the catwalk. Dr. Crackle doesn't seem to care that you moved."
+				);
+				props.setLocation(2);
+				props.history.push(`/game/powerplant/boss/fight/2`);
+			}
+		}
 	// handles Boss
 	function BossAction(message) {
 		let hp = props.stat.hp;
@@ -140,7 +165,7 @@ function Landing(props) {
 	}
 	return (
 		<>
-			You are on the Catwalk
+			You are on the Landing
 			{props.message}
 			<p>{props.eName} Status</p>
 			<p>
@@ -159,12 +184,12 @@ function Landing(props) {
 				</p>
 			</div>
 			<p>Actions</p>
-			{WeaponType}
+			{WeaponType()}
 			<p>Move to</p>
-			<div onClick={handleMove} value='Console'>
+			<div onClick={handleMove} >
 				Dr. Crackle
 			</div>
-			<div onClick={handleMove} value='Catwalk'>
+			<div onClick={handleMove2} >
 				Catwalk
 			</div>
 		</>

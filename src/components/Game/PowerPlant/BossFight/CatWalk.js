@@ -8,7 +8,7 @@ import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
 import ShockShot from './BossFunctions/ShockShot';
 import Charge from './BossFunctions/Charge';
-import Thunderbolt from './BossFunctions/Thunderbolt';
+import Thunderbolt from './BossFunctions/ThunderBolt2';
 
 function CatWalk(props) {
 	const { url, path } = useRouteMatch();
@@ -20,8 +20,8 @@ function CatWalk(props) {
 				props.stat.str,
 				props.stat.end,
 				ehp,
-				props.eStat.eStat,
-				props.eStat.setEStat
+				props.eStat,
+				props.setEStat
 			);
 			props.setJump(true);
 			props.setLocation(3);
@@ -74,7 +74,7 @@ function CatWalk(props) {
 					props.setMessage(
 						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.history.push(`/game/powerplant/boss/fight/3`);
+					props.history.push(`/game/powerplant/boss/fight/1`);
 				}
 			} else {
 				props.setMessage(
@@ -167,7 +167,7 @@ function CatWalk(props) {
 	// Sets the attack options for user
 	function WeaponType() {
 		if (props.inven.weapon === 'Hammer') {
-			return <div onclick={handleJump}>Jump down and try to smash him</div>;
+			return <div onClick={handleJump}>Jump down and try to smash him</div>;
 		} else if (props.inven.weapon === 'Rifle') {
 			return null;
 		} else if (props.inven.weapon === 'Bow') {
@@ -195,7 +195,7 @@ function CatWalk(props) {
 				</p>
 			</div>
 			<p>Actions</p>
-			{WeaponType}
+			{WeaponType()}
 			<p>Move to</p>
 			<div onClick={handleMove}>Landing</div>
 		</>

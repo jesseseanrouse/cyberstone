@@ -170,11 +170,11 @@ function AirVent(props) {
 		}
 	}
 	// access to generator
-	function Generator() {
+	function GenDisplay() {
 		if (props.powerPro.boss < 2) {
-			<Link to='/game/powerplant/boss/intro'>Generator Room</Link>;
+			return <Link to='/game/powerplant/boss/intro'>Generator Room</Link>;
 		} else {
-			<Link to='/game/powerplant/generator'>Generator Room</Link>;
+			return <Link to='/game/powerplant/generator'>Generator Room</Link>;
 		}
 	}
 	return (
@@ -188,7 +188,7 @@ function AirVent(props) {
 			{props.powerPro.trap4 ? (
 				<Link to='/game/powerplant/storageroom'>Storage Room</Link>
 			) : null}
-			{props.powerPro.trap5 ? {Generator} : null}
+			{props.powerPro.trap5 ? GenDisplay() : null}
 		</>
 	);
 }

@@ -70,8 +70,8 @@ function Intro(props) {
 	}
 	return (
 		<>
-			{DisplayDesc}
-			{DisplayTaunt}
+			{DisplayDesc()}
+			{DisplayTaunt()}
 			<p>Action</p>
 			<Link to='/game/powerplant/boss/fight/1'>Fight</Link>
 		</>

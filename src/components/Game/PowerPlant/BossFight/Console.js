@@ -10,7 +10,7 @@ import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
 import ShockStrike from './BossFunctions/ShockStrike'
 import Charge from './BossFunctions/Charge'
-import Thunderbolt from './BossFunctions/Thunderbolt';
+import Thunderbolt from './BossFunctions/ThunderBolt2';
 
 function Console(props) {
 	const { url, path } = useRouteMatch();
@@ -61,7 +61,7 @@ function Console(props) {
 		let check = false;
 		let dodge = Math.floor(props.stat.agi * Math.random());
 		if (random < 3) {
-			let attack = Math.floor(props.eStat.cun * random());
+			let attack = Math.floor(props.eStat.cun * Math.random());
 			if (attack > dodge) {
 				ShockStrike(
 					props.eStat.cun,
@@ -90,7 +90,7 @@ function Console(props) {
 				check
 			);
 		} else {
-			let attack = Math.floor(props.eStat.int * random());
+			let attack = Math.floor(props.eStat.int * Math.random());
 			if (attack > dodge) {
 				Thunderbolt(
 					props.eStat.cun,
@@ -116,7 +116,7 @@ function Console(props) {
 			props.history.push(`/game/powerplant/boss/fight/defeat`);
 		} else {
 			props.setMessage(message + 'Ha Ha HA HA');
-			props.history.push(`/game/powerplant/boss/fight/1`);
+			props.history.push(`/game/powerplant/boss/fight/3`);
 		}
 	}
 	// Hammer Attacks
@@ -235,21 +235,21 @@ function Console(props) {
 		if (props.inven.weapon === 'Hammer') {
 			return (
 				<>
-					<div onclick={handleHammerStrike}>Hammer Strike</div>
-					<div onclick={handleHammerCore}>Hammer Core Strike</div>
+					<div onClick={handleHammerStrike}>Hammer Strike</div>
+					<div onClick={handleHammerCore}>Hammer Core Strike</div>
 				</>
 			);
 		} else if (props.inven.weapon === 'Rifle') {
 			return (
 				<>
-					<div onclick={handleBash}>Bash him with the butt of your Rifle</div>
+					<div onClick={handleBash}>Bash him with the butt of your Rifle</div>
 					<p>You are too close to shoot him</p>
 				</>
 			);
 		} else if (props.inven.weapon === 'Bow') {
 			return (
 				<>
-					<div onclick={handleBash}>Bash him with your bow</div>
+					<div onClick={handleBash}>Bash him with your bow</div>
 					<p>You are too close to shoot him</p>
 				</>
 			);
@@ -257,7 +257,7 @@ function Console(props) {
 	}
 	return (
 		<>
-			You are on the Catwalk
+			You are in the center of the room with Dr. Crackle
 			{props.message}
 			<p>{props.eName} Status</p>
 			<p>
@@ -276,7 +276,7 @@ function Console(props) {
 				</p>
 			</div>
 			<p>Actions</p>
-			{WeaponType}
+			{WeaponType()}
 			<p>Move to</p>
 			<div onClick={handleMove}>Landing</div>
 		</>

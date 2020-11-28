@@ -1,4 +1,4 @@
-export default function Thunderbolt(cun, int, hp, ep, stat, setStat) {
+export default function Thunderbolt2(cun, int, hp, ep, stat, setStat) {
 	let attack = cun + Math.floor(int* Math.random());
 	let eAttack = 2 * cun + 2 * int + Math.floor(int * Math.random());
 	hp = hp - attack;

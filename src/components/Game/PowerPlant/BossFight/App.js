@@ -27,6 +27,7 @@ function App(props) {
 						<>
 							<Intro
 								{...routerProps}
+								setEName={props.setEName}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
 								name={props.name}
@@ -42,14 +43,18 @@ function App(props) {
 						<>
 							<Landing
 								{...routerProps}
+								char={props.char}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
+								inven={props.inven}
+								setInven={props.setInven}
 								eStat={props.eStat}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
 								name={props.name}
 								message={message}
-								message={setMessage}
+								setMessage={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
@@ -66,14 +71,18 @@ function App(props) {
 						<>
 							<Catwalk
 								{...routerProps}
+								char={props.char}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
+								inven={props.inven}
+								setInven={props.setInven}
 								eStat={props.eStat}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
 								name={props.name}
 								message={message}
-								message={setMessage}
+								setMessage={setMessage}
 								onFire={onFire}
 								jump={jump}
 								setJump={setJump}
@@ -92,14 +101,18 @@ function App(props) {
 						<>
 							<Console
 								{...routerProps}
+								char={props.char}
+								name={props.name}
 								stat={props.stat}
 								setStat={props.setStat}
+								inven={props.inven}
+								setInven={props.setInven}
 								eStat={props.eStat}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
 								name={props.name}
 								message={message}
-								message={setMessage}
+								setMessage={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
@@ -116,14 +129,18 @@ function App(props) {
 						<>
 							<Victory
 								{...routerProps}
+								char={props.char}
 								stat={props.stat}
 								setStat={props.setStat}
+								inven={props.inven}
+								setInven={props.setInven}
 								eStat={props.eStat}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 								name={props.name}
 								message={message}
-								message={setMessage}
+								setMessage={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
@@ -140,14 +157,18 @@ function App(props) {
 						<>
 							<Defeat
 								{...routerProps}
+								char={props.char}
 								stat={props.stat}
 								setStat={props.setStat}
+								inven={props.inven}
+								setInven={props.setInven}
 								eStat={props.eStat}
 								setEStat={props.setEStat}
 								powerPro={props.powerPro}
+								setPowerPro={props.setPowerPro}
 								name={props.name}
 								message={message}
-								message={setMessage}
+								setMessage={setMessage}
 								onFire={onFire}
 								crackleState={crackleState}
 								setCrackleState={setCrackleState}
