@@ -2,6 +2,10 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
+import BowShot from './UserFunctions/BowShot';
+import BowCore from './UserFunctions/BowCore';
+import RifleShot from './UserFunctions/RifleShot';
+import RifleCore from './UserFunctions/RifleCore';
 // import Boss attacks
 import PopShot from './BossFunctions/PopShot';
 import ShockShot from './BossFunctions/ShockShot';
@@ -48,45 +52,45 @@ function Landing(props) {
 			props.setLocation(3);
 			props.history.push(`/game/powerplant/boss/fight/3`);
 		}
-    }
-    function handleMove2() {
-			if (props.crackleState === 0) {
-				let random = Math.floor(props.stat.agi * Math.random());
-				if (random < 3) {
-					let ep = props.stat.ep;
-					PopShot(
-						props.eStat.cun,
-						props.eStat.int,
-						ep,
-						props.stat,
-						props.setStat
+	}
+	function handleMove2() {
+		if (props.crackleState === 0) {
+			let random = Math.floor(props.stat.agi * Math.random());
+			if (random < 3) {
+				let ep = props.stat.ep;
+				PopShot(
+					props.eStat.cun,
+					props.eStat.int,
+					ep,
+					props.stat,
+					props.setStat
+				);
+				if (ep < 1) {
+					props.setMessage(
+						'Dr. Crackle manages to shoot you with his pistol shorting you out.'
 					);
-					if (ep < 1) {
-						props.setMessage(
-							'Dr. Crackle manages to shoot you with his pistol shorting you out.'
-						);
-						props.history.push(`/game/powerplant/boss/fight/defeat`);
-					} else {
-						props.setMessage(
-							'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
-						);
-						props.history.push(`/game/powerplant/boss/fight/2`);
-					}
+					props.history.push(`/game/powerplant/boss/fight/defeat`);
 				} else {
 					props.setMessage(
-						'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the catwalk. Dr. Crackle commits, "Just stay still will you!"'
+						'Dr. Crackle manages to shoot you with his pistol. He calls out, "Got you!"'
 					);
-					props.setLocation(2);
 					props.history.push(`/game/powerplant/boss/fight/2`);
 				}
-			} else if (props.crackleState === 1) {
+			} else {
 				props.setMessage(
-					"You successfully reach the catwalk. Dr. Crackle doesn't seem to care that you moved."
+					'Dr. Crackle takes a shot at you with his pistol but misses. You successfully reach the catwalk. Dr. Crackle commits, "Just stay still will you!"'
 				);
 				props.setLocation(2);
 				props.history.push(`/game/powerplant/boss/fight/2`);
 			}
+		} else if (props.crackleState === 1) {
+			props.setMessage(
+				"You successfully reach the catwalk. Dr. Crackle doesn't seem to care that you moved."
+			);
+			props.setLocation(2);
+			props.history.push(`/game/powerplant/boss/fight/2`);
 		}
+	}
 	// handles Boss
 	function BossAction(message) {
 		let hp = props.stat.hp;
@@ -153,14 +157,188 @@ function Landing(props) {
 			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
+	// handles Rifle Shot
+	function handleRifleShot() {
+		let random = Math.floor(props.stat.per * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			RifleShot(
+				props.stat.int,
+				props.stat.cun,
+				ehp,
+				props.eStat,
+				props.setEStat,
+				0
+			);
+			if (ehp < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				message = 'You shoot Dr. Crackle with your rifle. ';
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// handles Bow Shot
+	function handleBowShot() {
+		let random = Math.floor(props.stat.agi * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			BowShot(
+				props.stat.str,
+				props.stat.wil,
+				ehp,
+				props.eStat,
+				props.setEStat,
+				0
+			);
+			if (ehp < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				message = 'You shoot Dr. Crackle with your bow. ';
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// Handles Bow Core
+	function handleBowCore() {
+		let random = Math.floor(props.stat.agi * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			let eep = props.eStat.ep;
+			BowCore(
+				props.stat.str,
+				props.stat.end,
+				props.stat.cun,
+				props.stat.wil,
+				ehp,
+				eep,
+				props.eStat,
+				props.setEStat,
+				props.char.core,
+				props.onFire,
+				props.setOnFire,
+				message
+			);
+			if (ehp < 1 || eep < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// Handles Rifle Core
+	function handleRifleCore() {
+		let random = Math.floor(props.stat.per * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			let eep = props.eStat.ep;
+			RifleCore(
+				props.stat.int,
+				props.stat.str,
+				props.stat.cun,
+				props.stat.wil,
+				ehp,
+				eep,
+				props.eStat,
+				props.setEStat,
+				props.char.core,
+				props.onFire,
+				props.setOnFire,
+				message
+			);
+			if (ehp < 1 || eep < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
 	// Sets the attack options for user
 	function WeaponType() {
 		if (props.inven.weapon === 'Hammer') {
 			return <p>You are not in melee range to use your hammer</p>;
 		} else if (props.inven.weapon === 'Rifle') {
-			return null;
+			return (
+				<>
+					<div onClick={handleRifleShot}>Rifle Shot</div>
+					<div onClick={handleRifleCore}>Rifle Core Shot</div>
+				</>
+			);
 		} else if (props.inven.weapon === 'Bow') {
-			return null;
+			return (
+				<>
+					<div onClick={handleBowShot}>Bow Shot</div>
+					<div onClick={handleBowCore}>Bow Core Shot</div>
+				</>
+			);
 		}
 	}
 	return (
@@ -186,12 +364,8 @@ function Landing(props) {
 			<p>Actions</p>
 			{WeaponType()}
 			<p>Move to</p>
-			<div onClick={handleMove} >
-				Dr. Crackle
-			</div>
-			<div onClick={handleMove2} >
-				Catwalk
-			</div>
+			<div onClick={handleMove}>Dr. Crackle</div>
+			<div onClick={handleMove2}>Catwalk</div>
 		</>
 	);
 }

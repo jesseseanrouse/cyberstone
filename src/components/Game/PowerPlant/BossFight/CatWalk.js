@@ -3,6 +3,10 @@ import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 import JumpHammer from './UserFunctions/JumpHammer';
+import BowShot from './UserFunctions/BowShot';
+import BowCore from './UserFunctions/BowCore';
+import RifleShot from './UserFunctions/RifleShot';
+import RifleCore from './UserFunctions/RifleCore';
 // import Boss attacks
 import Counter from './BossFunctions/Counter';
 import PopShot from './BossFunctions/PopShot';
@@ -164,14 +168,188 @@ function CatWalk(props) {
 			props.history.push(`/game/powerplant/boss/fight/1`);
 		}
 	}
+	// Handles Bow Core
+	function handleBowCore() {
+		let random = Math.floor(props.stat.agi * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			let eep = props.eStat.ep;
+			BowCore(
+				props.stat.str,
+				props.stat.end,
+				props.stat.cun,
+				props.stat.wil,
+				ehp,
+				eep,
+				props.eStat,
+				props.setEStat,
+				props.char.core,
+				props.onFire,
+				props.setOnFire,
+				message
+			);
+			if (ehp < 1 || eep < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// Handles Rifle Core
+	function handleRifleCore() {
+		let random = Math.floor(props.stat.per * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			let eep = props.eStat.ep;
+			RifleCore(
+				props.stat.int,
+				props.stat.str,
+				props.stat.cun,
+				props.stat.wil,
+				ehp,
+				eep,
+				props.eStat,
+				props.setEStat,
+				props.char.core,
+				props.onFire,
+				props.setOnFire,
+				message
+			);
+			if (ehp < 1 || eep < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// handles Rifle Shot
+	function handleRifleShot() {
+		let random = Math.floor(props.stat.per * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your rifle. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			RifleShot(
+				props.stat.int,
+				props.stat.cun,
+				ehp,
+				props.eStat,
+				props.setEStat,
+				5
+			);
+			if (ehp < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				message = 'You shoot Dr. Crackle with your rifle. ';
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
+	// handles Bow Shot
+	function handleBowShot() {
+		let random = Math.floor(props.stat.agi * Math.random());
+		let message = '';
+		if (random < 2) {
+			let ep = props.stat.ep;
+			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
+			if (ep < 1) {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Good Night!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/defeat`);
+			} else {
+				props.setMessage(
+					'Dr. Crackle dodges your attempt to shoot him with your bow. He shoots you with his pistol. He taunts you, "Ha! Missed!"'
+				);
+				props.history.push(`/game/powerplant/boss/fight/3`);
+			}
+		} else {
+			let ehp = props.eStat.hp;
+			BowShot(
+				props.stat.str,
+				props.stat.wil,
+				ehp,
+				props.eStat,
+				props.setEStat,
+				5
+			);
+			if (ehp < 1) {
+				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
+				props.history.push(`/game/powerplant/boss/fight/victory`);
+			} else {
+				message = 'You shoot Dr. Crackle with your bow. ';
+				props.history.push(`/game/powerplant/boss/fight/3`);
+				BossAction(message);
+			}
+		}
+	}
 	// Sets the attack options for user
 	function WeaponType() {
 		if (props.inven.weapon === 'Hammer') {
 			return <div onClick={handleJump}>Jump down and try to smash him</div>;
 		} else if (props.inven.weapon === 'Rifle') {
-			return null;
+			return (
+				<>
+					<div onClick={handleRifleShot}>Rifle Shot</div>
+					<div onClick={handleRifleCore}>Rifle Core Shot</div>
+				</>
+			);
 		} else if (props.inven.weapon === 'Bow') {
-			return null;
+			return (
+				<>
+					<div onClick={handleBowShot}>Bow Shot</div>
+					<div onClick={handleBowCore}>Bow Core Shot</div>
+				</>
+			);
 		}
 	}
 	return (
