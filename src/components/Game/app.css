@@ -13,10 +13,16 @@
 	flex-direction: column;
 	color: orangered;
 	text-decoration: none;
-	text-decoration: underline;
+    text-decoration: underline;
+    margin: 0px;
+    row-gap: 10px;
 }
 a {
 	color: orangered;
 	text-decoration: none;
-	text-decoration: underline;
+    text-decoration: underline;
+    font-size: 25px;
+}
+div {
+    font-size: 25px;
 }

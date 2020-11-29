@@ -24,7 +24,7 @@ function Nav() {
 		<div className='navBar'>
 			<header className='mobileNavBar'>
 				<Link className='appTitle' to='/' onClick={handleClick}>
-					<div>CyberStone</div>
+					<div className='homeTitle'>CyberStone</div>
 				</Link>
 				<div className='navIcon' onClick={handleClickBars}>
 					<FontAwesomeIcon className='appTitle' icon={faBars} />

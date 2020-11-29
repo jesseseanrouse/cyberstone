@@ -150,29 +150,29 @@ function AirVent(props) {
 	// First Trap
 	function Trap1() {
 		return (
-			<>
+			<div className='gameList'>
 				<div onClick={handleTrap1A}>Try to break it</div>
 				<div onClick={handleTrap1B}>Try to jam it up</div>
 				<div onClick={handleTrap1C}>Try to crawl through it</div>
-			</>
+			</div>
 		);
 	}
 	// Second Trap
 	function Trap2() {
 		return (
-			<>
+			<div className='gameList'>
 				<div onClick={handleTrap2A}>Try to climb up</div>
 				<div onClick={handleTrap2B}>Try to light it on fire</div>
 				<div onClick={handleTrap2C}>Try to climb using scrap metal</div>
-			</>
+			</div>
 		);
 	}
 	// actions for traps
 	function Display2() {
 		if (props.powerPro.trap4 === false) {
-			return <>{Trap1()}</>;
+			return <div>{Trap1()}</div>;
 		} else if (props.powerPro.trap5 === false) {
-			return <>{Trap2()}</>;
+			return <div>{Trap2()}</div>;
 		}
 	}
 	// access to generator

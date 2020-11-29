@@ -8,6 +8,7 @@
     color: white;
     background-color: black;
     z-index: 1px;
+    font-size: 40px;
 }
 #CharStatsMenu {
     display: none;

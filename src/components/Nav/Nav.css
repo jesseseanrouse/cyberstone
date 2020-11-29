@@ -27,6 +27,8 @@
 .appTitle {
 	text-decoration: none;
 	padding: 10px;
+}
+.homeTitle {
 	font-size: 40px;
 }
 a {
@@ -35,4 +37,5 @@ a {
 .navIcon {
 	padding: 10px;
 	color: white;
+	font-size: 40px;
 }

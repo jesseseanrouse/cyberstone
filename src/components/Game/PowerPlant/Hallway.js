@@ -146,7 +146,7 @@ function Hallway(props) {
 	function Trap1() {
 		if (props.stat.per > 4) {
 			return (
-				<>
+				<div className='gameList'>
 					<div onClick={handleTrap1A}>
 						Walk into it. Whats the worst that can happen?
 					</div>
@@ -154,7 +154,7 @@ function Hallway(props) {
 					<div onClick={handleTrap1C}>
 						Try to cross it by traveling over it using the ceiling
 					</div>
-				</>
+				</div>
 			);
 		} else {
 			return <div onClick={handleTrap1A}>Continue</div>;
@@ -163,11 +163,11 @@ function Hallway(props) {
 	// Second Trap
 	function Trap2() {
 		return (
-			<>
+			<div className='gameList'>
 				<div onClick={handleTrap2A}>Try to walk through it</div>
 				<div onClick={handleTrap2B}>Try to disable it</div>
 				<div onClick={handleTrap2C}>Try to break it down</div>
-			</>
+			</div>
 		);
 	}
 	// actions for traps
