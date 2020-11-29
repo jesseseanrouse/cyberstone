@@ -57,7 +57,7 @@ function App(props) {
 	const [inven, setInven] = useState(invenBase);
 	const [powerPro, setPowerPro] = useState(PowerProBase);
 	const [err, setErr] = useState('');
-	const [message, setMessage] = useState('')
+	const [message, setMessage] = useState('');
 	// for enemies
 	const [eName, setEName] = useState('');
 	const [eStat, setEStat] = useState(baseStats);
@@ -65,6 +65,15 @@ function App(props) {
 
 	return (
 		<>
+			<RenderStats
+				name={name}
+				stat={stat}
+				char={char}
+				inven={inven}
+				userID={props.userID}
+				charID={props.charID}
+				powerPro={powerPro}
+			/>
 			<Switch>
 				<Route
 					exact
@@ -183,15 +192,6 @@ function App(props) {
 					)}
 				/>
 			</Switch>
-			<RenderStats
-				name={name}
-				stat={stat}
-				char={char}
-				inven={inven}
-				userID={props.userID}
-				charID={props.charID}
-				powerPro={powerPro}
-			/>
 		</>
 	);
 }
