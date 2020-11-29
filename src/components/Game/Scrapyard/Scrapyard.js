@@ -14,6 +14,10 @@ function Scrapyard(props) {
 		}
 		props.setMessage('');
 		props.setStart(true);
+		document.body.style.backgroundColor = 'transparent';
+		// image is owned by Sonniss.com
+		document.body.style.backgroundImage =
+			"url('https://i.imgur.com/wUFcIow.jpg?1')";
 	}, []);
 	function handleRepair() {
 		if (props.stat.hp >= props.stat.hpMax) {
@@ -22,8 +26,8 @@ function Scrapyard(props) {
 			let inven = props.inven;
 			let scrp = props.inven.scrp - 1;
 			props.setInven({ ...inven, scrp: scrp });
-			let testHP = props.stat.hp + 50
-			let testHPMax = props.stat.hpMax
+			let testHP = props.stat.hp + 50;
+			let testHPMax = props.stat.hpMax;
 			if (testHP > testHPMax) {
 				let hp = props.stat.hpMax;
 				let stat = props.stat;

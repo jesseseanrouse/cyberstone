@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 function Generator(props) {
 	React.useEffect(() => {
 		props.setMessage('');
+		document.body.style.backgroundColor = 'transparent';
+		// image is owned by ArtStation
+		document.body.style.backgroundImage =
+			"url('https://i.imgur.com/Ncr1iQk.jpg')";
 	}, []);
 	return (
 		<div className='gameDisplay'>

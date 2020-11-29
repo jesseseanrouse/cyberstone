@@ -16,6 +16,9 @@ function Hallway(props) {
 		}
 		props.setLocationStor(false);
 		props.setMessage(message);
+		// owned by https://www.reddit.com/r/Cyberpunk/comments/64jbp8/intricate_computer_wiring_tunnel_inside_an/
+		document.body.style.backgroundImage =
+			"url('https://i.imgur.com/9uKKeZu.jpg')";
 	}, []);
 	// Basic Display for top of screen
 	function Display() {

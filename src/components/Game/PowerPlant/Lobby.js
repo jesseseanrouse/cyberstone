@@ -6,6 +6,9 @@ function Lobby(props) {
 	// Messages
 	React.useEffect(() => {
 		props.setMessage('');
+		// owned by https://www.reddit.com/r/Cyberpunk/comments/64jbp8/intricate_computer_wiring_tunnel_inside_an/
+		document.body.style.backgroundImage =
+			"url('https://i.imgur.com/9uKKeZu.jpg')";
 	}, []);
 	// Actions
 	function handlePick() {

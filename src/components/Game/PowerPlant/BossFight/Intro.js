@@ -20,6 +20,9 @@ function Intro(props) {
 		};
 		props.setEName('Dr. Crackle');
 		props.setEStat(newStat);
+		// image is owned by ArtStation
+		document.body.style.backgroundImage =
+			"url('https://i.imgur.com/Ncr1iQk.jpg')";
 	}, []);
 	// description as you enter room
 	function DisplayDesc() {
