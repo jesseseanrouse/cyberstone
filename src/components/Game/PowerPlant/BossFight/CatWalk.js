@@ -1,5 +1,5 @@
 // import React
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 import JumpHammer from './UserFunctions/JumpHammer';
@@ -16,6 +16,26 @@ import Thunderbolt from './BossFunctions/ThunderBolt2';
 
 function CatWalk(props) {
 	const { url, path } = useRouteMatch();
+	useEffect(() => {
+		if (props.stat.hp < 1) {
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
+		}
+	}, [props.stat.hp]);
+	useEffect(() => {
+		if (props.stat.ep < 1) {
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
+		}
+	}, [props.stat.ep]);
+	useEffect(() => {
+		if (props.eStat.hp < 1) {
+			props.history.push(`/game/powerplant/boss/fight/victory`);
+		}
+	}, [props.eStat.hp]);
+	useEffect(() => {
+		if (props.eStat.ep < 1) {
+			props.history.push(`/game/powerplant/boss/fight/victory`);
+		}
+	}, [props.eStat.ep]);
 	// unique action for hammer strike
 	function handleJump() {
 		if (props.jump === false) {

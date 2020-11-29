@@ -1,5 +1,5 @@
 // import React
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 // import User Attacks
 import HammerStrike from './UserFunctions/HammerStrike';
@@ -14,6 +14,26 @@ import Thunderbolt from './BossFunctions/ThunderBolt2';
 
 function Console(props) {
 	const { url, path } = useRouteMatch();
+	useEffect(() => {
+		if (props.stat.hp < 1) {
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
+		}
+	}, [props.stat.hp]);
+	useEffect(() => {
+		if (props.stat.ep < 1) {
+			props.history.push(`/game/powerplant/boss/fight/defeat`);
+		}
+	}, [props.stat.ep]);
+	useEffect(() => {
+		if (props.eStat.hp < 1) {
+			props.history.push(`/game/powerplant/boss/fight/victory`);
+		}
+	}, [props.eStat.hp]);
+	useEffect(() => {
+		if (props.eStat.ep < 1) {
+			props.history.push(`/game/powerplant/boss/fight/victory`);
+		}
+	}, [props.eStat.ep]);
 	// handles moving to landing
 	function handleMove() {
 		if (props.crackleState === 0) {
