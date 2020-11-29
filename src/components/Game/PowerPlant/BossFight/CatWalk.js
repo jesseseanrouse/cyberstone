@@ -223,6 +223,14 @@ function CatWalk(props) {
 				props.setOnFire,
 				message
 			);
+			message = 'You shoot Dr. Crackle with your bow. ';
+			if (props.char.core === 3) {
+				if (props.onFire === 0) {
+					message = 'He is now on fire. ';
+				} else {
+					message = 'The fire is now hotter. ';
+				}
+			}
 			if (ehp < 1 || eep < 1) {
 				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/boss/fight/victory`);
@@ -267,6 +275,14 @@ function CatWalk(props) {
 				props.setOnFire,
 				message
 			);
+			message = 'You shoot Dr. Crackle with your rifle. ';
+			if (props.char.core === 3) {
+				if (props.onFire === 0) {
+					message = 'He is now on fire. ';
+				} else {
+					message = 'The fire is now hotter. ';
+				}
+			}
 			if (ehp < 1 || eep < 1) {
 				props.setMessage('You shoot Dr. Crackle dealing the final blow.');
 				props.history.push(`/game/powerplant/boss/fight/victory`);
