@@ -33,14 +33,16 @@ function Intro3(props) {
 			});
 	}, []);
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>
 				You take a moment to examine the gate and the wall. You notice a gap in
 				the wall that you can easily fit through. A smile comes across your face
 				as you step through the gap. This is going to be easy.
 			</p>
-			<Link to='/game/scrapyard'>Continue</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/scrapyard'>Continue</Link>
+			</div>
+		</div>
 	);
 }
 

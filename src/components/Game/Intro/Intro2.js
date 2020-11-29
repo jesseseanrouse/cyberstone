@@ -33,14 +33,16 @@ function Intro2(props) {
 			});
 	}, []);
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>
 				You take a moment to examine the lock; its pretty simple so you get your
 				lock pick out and begin working on the lock. You successfully pick the
 				lock in no time. You open the gate and step inside.
 			</p>
-			<Link to='/game/scrapyard'>Continue</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/scrapyard'>Continue</Link>
+			</div>
+		</div>
 	);
 }
 

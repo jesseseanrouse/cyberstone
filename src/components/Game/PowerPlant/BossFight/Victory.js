@@ -8,10 +8,12 @@ function Victory(props) {
 		props.setPowerPro({ ...powerPro, boss: 2 });
 	}, []);
 	return (
-		<>
+		<div className='gameDisplay'>
 			{props.message}
-			<Link to='/game/powerplant/generator'>Continue</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/powerplant/generator'>Continue</Link>
+			</div>
+		</div>
 	);
 }
 

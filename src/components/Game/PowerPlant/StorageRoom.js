@@ -19,19 +19,23 @@ function StorageRoom(props) {
 		props.setPowerPro({ ...powerPro, storage: true });
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>You are in a storage room</p>
 			{props.message}
 			{props.powerPro.storage ? null : (
 				<>
 					<p>Actions</p>
-					<div onClick={handleStorage}>Search the room</div>
+					<div className='gameList'>
+						<div onClick={handleStorage}>Search the room</div>
+					</div>
 				</>
 			)}
 			<p>Travel</p>
-			<Link to='/game/powerplant/hallway'>Hallway</Link>
-			<Link to='/game/powerplant/airvent'>Climb into Air Vent</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/powerplant/hallway'>Hallway</Link>
+				<Link to='/game/powerplant/airvent'>Climb into Air Vent</Link>
+			</div>
+		</div>
 	);
 }
 

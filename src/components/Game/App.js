@@ -1,6 +1,8 @@
 // Import React
 import React, { useState } from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
+// import css
+import './app.css'
 // Import components
 import CreateCharacter from './CreateCharacter/CreateCharacter';
 import Intro from './Intro/App';

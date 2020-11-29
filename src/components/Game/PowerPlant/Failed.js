@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 
 function Failed(props) {
 	return (
-		<>
+		<div className='gameDisplay'>
 			{props.message}
-			<Link to='/game/scrapyard/recover'>Continue</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/scrapyard/recover'>Continue</Link>
+			</div>
+		</div>
 	);
 }
 

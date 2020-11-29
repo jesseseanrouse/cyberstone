@@ -57,13 +57,7 @@ function Fight(props) {
 			}
 		} else if (props.eAttSet === 1) {
 			if (random < 3) {
-				Bite(
-					props.eStat.str,
-					props.eStat.wil,
-					hp,
-					props.stat,
-					props.setStat
-				);
+				Bite(props.eStat.str, props.eStat.wil, hp, props.stat, props.setStat);
 			} else if (random < 5) {
 				FlameClaw(
 					props.eStat.str,
@@ -108,7 +102,7 @@ function Fight(props) {
 				);
 			}
 		}
-		return (hp, ep)
+		return hp, ep;
 	}
 	function WStrike(hp, ep) {
 		if (props.inven.weapon === 'Hammer') {
@@ -136,7 +130,7 @@ function Fight(props) {
 				props.setEStat
 			);
 		}
-		return (hp, ep)
+		return hp, ep;
 	}
 	// handles a round of combat
 	function handleCombat() {
@@ -148,18 +142,18 @@ function Fight(props) {
 			message = 'You have defeated the ' + props.eName;
 			let random = Math.floor(props.stat.int * Math.random());
 			let random2 = Math.floor((props.stat.int / 2) * Math.random());
-            let random3 = Math.floor(2 * Math.random());
-            let scrp = props.inven.scrp + random
-            let ecom = props.inven.ecom + random2
-            let battery = props.inven.battery + random3
-            let inven = props.inven
-            props.setInven({...inven, scrp: scrp, ecom: ecom, battery: battery})
-            props.setMessage(message)
-            props.history.push(`/game/battle/victory`);
+			let random3 = Math.floor(2 * Math.random());
+			let scrp = props.inven.scrp + random;
+			let ecom = props.inven.ecom + random2;
+			let battery = props.inven.battery + random3;
+			let inven = props.inven;
+			props.setInven({ ...inven, scrp: scrp, ecom: ecom, battery: battery });
+			props.setMessage(message);
+			props.history.push(`/game/battle/victory`);
 		} else {
 			message = 'You strike the ' + props.eName + ' with your weapon.';
-			hp = props.stat.hp
-			ep = props.stat.ep
+			hp = props.stat.hp;
+			ep = props.stat.ep;
 			EAttack(hp, ep);
 			if (hp < 1 || ep < 1) {
 				message =
@@ -191,7 +185,7 @@ function Fight(props) {
 		props.setMessage('You do not have any batteries');
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			{props.message}
 			<p>{props.eName} Status</p>
 			<p>
@@ -210,13 +204,15 @@ function Fight(props) {
 				</p>
 			</div>
 			<p>Actions</p>
-			<div onClick={handleCombat}>Weapon Strike</div>
-			{props.inven.battery > 0 ? (
-				<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
-			) : (
-				<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
-			)}
-		</>
+			<div className='gameList'>
+				<div onClick={handleCombat}>Weapon Strike</div>
+				{props.inven.battery > 0 ? (
+					<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
+				) : (
+					<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
+				)}
+			</div>
+		</div>
 	);
 }
 

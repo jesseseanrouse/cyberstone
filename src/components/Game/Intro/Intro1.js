@@ -11,7 +11,7 @@ function Intro1(props) {
 		let char = props.char;
 		let stat = props.stat;
 		let inven = props.inven;
-		let powerPro = props.powerPro
+		let powerPro = props.powerPro;
 		let hpMax = 30 + 10 * props.stat.str + 10 * props.stat.end;
 		let epMax = 20 + 10 * props.stat.end + 10 * props.stat.wil;
 		stat = {
@@ -33,14 +33,16 @@ function Intro1(props) {
 			});
 	}, []);
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>
 				You strike at the gate with your hand; the gate rattles under your blow.
 				A smile strikes your face and you realize just how easy its going to be.
 				You only strike the gate a few more times before it comes crashing down.
 			</p>
-			<Link to='/game/scrapyard'>Continue</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/scrapyard'>Continue</Link>
+			</div>
+		</div>
 	);
 }
 

@@ -37,15 +37,22 @@ function Intro(props) {
 		);
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			{props.char.prof === 'bounty' ? bounty() : null}
 			{props.char.prof === 'scavenger' ? scavenger() : null}
 			{props.char.prof === 'farmer' ? farmer() : null}
-            <p>You take a look at the gate. Its not much to look at and it is locked. Too smooth and tall to climb over. How do you want to proceed?</p>
-            <Link to='/game/intro/1'>Bash your way through the gate (+1 Strength)</Link>
-            <Link to='/game/intro/2'>Pick the lock (+1 Cunning)</Link>
-            <Link to='/game/intro/3'>Look for another way in (+1 Perception)</Link>
-		</>
+			<p>
+				You take a look at the gate. Its not much to look at and it is locked.
+				Too smooth and tall to climb over. How do you want to proceed?
+			</p>
+			<div className='gameList'>
+				<Link to='/game/intro/1'>
+					Bash your way through the gate (+1 Strength)
+				</Link>
+				<Link to='/game/intro/2'>Pick the lock (+1 Cunning)</Link>
+				<Link to='/game/intro/3'>Look for another way in (+1 Perception)</Link>
+			</div>
+		</div>
 	);
 }
 

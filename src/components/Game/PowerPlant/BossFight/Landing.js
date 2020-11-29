@@ -340,28 +340,28 @@ function Landing(props) {
 				</>
 			);
 		}
-    }
-    function handleRecharge() {
-			if (props.stat.ep >= props.stat.epMax) {
-				props.setMessage('You are already at full energy');
-			} else {
-				let inven = props.inven;
-				let battery = props.inven.battery - 1;
-				props.setInven({ ...inven, battery: battery });
-				let ep = props.stat.ep + 50;
-				if (ep > props.stat.maxEp) {
-					ep = props.stat.maxEp;
-				}
-				let stat = props.stat;
-				props.setStat({ ...stat, ep: ep });
-				props.setMessage('You used a battery metal to recharge yourself');
+	}
+	function handleRecharge() {
+		if (props.stat.ep >= props.stat.epMax) {
+			props.setMessage('You are already at full energy');
+		} else {
+			let inven = props.inven;
+			let battery = props.inven.battery - 1;
+			props.setInven({ ...inven, battery: battery });
+			let ep = props.stat.ep + 50;
+			if (ep > props.stat.maxEp) {
+				ep = props.stat.maxEp;
 			}
+			let stat = props.stat;
+			props.setStat({ ...stat, ep: ep });
+			props.setMessage('You used a battery metal to recharge yourself');
 		}
-		function handleLack() {
-			props.setMessage('You do not have any batteries');
-		}
+	}
+	function handleLack() {
+		props.setMessage('You do not have any batteries');
+	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			You are on the Landing
 			{props.message}
 			<p>{props.eName} Status</p>
@@ -381,16 +381,20 @@ function Landing(props) {
 				</p>
 			</div>
 			<p>Actions</p>
-			{WeaponType()}
-			{props.inven.battery > 0 ? (
-				<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
-			) : (
-				<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
-			)}
+			<div className='gameList'>
+				{WeaponType()}
+				{props.inven.battery > 0 ? (
+					<div onClick={handleRecharge}>Recharge (+50 Ep, -1 Battery)</div>
+				) : (
+					<div onClick={handleLack}>Recharge (+50 Ep, -1 Battery)</div>
+				)}
+			</div>
 			<p>Move to</p>
-			<div onClick={handleMove}>Dr. Crackle</div>
-			<div onClick={handleMove2}>Catwalk</div>
-		</>
+			<div className='gameList'>
+				<div onClick={handleMove}>Dr. Crackle</div>
+				<div onClick={handleMove2}>Catwalk</div>
+			</div>
+		</div>
 	);
 }
 

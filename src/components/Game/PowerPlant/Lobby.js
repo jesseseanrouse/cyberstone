@@ -12,9 +12,9 @@ function Lobby(props) {
 		if (props.stat.cun < 5) {
 			props.setMessage('You are unable to pick the lock');
 		} else {
-            props.setMessage('You successfully open the lock');
-            let powerPro = props.powerPro
-			props.setPowerPro({...powerPro, door: true});
+			props.setMessage('You successfully open the lock');
+			let powerPro = props.powerPro;
+			props.setPowerPro({ ...powerPro, door: true });
 		}
 	}
 	function handleBash() {
@@ -44,7 +44,7 @@ function Lobby(props) {
 		}
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>PowerPlant: Lobby</p>
 			<p>
 				You are in the lobby of the power plant. You can tell that cleaning is
@@ -52,10 +52,12 @@ function Lobby(props) {
 			</p>
 			<p>{props.message}</p>
 			<p>Travel</p>
-			{openDoor()}
-			<Link to='/game/powerplant/airvent'>Climb into vent</Link>
-			<Link to='/game/scrapyard/'>Return to Scrapyard</Link>
-		</>
+			<div className='gameList'>
+				{openDoor()}
+				<Link to='/game/powerplant/airvent'>Climb into vent</Link>
+				<Link to='/game/scrapyard/'>Return to Scrapyard</Link>
+			</div>
+		</div>
 	);
 }
 

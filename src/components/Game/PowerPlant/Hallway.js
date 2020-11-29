@@ -175,24 +175,26 @@ function Hallway(props) {
 	// access to generator
 	function GeneratorDisplay() {
 		if (props.powerPro.boss < 2) {
-			return <Link to='/game/powerplant/boss/intro'>Generator Room</Link>
+			return <Link to='/game/powerplant/boss/intro'>Generator Room</Link>;
 		} else {
-			return <Link to='/game/powerplant/generator'>Generator Room</Link>
+			return <Link to='/game/powerplant/generator'>Generator Room</Link>;
 		}
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			{Display()}
 			{props.message}
 			{props.powerPro.trap2 ? null : <p>Actions</p>}
 			{Display2()}
 			<p>Travel</p>
-			<Link to='/game/powerplant/lobby'>Return to Lobby</Link>
-			{props.powerPro.trap1 ? (
-				<Link to='/game/powerplant/storageroom'>Storage Room</Link>
-			) : null}
-			{props.powerPro.trap2 ? GeneratorDisplay() : null}
-		</>
+			<div className='gameList'>
+				<Link to='/game/powerplant/lobby'>Return to Lobby</Link>
+				{props.powerPro.trap1 ? (
+					<Link to='/game/powerplant/storageroom'>Storage Room</Link>
+				) : null}
+				{props.powerPro.trap2 ? GeneratorDisplay() : null}
+			</div>
+		</div>
 	);
 }
 

@@ -1,0 +1,22 @@
+.gameDisplay {
+	background-color: rgb(79, 79, 79, 0.9);
+	margin: 10px 10px;
+	padding: 10px;
+	color: white;
+	border: solid;
+	border-width: 2px;
+	border-color: orangered;
+	border-radius: 20px;
+}
+.gameList {
+	display: flex;
+	flex-direction: column;
+	color: orangered;
+	text-decoration: none;
+	text-decoration: underline;
+}
+a {
+	color: orangered;
+	text-decoration: none;
+	text-decoration: underline;
+}

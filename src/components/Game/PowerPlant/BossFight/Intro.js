@@ -69,12 +69,14 @@ function Intro(props) {
 		}
 	}
 	return (
-		<>
+		<div className='gameDisplay'>
 			{DisplayDesc()}
 			{DisplayTaunt()}
 			<p>Action</p>
-			<Link to='/game/powerplant/boss/fight/1'>Fight</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/powerplant/boss/fight/1'>Fight</Link>
+			</div>
+		</div>
 	);
 }
 

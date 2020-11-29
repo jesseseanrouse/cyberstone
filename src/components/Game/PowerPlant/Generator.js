@@ -7,13 +7,15 @@ function Generator(props) {
 		props.setMessage('');
 	}, []);
 	return (
-		<>
+		<div className='gameDisplay'>
 			<p>You are in the generator room</p>
 			{props.message}
 			<p>Travel</p>
-			<Link to='/game/powerplant/hallway'>Hallway</Link>
-			<Link to='/game/powerplant/airvent'>Climb into Air Vent</Link>
-		</>
+			<div className='gameList'>
+				<Link to='/game/powerplant/hallway'>Hallway</Link>
+				<Link to='/game/powerplant/airvent'>Climb into Air Vent</Link>
+			</div>
+		</div>
 	);
 }
 
