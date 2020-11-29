@@ -26,6 +26,10 @@ function RenderStats(props) {
 			nav.style.display = 'flex';
 		}
 	};
+	function handelLogChar() {
+		// looked this up
+		window.location = `/`
+	}
 	return (
 		<div className='displayStats'>
 			<div className='settingIcon' onClick={handleClickBars}>
@@ -54,6 +58,7 @@ function RenderStats(props) {
 				</div>
 				<div className='statsText'>Battery: {props.inven.battery}</div>
 				<button onClick={handelSave}>Save</button>
+				<button onClick={handelLogChar}>Log off</button>
 			</div>
 		</div>
 	);
