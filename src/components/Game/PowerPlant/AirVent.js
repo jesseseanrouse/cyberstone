@@ -5,12 +5,15 @@ import { Link } from 'react-router-dom';
 function AirVent(props) {
 	React.useEffect(() => {
 		let message = '';
-		if (props.powerPro.trap1 === true && props.powerPro.trap4 === false) {
-			message =
-				'You enter the air vent and notice the spinning blade. You give it a kick and it stops spinning.';
-			let powerPro = props.powerPro;
-			props.setPowerPro({ ...powerPro, trap4: true });
+		if (props.locationStor === true) {
+			if (props.powerPro.trap1 === true && props.powerPro.trap4 === false) {
+				message =
+					'You enter the air vent and notice the spinning blade. You give it a kick and it stops spinning.';
+				let powerPro = props.powerPro;
+				props.setPowerPro({ ...powerPro, trap4: true });
+			}
 		}
+		props.setLocationStor(false)
 		props.setMessage(message);
 	}, []);
 	// Basic Display for top of screen

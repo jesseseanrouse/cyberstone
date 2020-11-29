@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 function StorageRoom(props) {
 	React.useEffect(() => {
 		props.setMessage('');
+		props.setLocationStor(true)
 	}, []);
 	function handleStorage() {
 		let inven = props.inven;

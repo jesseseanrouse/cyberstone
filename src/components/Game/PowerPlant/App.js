@@ -14,6 +14,7 @@ function App(props) {
 	const { url, path } = useRouteMatch();
 	// state lives here
 	const [message, setMessage] = useState('');
+	const [locationStor, setLocationStor] = useState(false)
 	return (
 		<>
 			<Switch>
@@ -47,6 +48,8 @@ function App(props) {
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
 								char={props.char}
+								locationStor={locationStor}
+								setLocationStor={setLocationStor}
 							/>
 						</>
 					)}
@@ -67,6 +70,8 @@ function App(props) {
 								setPowerPro={props.setPowerPro}
 								inven={props.inven}
 								setInven={props.setInven}
+								locationStor={locationStor}
+								setLocationStor={setLocationStor}
 							/>
 						</>
 					)}
@@ -93,6 +98,8 @@ function App(props) {
 								setPowerPro={props.setPowerPro}
 								inven={props.inven}
 								setInven={props.setInven}
+								locationStor={locationStor}
+								setLocationStor={setLocationStor}
 							/>
 						</>
 					)}
