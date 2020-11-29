@@ -1,6 +1,6 @@
 .charList {
     display: grid;
-    grid-template-columns: 2fr .5fr;
+    grid-template-columns: 2fr .5fr .5fr;
     padding: 10%;
     grid-gap: 10px;
 }
