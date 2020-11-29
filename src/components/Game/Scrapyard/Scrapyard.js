@@ -21,12 +21,17 @@ function Scrapyard(props) {
 			let inven = props.inven;
 			let scrp = props.inven.scrp - 1;
 			props.setInven({ ...inven, scrp: scrp });
-			let hp = props.stat.hp + 50;
-			if (hp > props.stat.maxHp) {
-				hp = props.stat.maxHp;
+			let testHP = props.stat.hp + 50
+			let testHPMax = props.stat.hpMax
+			if (testHP > testHPMax) {
+				let hp = props.stat.hpMax;
+				let stat = props.stat;
+				props.setStat({ ...stat, hp: hp });
+			} else if (testHP < testHPMax) {
+				let hp = props.stat.hp + 50;
+				let stat = props.stat;
+				props.setStat({ ...stat, hp: hp });
 			}
-			let stat = props.stat;
-			props.setStat({ ...stat, hp: hp });
 			props.setMessage('You used a piece of scrap metal to repair yourself');
 		}
 	}

@@ -1,5 +1,5 @@
 // import react
-import React from 'react';
+import React, {useEffect} from 'react';
 // import functions
 // For set 0
 import ShockAtt from './Functions/ShockAtt';
@@ -18,7 +18,7 @@ import WeaponStrike from './Functions/WeaponStrike';
 
 function Fight(props) {
 	// Messages
-	React.useEffect(() => {
+	useEffect(() => {
 		props.setMessage('');
 	}, []);
 	function EAttack(hp, ep) {
