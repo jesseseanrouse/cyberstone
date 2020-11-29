@@ -39,3 +39,14 @@ a {
 	color: white;
 	font-size: 40px;
 }
+/* for tablet and desktop*/
+@media (min-width: 426px) {
+	#linksList {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.navIcon {
+		display: none;
+	}
+}

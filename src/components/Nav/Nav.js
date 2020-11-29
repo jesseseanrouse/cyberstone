@@ -5,20 +5,24 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 // import css
-import './Nav.css'
+import './Nav.css';
 
 function Nav() {
 	const handleClickBars = () => {
-		let nav = document.getElementById('linksList');
-		if (nav.style.display === 'flex') {
-			nav.style.display = 'none';
-		} else {
-			nav.style.display = 'flex';
+		if (window.width < 426) {
+			let nav = document.getElementById('linksList');
+			if (nav.style.display === 'flex') {
+				nav.style.display = 'none';
+			} else {
+				nav.style.display = 'flex';
+			}
 		}
 	};
 	const handleClick = () => {
-		let nav = document.getElementById('linksList');
-		nav.style.display = 'none';
+		if (window.width < 426) {
+			let nav = document.getElementById('linksList');
+			nav.style.display = 'none';
+		}
 	};
 	return (
 		<div className='navBar'>
