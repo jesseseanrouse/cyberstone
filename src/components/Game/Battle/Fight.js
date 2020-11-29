@@ -1,5 +1,5 @@
 // import react
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 // import functions
 // For set 0
 import ShockAtt from './Functions/ShockAtt';
@@ -21,6 +21,52 @@ function Fight(props) {
 	useEffect(() => {
 		props.setMessage('');
 	}, []);
+	useEffect(() => {
+		if (props.eStat.hp < 1) {
+			let message = 'You have defeated the ' + props.eName;
+			let random = Math.floor(props.stat.int * Math.random());
+			let random2 = Math.floor((props.stat.int / 2) * Math.random());
+			let random3 = Math.floor(2 * Math.random());
+			let scrp = props.inven.scrp + random;
+			let ecom = props.inven.ecom + random2;
+			let battery = props.inven.battery + random3;
+			let inven = props.inven;
+			props.setInven({ ...inven, scrp: scrp, ecom: ecom, battery: battery });
+			props.setMessage(message);
+			props.history.push(`/game/battle/victory`);
+		}
+	}, [props.stat.hp]);
+	useEffect(() => {
+		if (props.eStat.ep < 1) {
+			let message = 'You have defeated the ' + props.eName;
+			let random = Math.floor(props.stat.int * Math.random());
+			let random2 = Math.floor((props.stat.int / 2) * Math.random());
+			let random3 = Math.floor(2 * Math.random());
+			let scrp = props.inven.scrp + random;
+			let ecom = props.inven.ecom + random2;
+			let battery = props.inven.battery + random3;
+			let inven = props.inven;
+			props.setInven({ ...inven, scrp: scrp, ecom: ecom, battery: battery });
+			props.setMessage(message);
+			props.history.push(`/game/battle/victory`);
+		}
+	}, [props.stat.ep]);
+	useEffect(() => {
+		if (props.stat.hp < 1) {
+			let message =
+				'The ' + props.eName + ' has defeated you in combat. You pass out.';
+			props.setMessage(message);
+			props.history.push(`/game/battle/defeat`);
+		}
+	}, [props.eStat.hp]);
+	useEffect(() => {
+		if (props.stat.hp < 1 || props.stat.ep < 1) {
+			let message =
+				'The ' + props.eName + ' has defeated you in combat. You pass out.';
+			props.setMessage(message);
+			props.history.push(`/game/battle/defeat`);
+		}
+	}, [props.eStat.ep]);
 	function EAttack(hp, ep) {
 		let random = Math.floor(6 * Math.random());
 		if (props.eAttSet === 0) {
@@ -138,32 +184,12 @@ function Fight(props) {
 		let hp = props.eStat.hp;
 		let ep = props.eStat.ep;
 		WStrike(hp, ep);
-		if (hp < 1 || ep < 1) {
-			message = 'You have defeated the ' + props.eName;
-			let random = Math.floor(props.stat.int * Math.random());
-			let random2 = Math.floor((props.stat.int / 2) * Math.random());
-			let random3 = Math.floor(2 * Math.random());
-			let scrp = props.inven.scrp + random;
-			let ecom = props.inven.ecom + random2;
-			let battery = props.inven.battery + random3;
-			let inven = props.inven;
-			props.setInven({ ...inven, scrp: scrp, ecom: ecom, battery: battery });
-			props.setMessage(message);
-			props.history.push(`/game/battle/victory`);
-		} else {
-			message = 'You strike the ' + props.eName + ' with your weapon.';
-			hp = props.stat.hp;
-			ep = props.stat.ep;
-			EAttack(hp, ep);
-			if (hp < 1 || ep < 1) {
-				message =
-					'The ' + props.eName + ' has defeated you in combat. You pass out.';
-				props.setMessage(message);
-				props.history.push(`/game/battle/defeat`);
-			} else {
-				message = message + ' The ' + props.eName + ' attacked you.';
-			}
-		}
+		message = 'You strike the ' + props.eName + ' with your weapon.';
+		hp = props.stat.hp;
+		ep = props.stat.ep;
+		EAttack(hp, ep);
+		message = message + ' The ' + props.eName + ' attacked you.';
+		props.setMessage(message)
 	}
 	function handleRecharge() {
 		if (props.stat.ep >= props.stat.epMax) {
