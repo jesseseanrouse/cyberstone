@@ -35,6 +35,7 @@ function App(props) {
 									setPowerPro={props.setPowerPro}
 									message={props.message}
 									setMessage={props.setMessage}
+									setStart={props.setStart}
 								/>
 							</>
 						)}

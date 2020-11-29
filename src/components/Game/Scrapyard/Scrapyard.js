@@ -13,6 +13,7 @@ function Scrapyard(props) {
 			props.setPowerPro(props.data.powerPro);
 		}
 		props.setMessage('');
+		props.setStart(true);
 	}, []);
 	function handleRepair() {
 		if (props.stat.hp >= props.stat.hpMax) {

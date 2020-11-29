@@ -16,7 +16,9 @@ function RenderStats(props) {
 		let inven = props.inven;
 		let powerPro = props.powerPro;
 		let data = { name, char, stat, inven, powerPro };
-		firebaseDb.child(`users/${props.userID}/characters/${props.charID}`).update(data);
+		firebaseDb
+			.child(`users/${props.userID}/characters/${props.charID}`)
+			.update(data);
 	}
 	const handleClickBars = () => {
 		let nav = document.getElementById('CharStatsMenu');
@@ -28,7 +30,7 @@ function RenderStats(props) {
 	};
 	function handelLogChar() {
 		// looked this up
-		window.location = `/`
+		window.location = `/`;
 	}
 	return (
 		<div className='displayStats'>
@@ -57,7 +59,7 @@ function RenderStats(props) {
 					Electrical Components: {props.inven.ecom}
 				</div>
 				<div className='statsText'>Battery: {props.inven.battery}</div>
-				<button onClick={handelSave}>Save</button>
+				{props.start ? <button onClick={handelSave}>Save</button> : null}
 				<button onClick={handelLogChar}>Log off</button>
 			</div>
 		</div>

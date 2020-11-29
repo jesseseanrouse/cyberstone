@@ -60,6 +60,7 @@ function App(props) {
 	const [powerPro, setPowerPro] = useState(PowerProBase);
 	const [err, setErr] = useState('');
 	const [message, setMessage] = useState('');
+	const [start, setStart] = useState(false)
 	// for enemies
 	const [eName, setEName] = useState('');
 	const [eStat, setEStat] = useState(baseStats);
@@ -75,6 +76,7 @@ function App(props) {
 				userID={props.userID}
 				charID={props.charID}
 				powerPro={powerPro}
+				start={start}
 			/>
 			<Switch>
 				<Route
@@ -97,6 +99,7 @@ function App(props) {
 								setName={setName}
 								inven={inven}
 								setInven={setInven}
+								setStart={setStart}
 							/>
 						</>
 					)}
@@ -147,6 +150,7 @@ function App(props) {
 								setEStat={setEStat}
 								setEAttSet={setEAttSet}
 								setPowerPro={setPowerPro}
+								setStart={setStart}
 							/>
 						</>
 					)}

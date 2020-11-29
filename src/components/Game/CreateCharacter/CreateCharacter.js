@@ -17,6 +17,9 @@ import { GiFarmer } from 'react-icons/gi';
 function CreateCharacter(props) {
 	// for pathing
 	const { url, path } = useRouteMatch();
+	React.useEffect(() => {
+		props.setStart(false)
+	}, [])
 
 	// Allows the data in the form to be changed
 	const handleChange = (event) => {
