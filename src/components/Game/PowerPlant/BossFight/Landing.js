@@ -349,8 +349,8 @@ function Landing(props) {
 			let battery = props.inven.battery - 1;
 			props.setInven({ ...inven, battery: battery });
 			let ep = props.stat.ep + 50;
-			if (ep > props.stat.maxEp) {
-				ep = props.stat.maxEp;
+			if (ep > props.stat.epMax) {
+				ep = props.stat.epMax;
 			}
 			let stat = props.stat;
 			props.setStat({ ...stat, ep: ep });

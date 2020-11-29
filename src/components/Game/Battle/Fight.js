@@ -39,7 +39,7 @@ function Fight(props) {
 					props.eStat.int,
 					ep,
 					props.eStat.ep,
-					props.eStat.maxEp,
+					props.eStat.epMax,
 					props.stat,
 					props.setStat,
 					props.eStat,
@@ -173,8 +173,8 @@ function Fight(props) {
 			let battery = props.inven.battery - 1;
 			props.setInven({ ...inven, battery: battery });
 			let ep = props.stat.ep + 50;
-			if (ep > props.stat.maxEp) {
-				ep = props.stat.maxEp;
+			if (ep > props.stat.epMax) {
+				ep = props.stat.epMax;
 			}
 			let stat = props.stat;
 			props.setStat({ ...stat, ep: ep });
