@@ -144,6 +144,8 @@ function Console(props) {
 		let random = Math.floor(props.stat.wil * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -158,7 +160,7 @@ function Console(props) {
 				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			HammerStrike(
 				props.stat.str,
 				props.stat.end,
@@ -180,6 +182,8 @@ function Console(props) {
 		let random = Math.floor(props.stat.wil * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -194,7 +198,7 @@ function Console(props) {
 				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			let eep = props.eStat.ep;
 			HammerCore(
 				props.stat.str,
@@ -232,6 +236,8 @@ function Console(props) {
 		let random = Math.floor(props.stat.wil * Math.random());
 		let message = '';
 		if (random < 4) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -246,7 +252,7 @@ function Console(props) {
 				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			Bash(props.stat.str, props.stat.end, ehp, props.eStat, props.setEStat);
 			if (ehp < 1) {
 				props.setMessage('You strike Dr. Crackle dealing the final blow.');

@@ -39,7 +39,7 @@ function CatWalk(props) {
 	// unique action for hammer strike
 	function handleJump() {
 		if (props.jump === false) {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			JumpHammer(
 				props.stat.str,
 				props.stat.end,
@@ -61,6 +61,8 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/boss/fight/3`);
 			}
 		} else {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			Counter(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -193,6 +195,8 @@ function CatWalk(props) {
 		let random = Math.floor(props.stat.agi * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -207,7 +211,7 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/boss/fight/2`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			let eep = props.eStat.ep;
 			BowCore(
 				props.stat.str,
@@ -245,6 +249,8 @@ function CatWalk(props) {
 		let random = Math.floor(props.stat.per * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -259,7 +265,7 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/boss/fight/2`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			let eep = props.eStat.ep;
 			RifleCore(
 				props.stat.int,
@@ -297,6 +303,8 @@ function CatWalk(props) {
 		let random = Math.floor(props.stat.per * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -311,7 +319,7 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/boss/fight/2`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			RifleShot(
 				props.stat.int,
 				props.stat.cun,
@@ -335,6 +343,8 @@ function CatWalk(props) {
 		let random = Math.floor(props.stat.agi * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -349,7 +359,7 @@ function CatWalk(props) {
 				props.history.push(`/game/powerplant/boss/fight/2`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			BowShot(
 				props.stat.str,
 				props.stat.wil,

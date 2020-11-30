@@ -182,6 +182,8 @@ function Landing(props) {
 		let random = Math.floor(props.stat.per * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -196,7 +198,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			RifleShot(
 				props.stat.int,
 				props.stat.cun,
@@ -220,6 +222,8 @@ function Landing(props) {
 		let random = Math.floor(props.stat.agi * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -234,7 +238,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			BowShot(
 				props.stat.str,
 				props.stat.wil,
@@ -258,6 +262,8 @@ function Landing(props) {
 		let random = Math.floor(props.stat.agi * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -272,7 +278,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			let eep = props.eStat.ep;
 			BowCore(
 				props.stat.str,
@@ -310,6 +316,8 @@ function Landing(props) {
 		let random = Math.floor(props.stat.per * Math.random());
 		let message = '';
 		if (random < 2) {
+			let ehp = props.eStat.hp - 5 * props.onFire;
+			props.setEStat({ ...props.eStat, hp: ehp });
 			let ep = props.stat.ep;
 			PopShot(props.eStat.cun, props.eStat.int, ep, props.stat, props.setStat);
 			if (ep < 1) {
@@ -324,7 +332,7 @@ function Landing(props) {
 				props.history.push(`/game/powerplant/boss/fight/1`);
 			}
 		} else {
-			let ehp = props.eStat.hp;
+			let ehp = props.eStat.hp - 5 * props.onFire;
 			let eep = props.eStat.ep;
 			RifleCore(
 				props.stat.int,
