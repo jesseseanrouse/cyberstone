@@ -38,7 +38,7 @@ function RenderStats(props) {
 				<FontAwesomeIcon className='appTitle' icon={faCog} />
 			</div>
 			<div id='CharStatsMenu'>
-				<div className='statsText'>{props.name.name}</div>
+				<div className='statsName'>{props.name.name}</div>
 				<div className='statsTextTitle'>Stats</div>
 				<div className='statsText'>Strength: {props.stat.str}</div>
 				<div className='statsText'>Endurance: {props.stat.end}</div>
@@ -59,8 +59,16 @@ function RenderStats(props) {
 					Electrical Components: {props.inven.ecom}
 				</div>
 				<div className='statsText'>Battery: {props.inven.battery}</div>
-				{props.start ? <button onClick={handelSave}>Save</button> : null}
-				<button onClick={handelLogChar}>Log off</button>
+				<div className='statsButtons'>
+					{props.start ? (
+						<button className='statsBut' onClick={handelSave}>
+							Save
+						</button>
+					) : null}
+					<button className='statsBut' onClick={handelLogChar}>
+						Log off
+					</button>
+				</div>
 			</div>
 		</div>
 	);
