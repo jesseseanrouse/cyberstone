@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# CapstoneProject
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Overview**
 
-## Available Scripts
+This is a cyperpunk themed text based game that will allow the user to go on an adventure to defeat a boss or two. This focuses on allowing muilitple ways to get through something or fight someone. There is no wrong way, just different paths.
 
-In the project directory, you can run:
+**User Experience**
 
-### `yarn start`
+When the user gets onto the site, the will see a login screen that has the option to log in. From here they can navagate to see my about page or information about the game and how it works. They can then log in if they have already signed up or sign up. They will then see the character screen which has a list of characters they have created with the ability to create a new character. When they create a character it will lead straight into the game. They will read a description and will be presented with choices on how to proceed. This will continue until they either save thier progress, beat the game, or close the game.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**Links**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- github: https://github.com/jesseseanrouse/cyberstone/
+-live site: https://cranky-ptolemy-d8636a.netlify.app/
 
-### `yarn test`
+**Backend Models**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Not all properties of the model will be used but are included if time permits usage
 
-### `yarn build`
+*User Model*
+- username:
+- password:
+- arr_of active characters
+- arr_of inactive characters
+- achievements
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+*Character Model*
+- name:
+- stats_arr
+- item_arr
+- xp:
+- equipment_arr
+  - name:
+  - mod1:
+  - mod2:
+  - mod3:
+- game_ver
+- secret_arr
+- quests_arr
+- time:
+- score:
+ 
+ **MVP**
+ 
+ - Home page with login
+ - about page
+ - guide/instruction page
+ - create character page
+ - exploration area
+ - power plant location
+ - 'first' Boss
+ - easy mode
+ - simple story
+ - some easter eggs
+ 
+ **Post MVP Part 1**
+ 
+ - medium mode
+ - Modding Equipment
+ - smelter/forge area
+ - 'second' Boss
+ - more easter eggs
+ 
+ **Post MVP Part 2**
+ 
+ - Hard Mode
+ - Modding Character
+ - 'crusher' area
+ - 'third' Boss
+ - even more easter eggs
+ 
+ **Post MVP Part 3**
+ 
+ - story depth
+ - Factory area
+ - Final Boss
+ - score system
+ - make a new model on the backend for high scores
+ - I think I'm going to need more easter eggs
+ 
+ ## Components
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Will have more conponents depending on needs of the App. These are general aspects or base conponents with many children; its going to be more complicated with many components.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Component | Description | 
+| --- | :---: |  
+| App | This will make the initial data pull and include Base React Router| 
+| Log-in | This is the home page | 
+| Nav-Bar | This will have links to non game pages | 
+| About | Gives information about me and what tech was used in the app | 
+| Information | Gives information about game mechanics | 
+| List of Characters | This becomes the new home page after log in | 
+| Create Character | User creates a character here |
+| Tutorial/Start | Basic user choice and set up the game and user enters the scapyard | 
+| Scrapyard | Exploration/home location where character can find supplies and mod things | 
+| Power Plant | 'first' boss is located here, electric themed battles | 
+| Smelter | 'second' boss is located here, fire themed battles | 
+| Crusher | 'third' boss is located here, physical themed battles |
+| Factory | Final boss is located here, don't want to spoil surprise |
+| Battle | Battler conponent for basic fights |
+| Backend | Will host data and some functions |
 
-### `yarn eject`
+| Component | Priority | Estimated Time | Actual Time |
+| --- | :---: |  :---: | :---: |
+| App | H | 1 hrs| .75 hrs |
+| Log-in | H | 1 hr| 2 hrs |
+| Nav-Bar | H | .5 hrs |  .5 hrs |
+| About | H | 2 hrs | 1 hrs |
+| Information | L | 4 hrs | 1 hrs |
+| List of Characters | M | 2 hr| 2 hrs |
+| Create Character | H | 3 hr| 3 hrs |
+| Tutorial/Start | M | 2 hr| 2 hrs |
+| Scrapyard | H | 10 hr| 6 hrs |
+| Power Plant | H | 20 hr| 12 hrs |
+| Smelter | L | 12 hr| x hrs |
+| Crusher | L | 8 hr| x hrs |
+| Factory | L | 12 hr| x hrs |
+| Battler | M | 4 hr| 6 hrs |
+| First Boss | H | 4 hr| 10 hrs |
+| Second Boss | L | 3 hr| x hrs |
+| Third Boss | L | 3 hr| x hrs |
+| Final Boss | L | 6 hr| x hrs |
+| Backend | L | 3 hr| 6 hrs |
+| Backend: User Data | L | 3 hr| 10 hrs |
+| Backend: Functions | L | 3 hr| x hrs |
+| Total | H | 106.5 hrs| 62.25 hrs |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I feel like I spent an additional 10-20 hours on this but honestly not sure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Objective | Day | Actual Day |
+| --- | :---: |  :---: |
+| Firebase DB Setup | 1 | 5 |
+| Basic Structure for Frontend App | 2 | 1 |
+| Create Character | 3 | 2 |
+| Basic Scrapyard | 4 | 6 |
+| Battle Mechanics | 5 | 8 |
+| Powerplant | 7 | 7 |
+| Give Thanks | 8 | 8 |
+| First Boss | 9 | 10 |
+| Testing and Bug fixing | 10 | 11 |
+| Present | 12 | 12 |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Additional Libraries**
+- React
+- Firebase
