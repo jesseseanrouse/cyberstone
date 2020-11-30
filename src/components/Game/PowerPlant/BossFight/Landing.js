@@ -135,18 +135,41 @@ function Landing(props) {
 					'Dr. Crackle tries to strike you with his shock hand but misses. ';
 			}
 		} else if (random < 5) {
-			Charge(
-				props.eStat.cun,
-				props.eStat.int,
-				ep,
-				props.stat,
-				props.setStat,
-				props.crackleState,
-				props.setCrackleState,
-				props.location,
-				props.message,
-				check
-			);
+			let attack = 0;
+			if (props.crackleState === 0) {
+				let random = Math.floor(2 * Math.random());
+				if (random === 1) {
+					if (props.location === 2) {
+						props.setCrackleState(2);
+					} else {
+						props.setCrackleState(1);
+					}
+				} else {
+					props.setCrackleState(1);
+				}
+				message =
+					message +
+					'Dr. Crackle starts to fiddle with his console, he seems to be up to something. ';
+			} else if (props.crackleState === 1) {
+				attack =
+					3 * props.eStat.cun +
+					2 * props.eStat.int +
+					Math.floor(2 * props.eStat.int * Math.random());
+				message =
+					message +
+					'Dr. Crackle unleashes power straight from the power generator and strikes you with it. ';
+			} else if (props.crackleState === 2) {
+				check = true;
+				attack =
+					2 * props.eStat.cun +
+					props.eStat.int +
+					Math.floor(props.eStat.int * Math.random());
+				message =
+					message +
+					'Dr. Crackle unleashes power straight from the power generator into the catwalk electrifying you. You fall off the catwalk and land near Dr. Crackle.';
+			}
+			ep = ep - attack;
+			props.setStat({ ...props.stat, ep: ep });
 		} else {
 			let attack = Math.floor(props.eStat.int * Math.random());
 			if (attack > dodge) {
