@@ -21,3 +21,16 @@
 		margin: 10px 35% 0 35%;
 	}
 }
+/* for desktop */
+@media (min-width: 769px) {
+	.charName {
+		font-size: 30px;
+	}
+	.charBut2 {
+		font-size: 25px;
+    }
+    .charBut {
+        margin: 0 37%;
+        font-size: 25px;
+    }
+}

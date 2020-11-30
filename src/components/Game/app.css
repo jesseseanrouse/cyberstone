@@ -13,22 +13,32 @@
 	flex-direction: column;
 	color: orangered;
 	text-decoration: none;
-    text-decoration: underline;
-    margin: 0px;
-    row-gap: 10px;
+	text-decoration: underline;
+	margin: 0px;
+	row-gap: 10px;
 }
 a {
 	color: orangered;
 	text-decoration: none;
-    text-decoration: underline;
-    font-size: 25px;
+	text-decoration: underline;
+	font-size: 25px;
 }
 div {
-    font-size: 25px;
+	font-size: 25px;
 }
 /* for tablet */
 @media (min-width: 426px) {
+	.gameDisplay {
+		margin: 20px 50px;
+	}
+}
+/* for desktop */
+@media (min-width: 769px) {
+	section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
     .gameDisplay {
-        margin: 20px 50px;
+        margin: 50px 70px 0px 10px;
     }
 }

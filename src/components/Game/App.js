@@ -67,7 +67,7 @@ function App(props) {
 	const [eAttSet, setEAttSet] = useState(0);
 
 	return (
-		<>
+		<section>
 			<RenderStats
 				name={name}
 				stat={stat}
@@ -198,7 +198,7 @@ function App(props) {
 					)}
 				/>
 			</Switch>
-		</>
+		</section>
 	);
 }
 
