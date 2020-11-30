@@ -56,7 +56,7 @@ function Scrapyard(props) {
 				<Link to='/game/scrapyard/explore'>Explore</Link>
 				{props.inven.scrp > 0 ? (
 					<div onClick={handleRepair}>
-						Repar yourself (+50 Hp, -1 Scrap Metal)
+						Repair yourself (+50 Hp, -1 Scrap Metal)
 					</div>
 				) : (
 					<div onClick={handleLack}>

@@ -49,7 +49,7 @@ function Intro(props) {
 			return (
 				<>
 					<p>
-						"Well come in intruder" says the cyborg without looking at you,
+						"Well! Come in intruder" says the cyborg without looking at you,
 						"Give me a second to finish... Ah done!"
 					</p>
 					<p>

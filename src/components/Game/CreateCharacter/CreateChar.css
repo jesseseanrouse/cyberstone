@@ -15,7 +15,7 @@ h3 {
     grid-template-columns: 1fr 2.5fr;
     grid-template-rows: 1fr 2fr 1fr;
     align-items: center;
-    margin: 10px 0px;
+    margin: 20px 0px;
 }
 .createWeapon {
     display: grid;

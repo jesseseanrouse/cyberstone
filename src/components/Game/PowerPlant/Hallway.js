@@ -9,7 +9,7 @@ function Hallway(props) {
 		if (props.locationStor === true) {
 			if (props.powerPro.trap4 === true && props.powerPro.trap1 === false) {
 				message =
-					'You enter the hallway and notice a electrified floor. You find the switch to turn it off. ';
+					'You enter the hallway and notice an electrified floor. You find the switch to turn it off. ';
 				let powerPro = props.powerPro;
 				props.setPowerPro({ ...powerPro, trap1: true, door: true });
 			}
