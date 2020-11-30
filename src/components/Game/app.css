@@ -26,3 +26,9 @@ a {
 div {
     font-size: 25px;
 }
+/* for tablet */
+@media (min-width: 426px) {
+    .gameDisplay {
+        margin: 20px 50px;
+    }
+}

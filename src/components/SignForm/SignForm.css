@@ -4,16 +4,25 @@
 .signTitle {
 	color: white;
 	padding: 2px;
-    font-size: 24px;
+	font-size: 24px;
 }
 input {
-    font-size: 20px;
+	font-size: 20px;
 }
 .LogInBut {
-    font-size: 20px;
-    margin: 0px 2px 0px;
+	font-size: 20px;
+	margin: 0px 2px 0px;
 }
 .signBut {
-    font-size: 19px;
-    margin: 8px 15% 0 15%;
+	font-size: 19px;
+	margin: 8px 15% 0 15%;
+}
+/* for tablet */
+@media (min-width: 426px) {
+	.signForm {
+		padding: 15% 30% 0 30%;
+	}
+	.signBut {
+		margin: 8px 30% 0 30%;
+	}
 }

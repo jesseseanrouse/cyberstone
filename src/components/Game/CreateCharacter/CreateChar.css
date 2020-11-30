@@ -40,3 +40,9 @@ h3 {
 .createText {
     color: white;
 }
+/* for tablet */
+@media (min-width: 426px) {
+    .createBut {
+        margin: 0 35%;
+    }
+}

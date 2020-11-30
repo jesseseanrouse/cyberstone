@@ -274,7 +274,7 @@ function CreateCharacter(props) {
 					</div>
 					<div className='createText'>Bonus Stat: Endurance</div>
 				</div>
-				<input className='LogInBut' type='submit' value='Create Character' />
+				<input className='createBut' type='submit' value='Create Character' />
 				<p>{props.err}</p>
 			</form>
 		</>

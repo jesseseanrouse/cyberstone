@@ -1,17 +1,23 @@
 .charList {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr;
-    padding: 10%;
-    grid-gap: 20px;
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr;
+	padding: 10%;
+	grid-gap: 20px;
 }
 .charName {
-    font-size: 25px;
-    color: white;
+	font-size: 25px;
+	color: white;
 }
 .charBut {
-    font-size: 19px;
-    margin: 10px 25% 0 25%;
+	font-size: 19px;
+	margin: 10px 25% 0 25%;
 }
 .charBut2 {
-    font-size: 19px;
+	font-size: 19px;
+}
+/* for tablet */
+@media (min-width: 426px) {
+	.charBut {
+		margin: 10px 35% 0 35%;
+	}
 }
