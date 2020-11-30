@@ -135,6 +135,8 @@ function App(props) {
 								{...routerProps}
 								message={message}
 								setMessage={setMessage}
+								stat={props.stat}
+								setStat={props.setStat}
 								powerPro={props.powerPro}
 								setPowerPro={props.setPowerPro}
 								inven={props.inven}
