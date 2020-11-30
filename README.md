@@ -11,7 +11,7 @@ When the user gets onto the site, the will see a login screen that has the optio
 **Links**
 
 - github: https://github.com/jesseseanrouse/cyberstone/
--live site: https://cranky-ptolemy-d8636a.netlify.app/
+- live site: https://cranky-ptolemy-d8636a.netlify.app/
 
 **Backend Models**
 
