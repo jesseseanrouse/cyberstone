@@ -26,3 +26,21 @@ input {
 		margin: 8px 30% 0 30%;
 	}
 }
+@media (min-width: 769px) {
+    .signForm {
+		padding: 15% 29% 0 29%;
+	}
+	.signTitle {
+		font-size: 33px;
+	}
+	input {
+		font-size: 30px;
+	}
+	.LogInBut {
+		font-size: 30px;
+	}
+	.signBut {
+        margin: 8px 29% 0 29%;
+		font-size: 28px;
+	}
+}

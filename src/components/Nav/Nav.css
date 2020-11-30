@@ -39,7 +39,7 @@ a {
 	color: white;
 	font-size: 40px;
 }
-/* for tablet and desktop*/
+/* for tablet */
 @media (min-width: 426px) {
 	#linksList {
 		display: flex;
@@ -48,5 +48,17 @@ a {
 	}
 	.navIcon {
 		display: none;
+	}
+}
+/* for Desktop */
+@media (min-width: 769px) {
+	.homeTitle {
+		font-size: 60px;
+	}
+	.navAbout {
+		font-size: 40px;
+	}
+	.navInformation {
+		font-size: 40px;
 	}
 }

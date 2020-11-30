@@ -9,7 +9,7 @@ import './Nav.css';
 
 function Nav() {
 	const handleClickBars = () => {
-		if (window.width < 426) {
+		if (window.innerWidth < 426) {
 			let nav = document.getElementById('linksList');
 			if (nav.style.display === 'flex') {
 				nav.style.display = 'none';
@@ -19,7 +19,7 @@ function Nav() {
 		}
 	};
 	const handleClick = () => {
-		if (window.width < 426) {
+		if (window.innerWidth < 426) {
 			let nav = document.getElementById('linksList');
 			nav.style.display = 'none';
 		}
